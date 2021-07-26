@@ -1,5 +1,13 @@
 const R_X_F_500 = {
-  tyres: ["120/70ZR17M/C", "36 psi", "160/60ZR17M/C", "42 psi"],
+  tyres: [
+    "Front: ",
+    "120/70ZR17M/C",
+    "36 psi",
+    " ",
+    "Rear: ",
+    "160/60ZR17M/C",
+    "42 psi",
+  ],
   oil: ["SAE 10W-30", "2.7 L", "4-Stroke"],
   battery: ["YTZ-10S", "FTZ-10S", "12V-8.6Ah/9.1Ah"],
   chain: ["DID 520VO", "O-ring"],

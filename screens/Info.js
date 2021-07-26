@@ -1,5 +1,7 @@
+// TODO translations, change title Bike info, useEffect cleanup
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../config/AppContext";
 import info from "../constants/bikeInfo";
 import translations from "../constants/translations";
@@ -10,31 +12,29 @@ import color from "../constants/colors";
 export default function Info() {
   const { language, bike } = useAppContext();
   const [active, setActive] = useState({
-    name: "Tyres",
+    name: "tyres",
     icon: "road",
-    id: "tyres",
   });
 
   // useEffect(() => {
-
   //   return () => {
   //     setActive({
   //       name: "Tyres",
   //       icon: "road",
   //       id: "tyres",
   //     });
-  //   }
-  // }, [])
+  //   };
+  // }, []);
 
   const types = [
-    { name: "Tyres", icon: "road", id: "tyres" },
-    { name: "Oil", icon: "oil-can", id: "oil" },
-    { name: "Battery", icon: "battery-half", id: "battery" },
-    { name: "Chain", icon: "cogs", id: "chain" },
-    { name: "Lights", icon: "lightbulb", id: "lights" },
-    { name: "Coolant", icon: "snowflake", id: "coolant" },
-    { name: "Fuses", icon: "bolt", id: "fuses" },
-    { name: "Spark plug", icon: "fire", id: "sparkPlug" },
+    { name: "tyres", icon: "road" },
+    { name: "oil", icon: "oil-can" },
+    { name: "battery", icon: "battery-half" },
+    { name: "chain", icon: "cogs" },
+    { name: "lights", icon: "lightbulb" },
+    { name: "coolant", icon: "snowflake" },
+    { name: "fuses", icon: "bolt" },
+    { name: "sparkPlug", icon: "fire" },
   ];
 
   return (
@@ -42,38 +42,45 @@ export default function Info() {
       <PageTitle pageName={"info"} />
 
       <View style={styles.typesContainer}>
-        {types.map((item, index) => (
-          <RoundBtn
-            key={index}
-            name={item.name}
-            icon={item.icon}
-            id={item.id}
-            active={active}
-            setActive={setActive}
+        <View style={styles.typesContainerSub}>
+          {types.map((item, index) => (
+            <RoundBtn
+              key={index}
+              name={item.name}
+              icon={item.icon}
+              active={active}
+              setActive={setActive}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.hr} />
+
+      <View style={styles.detailsContainer}>
+        <View style={styles.detailsLeft}>
+          <Text
+            style={{
+              fontWeight: "700",
+              letterSpacing: 0.8,
+              fontSize: 27,
+              color: color.blackSoft,
+              marginBottom: 20,
+            }}
+          >
+            {translations[language][active.name]}
+          </Text>
+          {info[bike][active.name].map((index, i) => (
+            <Text key={i}>{index}</Text>
+          ))}
+        </View>
+        <View style={styles.detailsRight}>
+          <Icon
+            name={active.icon}
+            style={{ fontSize: 100, color: color.backIcon }}
           />
-        ))}
+        </View>
       </View>
-
-      <View
-        style={{
-          borderBottomColor: color.hr,
-          borderBottomWidth: 1,
-          marginVertical: 20,
-          width: "85%",
-          alignSelf: "center",
-        }}
-      />
-
-      <View>
-        <Text>{active.name}</Text>
-      </View>
-      {/* {info.R_X_F_500.tyres.map((index, i) => (
-        <Text key={i}>{index}</Text>
-      ))} */}
-      {info[bike][active.id].map((index, i) => (
-        <Text key={i}>{index}</Text>
-      ))}
-      <View></View>
     </View>
   );
 }
@@ -82,11 +89,39 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingBottom: 80,
+    paddingTop: 20,
   },
   typesContainer: {
+    flex: 4,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  typesContainerSub: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    marginTop: 20,
+  },
+  hr: {
+    borderBottomColor: color.hr,
+    borderBottomWidth: 1,
+    width: "85%",
+    alignSelf: "center",
+    flex: 0.1,
+  },
+  detailsContainer: {
+    flexDirection: "row",
+    flex: 5,
+  },
+  detailsLeft: {
+    flex: 4,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  detailsRight: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

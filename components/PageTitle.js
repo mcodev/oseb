@@ -7,7 +7,7 @@ export default function PageTitle({ pageName }) {
   const { language } = useAppContext();
 
   return (
-    <Text style={{ fontSize: 30, marginTop: 20 }}>
+    <Text style={{ fontSize: 30, flex: 1, justifyContent: "center" }}>
       <Text style={{ fontWeight: "700" }}>
         {translations[language][pageName]}
       </Text>{" "}
