@@ -6,6 +6,7 @@ const translations = {
     service_book: "Service Book",
     bike_info: "Bike Info",
     info: "Info",
+    book: "Book",
     page: "page",
   },
 

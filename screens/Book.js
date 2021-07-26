@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import PageTitle from "../components/PageTitle";
 
 // import { useAppContext } from "../config/AppContext";
 
@@ -10,9 +11,8 @@ export default function Book() {
 
   return (
     <View style={styles.bookContainer}>
-      <Text style={{ fontSize: 30, marginTop: 20 }}>
-        <Text style={{ fontWeight: "700" }}>book</Text> page
-      </Text>
+      <PageTitle pageName={"book"} />
+
       <Pressable
         activeOpacity={0.5}
         style={styles.addButton}

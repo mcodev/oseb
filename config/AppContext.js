@@ -4,15 +4,13 @@ import { language } from "../constants/device";
 const AppContext = createContext();
 // PROVIDER that holds all data and wraps them in top screen
 function AppProvider(props) {
-  const [test, setTest] = useState("works");
-  const [test2, setTest2] = useState(null);
+  const [bike, setBike] = useState("R_X_F_500");
 
   return (
     <AppContext.Provider
       value={{
-        test,
-        test2,
         language,
+        bike,
       }}
     >
       {props.children}
