@@ -22,13 +22,11 @@ const Mytabs = () => {
         activeTintColor: "rgba(0,0,0, .8)",
         inactiveTintColor: "rgba(0,0,0, .5)",
         style: {
-          //   backgroundColor: "red",
           borderTopLeftRadius: 55,
           borderTopRightRadius: 55,
           height: 80,
           paddingTop: 20,
           paddingBottom: 15,
-          //   elevation: 40,
           position: "absolute",
         },
       }}

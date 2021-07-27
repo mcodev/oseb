@@ -1,4 +1,4 @@
-// TODO translations, change title Bike info, useEffect cleanup
+//// TODO useEffect cleanup & css transition effects
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -16,13 +16,14 @@ export default function Info() {
     icon: "road",
   });
 
+  // console.log(active);
   // useEffect(() => {
   //   return () => {
-  //     setActive({
-  //       name: "Tyres",
-  //       icon: "road",
-  //       id: "tyres",
-  //     });
+  //     console.log("effect happened");
+  //     // setActive({
+  //     //   name: "Tyres",
+  //     //   icon: "road",
+  //     // });
   //   };
   // }, []);
 
@@ -39,7 +40,7 @@ export default function Info() {
 
   return (
     <View style={styles.container}>
-      <PageTitle pageName={"info"} />
+      <PageTitle pageName={"bike"} pageSub={"info"} />
 
       <View style={styles.typesContainer}>
         <View style={styles.typesContainerSub}>

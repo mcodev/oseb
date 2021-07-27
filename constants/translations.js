@@ -4,6 +4,7 @@ const translations = {
   en: {
     home: "Home",
     service_book: "Service Book",
+    service: "Service",
     bike_info: "Bike Info",
     info: "Info",
     book: "Book",
@@ -16,6 +17,7 @@ const translations = {
     coolant: "Coolant",
     fuses: "Fuses",
     sparkPlug: "Spark plug",
+    bike: "Bike",
   },
 
   el: {},
