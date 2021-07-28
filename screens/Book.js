@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
 import PageTitle from "../components/PageTitle";
 import colors from "../constants/colors";
-import AddBtn from "../components/bookPage/addBtn";
+import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 
 export default function Book() {
