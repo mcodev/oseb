@@ -1,18 +1,14 @@
 import { Platform, NativeModules, Dimensions } from "react-native";
+import { languagePicker } from "../constants/functions";
 
 /////////////  DEVICE LANGUAGE ////////////////////
-const deviceLanguage =
+const deviceLanguage = /////// GET Language
   Platform.OS === "ios"
     ? NativeModules.SettingsManager.settings.AppleLocale ||
       NativeModules.SettingsManager.settings.AppleLanguages[0] //iOS 13
     : NativeModules.I18nManager.localeIdentifier;
 
-const language =
-  deviceLanguage === undefined ||
-  deviceLanguage === null ||
-  deviceLanguage === ""
-    ? "en"
-    : deviceLanguage.substring(0, 2);
+const language = languagePicker(deviceLanguage.substring(0, 2)); /// SET Language 2 first chars
 
 /////////////  DEVICE TYPE ////////////////////
 const iOS = Platform.OS === "ios";

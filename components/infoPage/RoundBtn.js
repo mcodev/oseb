@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useAppContext } from "../config/AppContext";
+import { useAppContext } from "../../config/AppContext";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import color from "../constants/colors";
-import translations from "../constants/translations";
+import color from "../../constants/colors";
+import translations from "../../constants/translations";
 
 export default function RoundBtn({ name, icon, active, setActive }) {
   const { language } = useAppContext();

@@ -37,7 +37,7 @@ const Mytabs = () => {
         options={{
           tabBarLabel: `${translations[language].service_book}`,
           tabBarIcon: ({ color, size }) => (
-            <Icon name="book" color={color} size={size} />
+            <Icon name="book-open" color={color} size={size} />
           ),
         }}
       />
