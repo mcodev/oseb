@@ -16,7 +16,11 @@ export default function InfoDetails({ active }) {
           {translations[language][active.name]}
         </Text>
         {info[bike][active.name].map((index, i) => (
-          <Text key={i}>{index}</Text>
+          <Text key={i}>
+            {index === "Front" || index === "Rear"
+              ? translations[language][index]
+              : index}
+          </Text>
         ))}
       </View>
       <View style={styles.detailsRight}>

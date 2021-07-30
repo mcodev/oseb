@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import PageTitle from "../components/PageTitle";
 import colors from "../constants/colors";
+import { bottomTabsHeight } from "../constants/device";
 import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 
@@ -13,11 +15,13 @@ export default function Book() {
   });
 
   return (
-    <View style={styles.bookContainer}>
-      <PageTitle pageName={"service"} pageSub={"book"} />
-      <CardsDisplay />
-      <AddBtn />
-    </View>
+    <ActionSheetProvider>
+      <View style={styles.bookContainer}>
+        <PageTitle pageName={"service"} pageSub={"book"} />
+        <CardsDisplay />
+        <AddBtn />
+      </View>
+    </ActionSheetProvider>
   );
 }
 
@@ -25,7 +29,7 @@ const styles = StyleSheet.create({
   bookContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingBottom: 80,
+    paddingBottom: bottomTabsHeight,
     paddingTop: 20,
   },
 });

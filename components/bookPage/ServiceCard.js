@@ -1,83 +1,109 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
-import { serviceIconPicker } from "../../constants/functions";
+import translations from "../../constants/translations";
+import { serviceIconPicker, dotsInNumber } from "../../constants/functions";
+import EditBtns from "./EditBtns";
+import DeleteMessage from "./DeleteMessage";
 
 export default function ServiceCard() {
+  const { language } = useAppContext();
+
   const [active, setActive] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const [fake, setFake] = useState({
-    type: "first",
+    type: "annual",
   });
 
+  useEffect(() => {
+    setActive(false);
+    setSideBtn(false);
+    // return () => {
+    //   cleanup
+    // }
+  }, []);
+
   return (
-    <Pressable
-      onPress={() => {
-        setActive(!active);
-        setSideBtn(false);
-      }}
-    >
-      <View
-        style={[
-          styles.cardContainer,
-          { borderLeftColor: active ? colors.secondary : colors.blackSofter },
-        ]}
+    <View>
+      {sideBtn && (
+        <View style={styles.extras}>
+          <EditBtns
+            icon={"trash-alt"}
+            color={"red"}
+            callback={() => setModalVisible(true)}
+          />
+          <EditBtns icon={"info"} color={"secondary"} />
+        </View>
+      )}
+
+      <Pressable
+        onPress={() => {
+          setActive(!active);
+          setSideBtn(false);
+        }}
+        style={{
+          transform: sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
+        }}
       >
-        <Icon
-          name={serviceIconPicker(fake.type)}
-          size={60}
-          style={styles.iconBack}
-        />
-        <View style={styles.cardLeft}>
-          <Text
-            style={[
-              styles.type,
-              {
-                color: active ? colors.blackSoft : colors.blackSofter,
-              },
-            ]}
-          >
-            Annual
-          </Text>
-        </View>
-        <View style={styles.cardMiddle}>
-          <Text
-            style={[
-              styles.title,
-              { color: active ? colors.primary : colors.blackSoft },
-            ]}
-          >
-            30000 km
-          </Text>
-          <Text style={styles.date}>27/3/2018</Text>
-        </View>
-        <View style={styles.cardRight}>
-          {active && (
-            <Pressable onPress={() => setSideBtn(!sideBtn)}>
-              <Icon
-                name={"ellipsis-v"}
-                size={25}
-                style={{ color: colors.blackSoft }}
-              />
-            </Pressable>
-          )}
-          {/* {sideBtn && (
-            <View
-              style={{
-                justifyContent: "space-around",
-                // backgroundColor: "aqua",
-                height: "100%",
-                paddingVertical: 7,
-              }}
+        <View
+          style={[
+            styles.cardContainer,
+            { borderLeftColor: active ? colors.secondary : colors.blackSofter },
+          ]}
+        >
+          <Icon
+            name={serviceIconPicker(fake.type)}
+            size={60}
+            style={styles.iconBack}
+          />
+          <View style={styles.cardLeft}>
+            <Text
+              style={[
+                styles.type,
+                {
+                  color: active ? colors.blackSoft : colors.blackSofter,
+                },
+              ]}
             >
-              <Text>Delete</Text>
-              <Text>Details</Text>
-            </View>
-          )} */}
+              {`${translations[language][fake.type]}`}
+            </Text>
+          </View>
+          <View style={styles.cardMiddle}>
+            <Text
+              style={[
+                styles.title,
+                { color: active ? colors.primary : colors.blackSoft },
+              ]}
+            >
+              {`${dotsInNumber(30000)} km`}
+            </Text>
+            <Text style={styles.date}>27/3/2018</Text>
+          </View>
+          <View style={styles.cardRight}>
+            {active && (
+              <Pressable
+                onPress={() => setSideBtn(!sideBtn)}
+                hitSlop={20}
+                style={{ zIndex: 1000000 }}
+              >
+                <Icon
+                  name={"ellipsis-v"}
+                  size={20}
+                  style={{ marginRight: 15, color: colors.blackSoft }}
+                />
+              </Pressable>
+            )}
+          </View>
         </View>
-      </View>
-    </Pressable>
+      </Pressable>
+      <DeleteMessage
+        modalVisible={modalVisible}
+        cancel={() => setModalVisible(false)}
+      />
+    </View>
   );
 }
 
@@ -89,6 +115,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     borderLeftWidth: 5,
+    zIndex: 100000,
   },
   cardLeft: {
     flex: 0.5,
@@ -104,8 +131,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cardRight: {
-    flex: 1.7,
-    justifyContent: "center",
+    flex: 1.2,
+    justifyContent: "flex-end",
     alignItems: "center",
     flexDirection: "row",
   },
@@ -133,5 +160,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     right: 10,
     color: colors.backIcon,
+  },
+  extras: {
+    position: "absolute",
+    // backgroundColor: "yellow",
+    left: 0,
+    top: 0,
+    height: "100%",
+    width: "40%",
+    alignItems: "center",
+    flexDirection: "row",
   },
 });

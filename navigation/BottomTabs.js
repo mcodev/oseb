@@ -3,6 +3,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { useAppContext } from "../config/AppContext";
+import { bottomTabsHeight } from "../constants/device";
 import translations from "../constants/translations";
 
 import Home from "../screens/Home";
@@ -24,7 +25,7 @@ const Mytabs = () => {
         style: {
           borderTopLeftRadius: 55,
           borderTopRightRadius: 55,
-          height: 80,
+          height: bottomTabsHeight,
           paddingTop: 20,
           paddingBottom: 15,
           position: "absolute",

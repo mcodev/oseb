@@ -24,4 +24,14 @@ if (iOS) {
   }
 }
 
-export { language, height, width, aspectRatio, isPad, iPhoneX };
+const bottomTabsHeight = 80;
+
+export {
+  language,
+  height,
+  width,
+  aspectRatio,
+  isPad,
+  iPhoneX,
+  bottomTabsHeight,
+};

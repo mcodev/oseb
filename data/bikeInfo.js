@@ -1,10 +1,10 @@
 const R_X_F_500 = {
   tyres: [
-    "Front: ",
+    "Front",
     "120/70ZR17M/C",
     "36 psi",
     " ",
-    "Rear: ",
+    "Rear",
     "160/60ZR17M/C",
     "42 psi",
   ],

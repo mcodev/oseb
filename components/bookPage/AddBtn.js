@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
+import { bottomTabsHeight } from "../../constants/device";
 
 export default function AddBtn() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,11 +17,16 @@ export default function AddBtn() {
   return (
     <Pressable
       activeOpacity={0.5}
-      style={styles.addButton}
       onPress={() => {
         console.log("pressed");
         setModalVisible(!modalVisible);
       }}
+      style={({ pressed }) => [
+        {
+          backgroundColor: pressed ? "rgb(210, 230, 255)" : colors.primary,
+        },
+        styles.addButton,
+      ]}
     >
       <Icon name="plus" style={styles.buttonIcon} />
     </Pressable>
@@ -38,11 +44,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   addButton: {
-    backgroundColor: colors.primary,
+    // backgroundColor: colors.primary,
     borderRadius: 50,
     width: 43,
     position: "absolute",
-    bottom: 100,
+    bottom: bottomTabsHeight + 20,
     right: 20,
     elevation: 8,
   },

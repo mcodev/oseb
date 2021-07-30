@@ -30,4 +30,9 @@ const languagePicker = (lang) => {
   }
 };
 
-export { serviceIconPicker, languagePicker };
+const dotsInNumber = (num) => {
+  num = typeof num === String ? num : num.toString();
+  return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+};
+
+export { serviceIconPicker, languagePicker, dotsInNumber };
