@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
@@ -7,6 +7,10 @@ import translations from "../../constants/translations";
 import { serviceIconPicker, dotsInNumber } from "../../constants/functions";
 import EditBtns from "./EditBtns";
 import DeleteMessage from "./DeleteMessage";
+import McoActionSheet from "./McoActionSheet";
+import ServiceDetails from "./ServiceDetails";
+
+const actionSheetRef = createRef();
 
 export default function ServiceCard() {
   const { language } = useAppContext();
@@ -35,7 +39,13 @@ export default function ServiceCard() {
             color={"red"}
             callback={() => setModalVisible(true)}
           />
-          <EditBtns icon={"info"} color={"secondary"} />
+          <EditBtns
+            icon={"info"}
+            color={"secondary"}
+            callback={() => {
+              actionSheetRef.current?.setModalVisible();
+            }}
+          />
         </View>
       )}
 
@@ -103,6 +113,7 @@ export default function ServiceCard() {
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
       />
+      <McoActionSheet refer={actionSheetRef} body={<ServiceDetails />} />
     </View>
   );
 }

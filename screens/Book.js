@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { StyleSheet, View } from "react-native";
 import PageTitle from "../components/PageTitle";
 import colors from "../constants/colors";
 import { bottomTabsHeight } from "../constants/device";
@@ -15,13 +14,11 @@ export default function Book() {
   });
 
   return (
-    <ActionSheetProvider>
-      <View style={styles.bookContainer}>
-        <PageTitle pageName={"service"} pageSub={"book"} />
-        <CardsDisplay />
-        <AddBtn />
-      </View>
-    </ActionSheetProvider>
+    <View style={styles.bookContainer}>
+      <PageTitle pageName={"service"} pageSub={"book"} />
+      <CardsDisplay />
+      <AddBtn />
+    </View>
   );
 }
 
