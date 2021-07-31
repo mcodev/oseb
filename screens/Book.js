@@ -9,15 +9,17 @@ import CardsDisplay from "../components/bookPage/CardsDisplay";
 export default function Book() {
   const [state, setState] = useState({
     type: "",
-    mkm: "",
-    date: "",
+    distance: "",
+    date: new Date(),
   });
 
   return (
     <View style={styles.bookContainer}>
       <PageTitle pageName={"service"} pageSub={"book"} />
       <CardsDisplay />
-      <AddBtn />
+      <AddBtn
+        cancel={() => setState({ type: "", distance: "", date: new Date() })}
+      />
     </View>
   );
 }

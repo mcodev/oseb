@@ -1,5 +1,6 @@
 const hr = "rgba(188,195,199,.3)";
 const primary = "rgba(102, 51, 153, 1)";
+const primaryPressed = "rgba(102, 51, 153, .5)";
 const secondary = "rgba(51,51,153,1)";
 const secondaryPressed = "rgba(51,51,153,.5)";
 const white = "rgba(255,255,255,1)";
@@ -24,4 +25,5 @@ export default {
   red,
   redPressed,
   secondaryPressed,
+  primaryPressed,
 };

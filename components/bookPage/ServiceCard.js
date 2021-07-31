@@ -6,9 +6,10 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import { serviceIconPicker, dotsInNumber } from "../../constants/functions";
 import EditBtns from "./EditBtns";
-import DeleteMessage from "./DeleteMessage";
+import DeleteBox from "./DeleteBox";
 import McoActionSheet from "./McoActionSheet";
 import ServiceDetails from "./ServiceDetails";
+import serviceInfo from "../../data/serviceInfo";
 
 const actionSheetRef = createRef();
 
@@ -19,8 +20,9 @@ export default function ServiceCard() {
   const [sideBtn, setSideBtn] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [fake, setFake] = useState({
-    type: "annual",
+    type: "oil",
   });
+  const bike = "R_X_F_500";
 
   useEffect(() => {
     setActive(false);
@@ -53,6 +55,10 @@ export default function ServiceCard() {
         onPress={() => {
           setActive(!active);
           setSideBtn(false);
+        }}
+        onLongPress={() => {
+          setActive(true);
+          setSideBtn(true);
         }}
         style={{
           transform: sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
@@ -109,11 +115,21 @@ export default function ServiceCard() {
           </View>
         </View>
       </Pressable>
-      <DeleteMessage
+      <DeleteBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
+        confirm={() => setModalVisible(false)}
       />
-      <McoActionSheet refer={actionSheetRef} body={<ServiceDetails />} />
+      <McoActionSheet
+        refer={actionSheetRef}
+        body={
+          <ServiceDetails
+            title={fake.type}
+            data={serviceInfo[bike][fake.type]}
+            exp
+          />
+        }
+      />
     </View>
   );
 }
@@ -134,6 +150,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 0,
+    marginLeft: 5,
   },
   cardMiddle: {
     flex: 3,

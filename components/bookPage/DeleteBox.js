@@ -4,7 +4,7 @@ import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 
-export default function DeleteMessage({ cancel, confirm, modalVisible }) {
+export default function DeleteBox({ cancel, confirm, modalVisible }) {
   const { language } = useAppContext();
 
   return (

@@ -3,33 +3,37 @@ import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
 import { bottomTabsHeight } from "../../constants/device";
+import AddBox from "./AddBox";
 
-export default function AddBtn() {
+export default function AddBtn({ save, cancel, state, setState }) {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleSave = (type, entry) => {
-    setState({
-      ...state,
-      [type]: entry,
-    });
-  };
-
   return (
-    <Pressable
-      activeOpacity={0.5}
-      onPress={() => {
-        console.log("pressed");
-        setModalVisible(!modalVisible);
-      }}
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed ? "rgb(210, 230, 255)" : colors.primary,
-        },
-        styles.addButton,
-      ]}
-    >
-      <Icon name="plus" style={styles.buttonIcon} />
-    </Pressable>
+    <>
+      <Pressable
+        activeOpacity={0.5}
+        onPress={() => {
+          setModalVisible(!modalVisible);
+        }}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed ? colors.primaryPressed : colors.primary,
+          },
+          styles.addButton,
+        ]}
+      >
+        <Icon name="plus" style={styles.buttonIcon} />
+      </Pressable>
+      <AddBox
+        state={state}
+        setState={setState}
+        modalVisible={modalVisible}
+        cancelBtn={() => {
+          cancel();
+          setModalVisible(!modalVisible);
+        }}
+      />
+    </>
   );
 }
 
