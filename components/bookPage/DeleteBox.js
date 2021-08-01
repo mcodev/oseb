@@ -100,8 +100,10 @@ const styles = StyleSheet.create({
   actionBtn: {
     padding: 5,
     borderRadius: 5,
+    width: 80,
   },
   btnsTxt: {
     fontWeight: "700",
+    textAlign: "center",
   },
 });

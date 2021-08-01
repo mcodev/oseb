@@ -5,12 +5,14 @@ const AppContext = createContext();
 // PROVIDER that holds all data and wraps them in top screen
 function AppProvider(props) {
   const [bike, setBike] = useState("R_X_F_500");
+  const [mKm, setMKm] = useState("Km");
 
   return (
     <AppContext.Provider
       value={{
         language,
         bike,
+        mKm,
       }}
     >
       {props.children}

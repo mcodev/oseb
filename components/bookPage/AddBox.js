@@ -6,12 +6,16 @@ import {
   Modal,
   Pressable,
   TextInput,
+  Keyboard,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import RNPickerSelect from "react-native-picker-select";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
+import { distanceMax } from "../../constants/apps";
+import { dateFormater } from "../../functions/functions";
 
 export default function AddBox({
   cancelBtn,
@@ -20,87 +24,147 @@ export default function AddBox({
   state,
   setState,
 }) {
-  const { language } = useAppContext();
+  const { language, mKm } = useAppContext();
 
-  const handleState = (type, entry) => {
-    setState({
-      ...state,
-      [type]: entry,
-    });
-  };
-
-  const clickHandler = (e) => {
+  const numInputCleaner = (e) => {
     e = e.replace(/\s/g, "");
     e = e.replace(/,/g, "");
-    setTes(e);
-    setSaveKm(parseInt(e));
+    parseInt(e) > 0 && parseInt(e) < distanceMax(mKm)
+      ? setState({ ...state, distance: parseInt(e) })
+      : parseInt(e) < 0
+      ? setState({ ...state, distance: parseInt(e) * -1 })
+      : setState({ ...state, distance: distanceMax(mKm) });
   };
 
-  const clickNew = () => {
-    if (
-      tes == NaN ||
-      tes == " " ||
-      parseInt(tes) < 0 ||
-      parseInt(tes) > 426000
-    ) {
-      setSaveKm(null);
-    } else {
-      setSaveKm(parseInt(tes));
-    }
-  };
-
-  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+    const currentDate = selectedDate || new Date();
     setShow(Platform.OS === "ios");
-    setDate(currentDate);
+    setState({ ...state, date: dateFormater(currentDate, mKm) });
   };
+
+  // console.log("====================================");
+  // console.log("state.date:", state.date);
+  // console.log("====================================");
 
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalInputs}>
-            <View style={styles.inputa}>
+            {state.distance === null && (
+              <Text style={styles.guideTxt}>
+                <Text style={styles.guideTxtSpan}>1</Text>{" "}
+                <Text style={styles.guideTxtSecondSpan}>
+                  {translations[language].odometer}
+                </Text>{" "}
+                {translations[language].readingS}
+              </Text>
+            )}
+
+            <View style={styles.inputContainer}>
               <TextInput
                 style={styles.formInput}
-                placeholder="Add odometer"
+                placeholder={`${translations[language].addDistance} ${mKm}`}
                 keyboardType="number-pad"
-                maxLength={6}
-                onChangeText={clickHandler}
-                onEndEditing={clickNew}
+                maxLength={7}
+                onChangeText={numInputCleaner}
+                onBlur={Keyboard.dismiss}
               />
             </View>
-            <RNPickerSelect
-              placeholder={{
-                label: "Type",
-                value: null,
-                color: "grey",
-              }}
-              itemStyle={{ fontSize: 8 }}
-              style={{
-                width: 60,
-                height: 20,
-                inputAndroid: {
-                  color: "black",
-                  paddingVertical: 45,
-                  marginBottom: 10,
-                },
-              }}
-              //   onValueChange={(value) => setType(value)}
-              onValueChange={(value) => console.log(value)}
-              items={[
-                { label: "First Service", value: "first" },
-                { label: "Oil change", value: "oil" },
-                { label: "Annual Service", value: "annual" },
-                { label: "Full Service", value: "full" },
-              ]}
-            />
-            <Pressable onPress={() => setShow(!show)}>
-              <Text>add date</Text>
-            </Pressable>
+
+            {state.type === null && state.distance !== null && (
+              <Text style={styles.guideTxt}>
+                <Text style={styles.guideTxtSpan}>2</Text>{" "}
+                <Text style={styles.guideTxtSecondSpan}>
+                  {translations[language].type}
+                </Text>{" "}
+                {translations[language].serviceS}
+              </Text>
+            )}
+
+            <View style={styles.inputContainer}>
+              <RNPickerSelect
+                useNativeAndroidPickerStyle={false}
+                placeholder={{
+                  label: `${translations[language].serviceType}`,
+                  value: null,
+                  color: "grey",
+                }}
+                style={{
+                  inputAndroid: {
+                    color: "black",
+                    height: 40,
+                    width: "100%",
+                    backfaceVisibility: "hidden",
+                    paddingHorizontal: 40,
+                  },
+                  inputAndroidContainer: {
+                    width: "100%",
+                  },
+                  viewContainer: {
+                    backfaceVisibility: "hidden",
+                  },
+                }}
+                //   onValueChange={(value) => setType(value)}
+                onValueChange={(value) => setState({ ...state, type: value })}
+                items={[
+                  {
+                    label: `${translations[language].oilChange}`,
+                    value: "oil",
+                  },
+                  {
+                    label: `${translations[language].annualService}`,
+                    value: "annual",
+                  },
+                  {
+                    label: `${translations[language].fullService}`,
+                    value: "full",
+                  },
+                  {
+                    label: `${translations[language].firstService}`,
+                    value: "first",
+                  },
+                ]}
+              />
+            </View>
+
+            {state.date === null &&
+              state.type !== null &&
+              state.distance !== null && (
+                <Text style={styles.guideTxt}>
+                  <Text style={styles.guideTxtSpan}>3</Text>{" "}
+                  <Text style={styles.guideTxtSecondSpan}>
+                    {translations[language].date}{" "}
+                  </Text>
+                  {translations[language].serviceS}
+                </Text>
+              )}
+
+            <View style={styles.inputContainer}>
+              <Pressable
+                onPress={() => setShow(!show)}
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "90%",
+                  height: 30,
+                }}
+              >
+                <Icon
+                  name={"calendar"}
+                  size={15}
+                  style={{ marginRight: 20, color: "grey" }}
+                />
+                <Text style={{ color: "grey" }}>
+                  {state.date === null
+                    ? translations[language].addDate
+                    : `${state.date}`}
+                </Text>
+              </Pressable>
+            </View>
           </View>
           <View style={styles.modalActions}>
             <Pressable
@@ -152,7 +216,7 @@ export default function AddBox({
       {show && (
         <RNDateTimePicker
           testID="dateTimePicker"
-          value={date}
+          value={new Date()}
           mode={"date"}
           display="spinner"
           onChange={onChange}
@@ -172,8 +236,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalView: {
-    height: 300,
-    // margin: 20,
+    flex: 0.5,
     backgroundColor: colors.white,
     borderRadius: 5,
     padding: 20,
@@ -188,7 +251,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     width: "60%",
   },
-  modalInputs: { flex: 3 },
+  modalInputs: { flex: 5, width: "100%", marginTop: 10 },
   modalActions: {
     flex: 1,
     width: "100%",
@@ -199,15 +262,43 @@ const styles = StyleSheet.create({
   actionBtn: {
     padding: 5,
     borderRadius: 5,
+    width: 70,
   },
   btnsTxt: {
     fontWeight: "700",
+    textAlign: "center",
   },
-  inputa: {
+  inputContainer: {
     width: "100%",
+    height: 45,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    borderWidth: 1,
+    borderColor: colors.blackSofter,
+    borderRadius: 25,
+    marginVertical: 10,
+  },
+  formInput: {
+    textAlign: "center",
+    margin: 0,
+    padding: 0,
+  },
+  guideTxt: {
+    textAlign: "center",
+    fontSize: 17,
+    marginTop: 10,
+  },
+  guideTxtSpan: {
+    fontWeight: "700",
+    fontSize: 20,
+    color: colors.blackSoft,
+  },
+  guideTxtSecondSpan: {
+    fontWeight: "700",
+    fontSize: 19,
+    color: colors.primary,
   },
 });
 

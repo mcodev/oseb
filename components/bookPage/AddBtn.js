@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
-import { bottomTabsHeight } from "../../constants/device";
+import { bottomTabsHeight } from "../../constants/apps";
 import AddBox from "./AddBox";
 
 export default function AddBtn({ save, cancel, state, setState }) {

@@ -1,5 +1,5 @@
 import { Platform, NativeModules, Dimensions } from "react-native";
-import { languagePicker } from "../constants/functions";
+import { languagePicker } from "../functions/functions";
 
 /////////////  DEVICE LANGUAGE ////////////////////
 const deviceLanguage = /////// GET Language
@@ -24,14 +24,23 @@ if (iOS) {
   }
 }
 
-const bottomTabsHeight = 80;
+////////////////////// DYNAMIC WIDTH / HEIGHT ///////////////////////
 
-export {
-  language,
-  height,
-  width,
-  aspectRatio,
-  isPad,
-  iPhoneX,
-  bottomTabsHeight,
+const dynamicLayout = (type, number) => {
+  let result;
+  switch (type) {
+    case "w":
+      result = (number / width) * 100;
+      return `${result.toString}%`;
+
+    case "h":
+      result = (number / height) * 100;
+      return `${result.toString}%`;
+
+    default:
+      result = (number / width) * 100;
+      return `${result.toString}%`;
+  }
 };
+
+export { language, height, width, aspectRatio, isPad, iPhoneX, dynamicLayout };

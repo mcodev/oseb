@@ -3,7 +3,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { useAppContext } from "../config/AppContext";
-import { bottomTabsHeight } from "../constants/device";
+import { bottomTabsHeight } from "../constants/apps";
 import translations from "../constants/translations";
 
 import Home from "../screens/Home";

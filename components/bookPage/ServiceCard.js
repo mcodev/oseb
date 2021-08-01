@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
-import { serviceIconPicker, dotsInNumber } from "../../constants/functions";
+import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import DeleteBox from "./DeleteBox";
 import McoActionSheet from "./McoActionSheet";
@@ -14,7 +14,7 @@ import serviceInfo from "../../data/serviceInfo";
 const actionSheetRef = createRef();
 
 export default function ServiceCard() {
-  const { language } = useAppContext();
+  const { language, bike, mKm } = useAppContext();
 
   const [active, setActive] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
@@ -22,7 +22,6 @@ export default function ServiceCard() {
   const [fake, setFake] = useState({
     type: "oil",
   });
-  const bike = "R_X_F_500";
 
   useEffect(() => {
     setActive(false);
@@ -94,7 +93,7 @@ export default function ServiceCard() {
                 { color: active ? colors.primary : colors.blackSoft },
               ]}
             >
-              {`${dotsInNumber(30000)} km`}
+              {`${dotsInNumber(30000)} ${mKm}`}
             </Text>
             <Text style={styles.date}>27/3/2018</Text>
           </View>

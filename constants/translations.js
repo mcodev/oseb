@@ -40,9 +40,22 @@ const translations = {
     cExp: "C : clean",
     aExp: " A : Adjust",
     save: "SAVE",
+    addDistance: "Add Bikes",
+    serviceType: "Service Type",
+    firstService: "First Service",
+    oilChange: "Oil change",
+    annualService: "Annual Service",
+    fullService: "Full Service",
+    addDate: "Add Date",
+    odometer: "Odometer",
+    readingS: "reading ..",
+    type: "Type",
+    serviceS: "of service ..",
+    date: "Date",
   },
 
   el: {},
+  nl: {},
 };
 
 export default translations;

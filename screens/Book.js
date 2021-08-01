@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import PageTitle from "../components/PageTitle";
 import colors from "../constants/colors";
-import { bottomTabsHeight } from "../constants/device";
+import { bottomTabsHeight } from "../constants/apps";
 import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 
 export default function Book() {
+  const [data, setData] = useState([]);
   const [state, setState] = useState({
-    type: "",
-    distance: "",
-    date: new Date(),
+    type: null,
+    distance: null,
+    date: null,
   });
 
   return (
@@ -18,7 +19,9 @@ export default function Book() {
       <PageTitle pageName={"service"} pageSub={"book"} />
       <CardsDisplay />
       <AddBtn
-        cancel={() => setState({ type: "", distance: "", date: new Date() })}
+        state={state}
+        setState={setState}
+        cancel={() => setState({ type: null, distance: null, date: null })}
       />
     </View>
   );
