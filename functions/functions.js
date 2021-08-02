@@ -53,9 +53,11 @@ const dotsInNumber = (num) => {
 };
 
 ////////////////////// DATA ASYNC READ / SAVE  ///////////////////////
+
 const saveData = async (value) => {
   try {
     const jsonValue = JSON.stringify(value);
+    console.log("to be saved", jsonValue);
     await AsyncStorage.setItem("@data", jsonValue);
     alert("saved successfully");
   } catch (e) {

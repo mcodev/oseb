@@ -38,8 +38,6 @@ export default function ServiceCard({ localData, data, setData }) {
     setData(x);
   };
 
-  console.log(data);
-
   return (
     <View>
       {sideBtn && (

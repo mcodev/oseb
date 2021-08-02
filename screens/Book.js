@@ -47,7 +47,7 @@ export default function Book() {
     });
   };
 
-  // console.log("data", data);
+  console.log("data", data);
   // // console.log("state", state);
   // console.log(loading);
 
