@@ -1,4 +1,5 @@
 import dateFormat from "dateformat";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 ////////////////////// ICON SELECTOR ///////////////////////
 
@@ -41,7 +42,7 @@ const languagePicker = (lang) => {
 const numInputCleaner = (e, key, setNum) => {
   e = e.replace(/\s/g, "");
   e = e.replace(/,/g, "");
-  setNum({ ...num, key: parseInt(e) });
+  setNum({ ...num, [key]: parseInt(e) });
 };
 
 //////////  NUMBER OUTPUT ////////////////////
@@ -51,32 +52,25 @@ const dotsInNumber = (num) => {
   return num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 };
 
-////////////////////// DATA UPDATE ///////////////////////
-const dataUpdate = (key, setData) => {
-  setData((prevTodos) => {
-    return prevTodos.filter((todo) => todo.key != key);
-  });
-};
-
 ////////////////////// DATA ASYNC READ / SAVE  ///////////////////////
-const save = async (key, value) => {
+const saveData = async (value) => {
   try {
     const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
+    await AsyncStorage.setItem("@data", jsonValue);
+    alert("saved successfully");
   } catch (e) {
     alert("Something went wrong..");
   }
 };
 
-const loadAndSet = async (key, setData) => {
+const loadAndSetData = async () => {
   try {
-    let jsonValue = await AsyncStorage.getItem(key);
-    if (jsonValue) {
-      setMyData(JSON.parse(jsonValue));
+    let jsonValue = await AsyncStorage.getItem("@data");
+    if (jsonValue !== null) {
+      return JSON.parse(jsonValue);
     }
-    setData(JSON.parse(jsonValue));
   } catch (err) {
-    alert("Something went wrong..");
+    console.log("Error reading data..", err);
   }
 };
 
@@ -101,4 +95,6 @@ export {
   dotsInNumber,
   numInputCleaner,
   dateFormater,
+  saveData,
+  loadAndSetData,
 };

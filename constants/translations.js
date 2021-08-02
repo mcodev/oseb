@@ -24,7 +24,7 @@ const translations = {
     full: "Full",
     Front: "Front :",
     Rear: "Rear :",
-    sure: "Are you sure you want to delete this?",
+    sure: "Are you sure?",
     cancel: "CANCEL",
     confirm: "CONFIRM",
     EngineOil: "Engine Oil (R)",

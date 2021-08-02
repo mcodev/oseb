@@ -4,7 +4,11 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
-import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
+import {
+  serviceIconPicker,
+  dotsInNumber,
+  saveData,
+} from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import DeleteBox from "./DeleteBox";
 import McoActionSheet from "./McoActionSheet";
@@ -13,15 +17,12 @@ import serviceInfo from "../../data/serviceInfo";
 
 const actionSheetRef = createRef();
 
-export default function ServiceCard() {
+export default function ServiceCard({ localData, data, setData }) {
   const { language, bike, mKm } = useAppContext();
 
   const [active, setActive] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [fake, setFake] = useState({
-    type: "oil",
-  });
 
   useEffect(() => {
     setActive(false);
@@ -30,6 +31,14 @@ export default function ServiceCard() {
     //   cleanup
     // }
   }, []);
+
+  const deleteFromData = () => {
+    let x;
+    x = data.filter((item) => localData?.key != item.key);
+    setData(x);
+  };
+
+  console.log(data);
 
   return (
     <View>
@@ -70,7 +79,7 @@ export default function ServiceCard() {
           ]}
         >
           <Icon
-            name={serviceIconPicker(fake.type)}
+            name={serviceIconPicker(localData?.type)}
             size={60}
             style={styles.iconBack}
           />
@@ -83,7 +92,7 @@ export default function ServiceCard() {
                 },
               ]}
             >
-              {`${translations[language][fake.type]}`}
+              {`${translations[language][localData?.type]}`}
             </Text>
           </View>
           <View style={styles.cardMiddle}>
@@ -93,9 +102,9 @@ export default function ServiceCard() {
                 { color: active ? colors.primary : colors.blackSoft },
               ]}
             >
-              {`${dotsInNumber(30000)} ${mKm}`}
+              {`${dotsInNumber(localData?.distance)} ${mKm}`}
             </Text>
-            <Text style={styles.date}>27/3/2018</Text>
+            <Text style={styles.date}>{localData?.date}</Text>
           </View>
           <View style={styles.cardRight}>
             {active && (
@@ -117,14 +126,18 @@ export default function ServiceCard() {
       <DeleteBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
-        confirm={() => setModalVisible(false)}
+        confirm={() => {
+          deleteFromData();
+          saveData(data);
+          setModalVisible(false);
+        }}
       />
       <McoActionSheet
         refer={actionSheetRef}
         body={
           <ServiceDetails
-            title={fake.type}
-            data={serviceInfo[bike][fake.type]}
+            title={localData?.type}
+            data={serviceInfo[bike][localData?.type]}
             exp
           />
         }
@@ -136,6 +149,7 @@ export default function ServiceCard() {
 const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
+    marginVertical: 10,
     backgroundColor: colors.cardBack,
     height: 80,
     width: "100%",

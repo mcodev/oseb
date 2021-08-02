@@ -1,12 +1,18 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import ServiceCard from "./ServiceCard";
 
-export default function CardsDisplay() {
+export default function CardsDisplay({ data, setData }) {
   return (
-    <ScrollView style={styles.cardsContainer}>
-      <ServiceCard />
-    </ScrollView>
+    <View style={styles.cardsContainer}>
+      <FlatList
+        data={data}
+        key={(item) => item.item.key}
+        renderItem={(item) => (
+          <ServiceCard localData={item.item} data={data} setData={setData} />
+        )}
+      />
+    </View>
   );
 }
 

@@ -32,6 +32,10 @@ export default function AddBtn({ save, cancel, state, setState }) {
           cancel();
           setModalVisible(!modalVisible);
         }}
+        saveBtn={() => {
+          save();
+          setModalVisible(!modalVisible);
+        }}
       />
     </>
   );

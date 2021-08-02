@@ -8,7 +8,7 @@ export default function ServiceDetails({ title, data, exp }) {
   const { language } = useAppContext();
 
   return (
-    <View>
+    <View style={{ backgroundColor: "transparent" }}>
       <Text style={styles.title}>
         {title !== "oil"
           ? `${translations[language][title]} ${translations[language].service}`

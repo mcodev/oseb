@@ -7,6 +7,7 @@ import {
   Pressable,
   TextInput,
   Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
@@ -25,6 +26,7 @@ export default function AddBox({
   setState,
 }) {
   const { language, mKm } = useAppContext();
+  const [show, setShow] = useState(false);
 
   const numInputCleaner = (e) => {
     e = e.replace(/\s/g, "");
@@ -36,24 +38,44 @@ export default function AddBox({
       : setState({ ...state, distance: distanceMax(mKm) });
   };
 
-  const [show, setShow] = useState(false);
-
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || new Date();
     setShow(Platform.OS === "ios");
     setState({ ...state, date: dateFormater(currentDate, mKm) });
   };
 
-  // console.log("====================================");
-  // console.log("state.date:", state.date);
-  // console.log("====================================");
+  const inputsOk = (which) => {
+    switch (which) {
+      case "distance":
+        return state.distance === null || state.distance === "" ? false : true;
+      case "type":
+        return state.type === null || state.type === "" ? false : true;
+      case "date":
+        return state.date === null || state.date === "" ? false : true;
+
+      case "all":
+        return state.distance === null ||
+          state.distance === "" ||
+          state.type === null ||
+          state.type === "" ||
+          state.date === null ||
+          state.date === ""
+          ? false
+          : true;
+
+      default:
+        break;
+    }
+  };
+
+  // console.log("state", state);
 
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalInputs}>
-            {state.distance === null && (
+            {inputsOk("distance") || (
               <Text style={styles.guideTxt}>
                 <Text style={styles.guideTxtSpan}>1</Text>{" "}
                 <Text style={styles.guideTxtSecondSpan}>
@@ -70,11 +92,10 @@ export default function AddBox({
                 keyboardType="number-pad"
                 maxLength={7}
                 onChangeText={numInputCleaner}
-                onBlur={Keyboard.dismiss}
               />
             </View>
 
-            {state.type === null && state.distance !== null && (
+            {!inputsOk("distance") || inputsOk("type") || (
               <Text style={styles.guideTxt}>
                 <Text style={styles.guideTxtSpan}>2</Text>{" "}
                 <Text style={styles.guideTxtSecondSpan}>
@@ -130,17 +151,15 @@ export default function AddBox({
               />
             </View>
 
-            {state.date === null &&
-              state.type !== null &&
-              state.distance !== null && (
-                <Text style={styles.guideTxt}>
-                  <Text style={styles.guideTxtSpan}>3</Text>{" "}
-                  <Text style={styles.guideTxtSecondSpan}>
-                    {translations[language].date}{" "}
-                  </Text>
-                  {translations[language].serviceS}
+            {inputsOk("all") || !inputsOk("type") || !inputsOk("distance") || (
+              <Text style={styles.guideTxt}>
+                <Text style={styles.guideTxtSpan}>3</Text>{" "}
+                <Text style={styles.guideTxtSecondSpan}>
+                  {translations[language].date}{" "}
                 </Text>
-              )}
+                {translations[language].serviceS}
+              </Text>
+            )}
 
             <View style={styles.inputContainer}>
               <Pressable
@@ -189,12 +208,14 @@ export default function AddBox({
               )}
             />
             <Pressable
-              onPress={saveBtn}
+              onPress={() => inputsOk("all") && saveBtn()}
               hitSlop={20}
               style={({ pressed }) => [
                 {
                   backgroundColor: pressed
-                    ? colors.secondaryPressed
+                    ? inputsOk("all")
+                      ? colors.secondaryPressed
+                      : "transparent"
                     : "transparent",
                 },
                 styles.actionBtn,
@@ -203,7 +224,15 @@ export default function AddBox({
                 <Text
                   style={[
                     styles.btnsTxt,
-                    { color: pressed ? colors.white : colors.secondary },
+                    {
+                      color: pressed
+                        ? inputsOk("all")
+                          ? colors.white
+                          : colors.secondaryPressed
+                        : inputsOk("all")
+                        ? colors.secondary
+                        : colors.secondaryPressed,
+                    },
                   ]}
                 >
                   {translations[language].save}
@@ -236,7 +265,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalView: {
-    flex: 0.5,
+    flex: 0.55,
     backgroundColor: colors.white,
     borderRadius: 5,
     padding: 20,
@@ -251,7 +280,11 @@ const styles = StyleSheet.create({
     elevation: 5,
     width: "60%",
   },
-  modalInputs: { flex: 5, width: "100%", marginTop: 10 },
+  modalInputs: {
+    flex: 5,
+    width: "100%",
+    marginTop: 10,
+  },
   modalActions: {
     flex: 1,
     width: "100%",

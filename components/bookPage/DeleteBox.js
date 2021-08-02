@@ -12,7 +12,7 @@ export default function DeleteBox({ cancel, confirm, modalVisible }) {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalMessage}>
-            <Text>{translations[language].sure}</Text>
+            <Text style={{ fontSize: 17 }}>{translations[language].sure}</Text>
           </View>
           <View style={styles.modalActions}>
             <Pressable
@@ -71,6 +71,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+    backgroundColor: colors.blackBack,
+    marginTop: -30,
   },
   modalView: {
     height: 150,

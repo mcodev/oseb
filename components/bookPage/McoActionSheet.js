@@ -1,16 +1,22 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
+import colors from "../../constants/colors";
 
 export default function McoActionSheet({ refer, body }) {
   return (
-    <ActionSheet ref={refer}>
+    <ActionSheet containerStyle={styles.topContainer} ref={refer}>
       <View style={styles.actionContainer}>{body}</View>
     </ActionSheet>
   );
 }
 
 const styles = StyleSheet.create({
+  topContainer: {
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    backgroundColor: colors.white,
+  },
   actionContainer: {
     paddingVertical: 20,
     paddingHorizontal: 10,
