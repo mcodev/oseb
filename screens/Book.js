@@ -32,51 +32,22 @@ export default function Book() {
       .then(() => setLoading(false));
   }, []);
 
-  // const updateData = () => {
-  //   setData([
-  //     {
-  //       key: state.date + Math.random().toString(36).substr(2, 9),
-  //       type: state.type,
-  //       distance: state.distance,
-  //       date: state.date,
-  //     },
-  //     ...data,
-  //   ]);
-  // };
-
-  const saveData = async () => {
-    try {
-      const jsonValue = JSON.stringify(data);
-      console.log("to be saved", jsonValue);
-      await AsyncStorage.setItem("@data", jsonValue);
-      alert("saved successfully");
-    } catch (e) {
-      console.log("Something went wrong..");
-    }
-  };
-
   ////////////////////// ADD BOX  ///////////////////////
   const handleAddBoxCancel = () => {
     setState({ type: null, distance: null, date: null });
     setModalVisible(!modalVisible);
   };
 
-  const updateData = async () => {
-    let res = await setData([
-      {
-        key: state.date + Math.random().toString(36).substr(2, 9),
-        type: state.type,
-        distance: state.distance,
-        date: state.date,
-      },
-      ...data,
-    ]);
-    console.log("first", res);
-    return data;
-  };
-
-  const handleAddBoxSave = () => {
-    updateData().then((res) => console.log("response", res));
+  const saveData = async () => {
+    state.key = state.date + Math.random().toString(36).substr(2, 9);
+    let payload = [state, ...data]; /// payload used cause there are 2 states and async doesnt catchup with the data state
+    try {
+      const jsonValue = JSON.stringify(payload);
+      await AsyncStorage.setItem("@data", jsonValue);
+    } catch (e) {
+      console.log("Something went wrong..");
+    }
+    setData(payload);
     setModalVisible(!modalVisible);
   };
 
@@ -85,8 +56,6 @@ export default function Book() {
     setState({ type: null, distance: null, date: null });
     setModalVisible(!modalVisible);
   };
-
-  console.log("data", data);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -111,7 +80,7 @@ export default function Book() {
           setState={setState}
           modalVisible={modalVisible}
           cancelBtn={handleAddBoxCancel}
-          saveBtn={handleAddBoxSave}
+          saveBtn={saveData}
         />
       </View>
     </TouchableWithoutFeedback>

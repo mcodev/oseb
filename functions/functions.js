@@ -57,9 +57,7 @@ const dotsInNumber = (num) => {
 const saveData = async (value) => {
   try {
     const jsonValue = JSON.stringify(value);
-    console.log("to be saved", jsonValue);
     await AsyncStorage.setItem("@data", jsonValue);
-    alert("saved successfully");
   } catch (e) {
     alert("Something went wrong..");
   }
@@ -97,6 +95,5 @@ export {
   dotsInNumber,
   numInputCleaner,
   dateFormater,
-  saveData,
   loadAndSetData,
 };

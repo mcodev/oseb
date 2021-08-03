@@ -4,11 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
-import {
-  serviceIconPicker,
-  dotsInNumber,
-  saveData,
-} from "../../functions/functions";
+import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import DeleteBox from "./DeleteBox";
 import McoActionSheet from "./McoActionSheet";
@@ -17,9 +13,8 @@ import serviceInfo from "../../data/serviceInfo";
 
 const actionSheetRef = createRef();
 
-export default function ServiceCard({ localData, data, setData }) {
+export default function ServiceCard({ localData, deleteCard }) {
   const { language, bike, mKm } = useAppContext();
-
   const [active, setActive] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,16 +22,9 @@ export default function ServiceCard({ localData, data, setData }) {
   useEffect(() => {
     setActive(false);
     setSideBtn(false);
-    // return () => {
-    //   cleanup
-    // }
   }, []);
 
-  const deleteFromData = () => {
-    let x;
-    x = data.filter((item) => localData?.key != item.key);
-    setData(x);
-  };
+  // console.log("key", localData.key);
 
   return (
     <View>
@@ -124,11 +112,7 @@ export default function ServiceCard({ localData, data, setData }) {
       <DeleteBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
-        confirm={() => {
-          deleteFromData();
-          saveData(data);
-          setModalVisible(false);
-        }}
+        confirm={() => deleteCard(localData.key)}
       />
       <McoActionSheet
         refer={actionSheetRef}
@@ -202,7 +186,6 @@ const styles = StyleSheet.create({
   },
   extras: {
     position: "absolute",
-    // backgroundColor: "yellow",
     left: 0,
     top: 0,
     height: "100%",

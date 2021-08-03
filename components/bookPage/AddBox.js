@@ -9,6 +9,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -208,7 +209,7 @@ export default function AddBox({
               )}
             />
             <Pressable
-              onPress={saveBtn}
+              onPress={() => inputsOk("all") && saveBtn()}
               hitSlop={20}
               style={({ pressed }) => [
                 {
