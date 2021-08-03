@@ -16,7 +16,7 @@ import translations from "../../constants/translations";
 import RNPickerSelect from "react-native-picker-select";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { distanceMax } from "../../constants/apps";
-import { dateFormater } from "../../functions/functions";
+import { dateFormater, saveData } from "../../functions/functions";
 
 export default function AddBox({
   cancelBtn,
@@ -208,7 +208,7 @@ export default function AddBox({
               )}
             />
             <Pressable
-              onPress={() => inputsOk("all") && saveBtn()}
+              onPress={saveBtn}
               hitSlop={20}
               style={({ pressed }) => [
                 {

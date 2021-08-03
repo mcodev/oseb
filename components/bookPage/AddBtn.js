@@ -3,41 +3,21 @@ import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
 import { bottomTabsHeight } from "../../constants/apps";
-import AddBox from "./AddBox";
 
-export default function AddBtn({ save, cancel, state, setState }) {
-  const [modalVisible, setModalVisible] = useState(false);
-
+export default function AddBtn({ handle }) {
   return (
-    <>
-      <Pressable
-        activeOpacity={0.5}
-        onPress={() => {
-          setModalVisible(!modalVisible);
-        }}
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? colors.primaryPressed : colors.primary,
-          },
-          styles.addButton,
-        ]}
-      >
-        <Icon name="plus" style={styles.buttonIcon} />
-      </Pressable>
-      <AddBox
-        state={state}
-        setState={setState}
-        modalVisible={modalVisible}
-        cancelBtn={() => {
-          cancel();
-          setModalVisible(!modalVisible);
-        }}
-        saveBtn={() => {
-          save();
-          setModalVisible(!modalVisible);
-        }}
-      />
-    </>
+    <Pressable
+      activeOpacity={0.5}
+      onPress={handle}
+      style={({ pressed }) => [
+        {
+          backgroundColor: pressed ? colors.primaryPressed : colors.primary,
+        },
+        styles.addButton,
+      ]}
+    >
+      <Icon name="plus" style={styles.buttonIcon} />
+    </Pressable>
   );
 }
 
@@ -52,7 +32,6 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   addButton: {
-    // backgroundColor: colors.primary,
     borderRadius: 50,
     width: 43,
     position: "absolute",

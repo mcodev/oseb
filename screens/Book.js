@@ -6,17 +6,20 @@ import {
   ActivityIndicator,
   Keyboard,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { bottomTabsHeight } from "../constants/apps";
+import { loadAndSetData } from "../functions/functions";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 import PageTitle from "../components/PageTitle";
 import colors from "../constants/colors";
-import { bottomTabsHeight } from "../constants/apps";
 import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
-import { saveData, loadAndSetData } from "../functions/functions";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import AddBox from "../components/bookPage/AddBox";
 
 export default function Book() {
+  const [loading, setLoading] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [state, setState] = useState({
     type: null,
     distance: null,
@@ -26,36 +29,70 @@ export default function Book() {
   useEffect(() => {
     loadAndSetData()
       .then((res) => res && setData(res))
-      .then(() => setLoading(true));
-
-    // return () => {
-    //   cleanup
-    // }
+      .then(() => setLoading(false));
   }, []);
 
-  const updateData = () => {
-    setData((prev) => {
-      return [
-        {
-          key: state.date + Math.random().toString(36).substr(2, 9),
-          type: state.type,
-          distance: state.distance,
-          date: state.date,
-        },
-        ...prev,
-      ];
-    });
+  // const updateData = () => {
+  //   setData([
+  //     {
+  //       key: state.date + Math.random().toString(36).substr(2, 9),
+  //       type: state.type,
+  //       distance: state.distance,
+  //       date: state.date,
+  //     },
+  //     ...data,
+  //   ]);
+  // };
+
+  const saveData = async () => {
+    try {
+      const jsonValue = JSON.stringify(data);
+      console.log("to be saved", jsonValue);
+      await AsyncStorage.setItem("@data", jsonValue);
+      alert("saved successfully");
+    } catch (e) {
+      console.log("Something went wrong..");
+    }
+  };
+
+  ////////////////////// ADD BOX  ///////////////////////
+  const handleAddBoxCancel = () => {
+    setState({ type: null, distance: null, date: null });
+    setModalVisible(!modalVisible);
+  };
+
+  const updateData = async () => {
+    let res = await setData([
+      {
+        key: state.date + Math.random().toString(36).substr(2, 9),
+        type: state.type,
+        distance: state.distance,
+        date: state.date,
+      },
+      ...data,
+    ]);
+    console.log("first", res);
+    return data;
+  };
+
+  const handleAddBoxSave = () => {
+    updateData().then((res) => console.log("response", res));
+    setModalVisible(!modalVisible);
+  };
+
+  ////////////////////// ADD BUTTON  ///////////////////////
+  const addBtnHandler = () => {
+    setState({ type: null, distance: null, date: null });
+    setModalVisible(!modalVisible);
   };
 
   console.log("data", data);
-  // // console.log("state", state);
-  // console.log(loading);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.bookContainer}>
         <PageTitle pageName={"service"} pageSub={"book"} />
-        {!loading ? (
+        {loading ? (
           <ActivityIndicator
             size="large"
             color={Colors.primary}
@@ -65,13 +102,16 @@ export default function Book() {
           <CardsDisplay data={data} setData={setData} />
         )}
         <AddBtn
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          handle={addBtnHandler}
+        />
+        <AddBox
           state={state}
           setState={setState}
-          cancel={() => setState({ type: null, distance: null, date: null })}
-          save={() => {
-            updateData();
-            saveData(data);
-          }}
+          modalVisible={modalVisible}
+          cancelBtn={handleAddBoxCancel}
+          saveBtn={handleAddBoxSave}
         />
       </View>
     </TouchableWithoutFeedback>
