@@ -28,6 +28,7 @@ export default function Book() {
 
   useEffect(() => {
     loadAndSetData()
+      // .then((res) => console.log(res))
       .then((res) => res && setData(res))
       .then(() => setLoading(false));
   }, []);

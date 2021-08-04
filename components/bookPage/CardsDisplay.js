@@ -1,9 +1,13 @@
-import React, { useState, useEffect, createRef } from "react";
-import { View, StyleSheet, FlatList, Pressable } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ServiceCard from "./ServiceCard";
 
 export default function CardsDisplay({ data, setData }) {
+  const [active, setActive] = useState({});
+
+  ////////////////////// DELETE BUTTON FROM LIST ///////////////////////
+
   const deleteCard = async (key) => {
     let payload = data.filter((item) => key != item.key);
     try {
@@ -21,7 +25,12 @@ export default function CardsDisplay({ data, setData }) {
         data={data}
         key={(item) => item.item.key}
         renderItem={(item) => (
-          <ServiceCard localData={item.item} deleteCard={deleteCard} />
+          <ServiceCard
+            localData={item.item}
+            deleteCard={deleteCard}
+            active={active}
+            setActive={setActive}
+          />
         )}
       />
     </View>

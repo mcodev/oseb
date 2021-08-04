@@ -13,22 +13,43 @@ import serviceInfo from "../../data/serviceInfo";
 
 const actionSheetRef = createRef();
 
-export default function ServiceCard({ localData, deleteCard }) {
+export default function ServiceCard({
+  localData,
+  deleteCard,
+  active,
+  setActive,
+}) {
   const { language, bike, mKm } = useAppContext();
-  const [active, setActive] = useState(false);
+  const [onOff, setOnOff] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  useEffect(() => {
-    setActive(false);
-    setSideBtn(false);
-  }, []);
+  const isActive = () => (active?.key === localData?.key ? true : false);
+  const isActiveFunc = () => (isActive() && onOff ? true : false);
 
-  // console.log("key", localData.key);
+  useEffect(() => {
+    setOnOff(isActiveFunc);
+  });
+
+  ////////////////////// CARD PRESSED ///////////////////////
+
+  const pressed = () => {
+    setActive(localData);
+    setOnOff(!onOff);
+    isActiveFunc() && setSideBtn(false);
+  };
+
+  const longPressed = () => {
+    setActive(localData);
+    setOnOff(true);
+    setSideBtn(true);
+  };
+
+  // const
 
   return (
     <View>
-      {sideBtn && (
+      {isActive() && sideBtn && (
         <View style={styles.extras}>
           <EditBtns
             icon={"trash-alt"}
@@ -46,22 +67,20 @@ export default function ServiceCard({ localData, deleteCard }) {
       )}
 
       <Pressable
-        onPress={() => {
-          setActive(!active);
-          setSideBtn(false);
-        }}
-        onLongPress={() => {
-          setActive(true);
-          setSideBtn(true);
-        }}
+        onPress={pressed}
+        onLongPress={longPressed}
         style={{
-          transform: sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
+          transform:
+            isActive() && sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
         }}
       >
         <View
           style={[
             styles.cardContainer,
-            { borderLeftColor: active ? colors.secondary : colors.blackSofter },
+            {
+              borderLeftColor:
+                isActive() && onOff ? colors.secondary : colors.blackSofter,
+            },
           ]}
         >
           <Icon
@@ -74,7 +93,7 @@ export default function ServiceCard({ localData, deleteCard }) {
               style={[
                 styles.type,
                 {
-                  color: active ? colors.blackSoft : colors.blackSofter,
+                  color: onOff ? colors.blackSoft : colors.blackSofter,
                 },
               ]}
             >
@@ -85,17 +104,33 @@ export default function ServiceCard({ localData, deleteCard }) {
             <Text
               style={[
                 styles.title,
-                { color: active ? colors.primary : colors.blackSoft },
+                { color: onOff ? colors.primary : colors.blackSoft },
               ]}
             >
               {`${dotsInNumber(localData?.distance)} ${mKm}`}
             </Text>
             <Text style={styles.date}>{localData?.date}</Text>
           </View>
+
+          {/* <View style={{ backgroundColor: "aqua", width: 200 }}>
+            <Text style={{ color: "black" }}>
+              isActive: {isActive() ? "true" : "false"}
+            </Text>
+            <Text style={{ color: "black" }}>
+              isActiveFunc : {isActiveFunc() ? "true" : "false"}
+            </Text>
+            <Text style={{ color: "black" }}>
+              onOff: {onOff ? "true" : "false"}
+            </Text>
+            <Text style={{ color: "black" }}>
+              sideBtn: {sideBtn ? "true" : "false"}
+            </Text>
+          </View> */}
+
           <View style={styles.cardRight}>
-            {active && (
+            {onOff && (
               <Pressable
-                onPress={() => setSideBtn(!sideBtn)}
+                onPress={() => isActiveFunc() && setSideBtn(!sideBtn)}
                 hitSlop={20}
                 style={{ zIndex: 1000000 }}
               >
@@ -118,9 +153,8 @@ export default function ServiceCard({ localData, deleteCard }) {
         refer={actionSheetRef}
         body={
           <ServiceDetails
-            title={localData?.type}
-            data={serviceInfo[bike][localData?.type]}
-            exp
+            title={active?.type}
+            data={serviceInfo[bike][active?.type]}
           />
         }
       />

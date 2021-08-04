@@ -4,7 +4,7 @@ import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 
-export default function ServiceDetails({ title, data, exp }) {
+export default function ServiceDetails({ title, data }) {
   const { language } = useAppContext();
 
   return (
