@@ -13,17 +13,6 @@ export default function Info() {
     icon: "road",
   });
 
-  // console.log(active);
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("effect happened");
-  //     // setActive({
-  //     //   name: "Tyres",
-  //     //   icon: "road",
-  //     // });
-  //   };
-  // }, []);
-
   return (
     <View style={styles.container}>
       <PageTitle pageName={"bike"} pageSub={"info"} />

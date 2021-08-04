@@ -15,7 +15,7 @@ export default function InfoDetails({ active }) {
         <Text style={styles.infoTitle}>
           {translations[language][active.name]}
         </Text>
-        {info[bike][active.name].map((index, i) => (
+        {info[bike][active?.name].map((index, i) => (
           <Text key={i}>
             {index === "Front" || index === "Rear"
               ? translations[language][index]
@@ -24,7 +24,7 @@ export default function InfoDetails({ active }) {
         ))}
       </View>
       <View style={styles.detailsRight}>
-        <Icon name={active.icon} style={styles.icon} />
+        <Icon name={active?.icon} style={styles.icon} />
       </View>
     </View>
   );

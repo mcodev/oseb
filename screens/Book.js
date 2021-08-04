@@ -31,6 +31,15 @@ export default function Book() {
       // .then((res) => console.log(res))
       .then((res) => res && setData(res))
       .then(() => setLoading(false));
+    return () => {
+      console.log("fired");
+      setData([]);
+      setState({
+        type: null,
+        distance: null,
+        date: null,
+      });
+    };
   }, []);
 
   ////////////////////// ADD BOX  ///////////////////////

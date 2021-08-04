@@ -45,8 +45,6 @@ export default function ServiceCard({
     setSideBtn(true);
   };
 
-  // const
-
   return (
     <View>
       {isActive() && sideBtn && (
