@@ -6,6 +6,12 @@ import ServiceCard from "./ServiceCard";
 export default function CardsDisplay({ data, setData }) {
   const [active, setActive] = useState({});
 
+  useEffect(() => {
+    return () => {
+      setActive({});
+    };
+  }, []);
+
   ////////////////////// DELETE BUTTON FROM LIST ///////////////////////
 
   const deleteCard = async (key) => {

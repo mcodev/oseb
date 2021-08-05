@@ -31,6 +31,16 @@ export default function ServiceCard({
     setOnOff(isActiveFunc);
   });
 
+  useEffect(() => {
+    return () => {
+      return () => {
+        setOnOff(false);
+        setSideBtn(false);
+        setModalVisible(false);
+      };
+    };
+  }, []);
+
   ////////////////////// CARD PRESSED ///////////////////////
 
   const pressed = () => {

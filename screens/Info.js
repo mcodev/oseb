@@ -13,6 +13,15 @@ export default function Info() {
     icon: "road",
   });
 
+  useEffect(() => {
+    return () => {
+      setActive({
+        name: "tyres",
+        icon: "road",
+      });
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <PageTitle pageName={"bike"} pageSub={"info"} />

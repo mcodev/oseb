@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,10 +6,7 @@ import {
   Modal,
   Pressable,
   TextInput,
-  Keyboard,
-  TouchableWithoutFeedback,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -17,7 +14,7 @@ import translations from "../../constants/translations";
 import RNPickerSelect from "react-native-picker-select";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { distanceMax } from "../../constants/apps";
-import { dateFormater, saveData } from "../../functions/functions";
+import { dateFormater } from "../../functions/functions";
 
 export default function AddBox({
   cancelBtn,
@@ -28,6 +25,12 @@ export default function AddBox({
 }) {
   const { language, mKm } = useAppContext();
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setShow(false);
+    };
+  }, []);
 
   const numInputCleaner = (e) => {
     e = e.replace(/\s/g, "");
@@ -41,6 +44,7 @@ export default function AddBox({
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || new Date();
+
     setShow(Platform.OS === "ios");
     setState({ ...state, date: dateFormater(currentDate, mKm) });
   };
@@ -68,8 +72,6 @@ export default function AddBox({
         break;
     }
   };
-
-  // console.log("state", state);
 
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible}>
@@ -129,7 +131,6 @@ export default function AddBox({
                     backfaceVisibility: "hidden",
                   },
                 }}
-                //   onValueChange={(value) => setType(value)}
                 onValueChange={(value) => setState({ ...state, type: value })}
                 items={[
                   {
@@ -252,7 +253,6 @@ export default function AddBox({
           onChange={onChange}
           maximumDate={new Date()}
           minimumDate={new Date(2004, 0, 1)}
-          textColor={colors.secondary}
         />
       )}
     </Modal>
