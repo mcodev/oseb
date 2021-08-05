@@ -15,9 +15,10 @@ export default function RoundBtn({ name, icon, active, setActive }) {
         style={[
           styles.addButton,
           {
-            backgroundColor: name === active.name ? color.primary : color.white,
+            backgroundColor:
+              name === active?.name ? color.primary : color.white,
           },
-          { elevation: name === active.name ? 0 : 5 },
+          { elevation: name === active?.name ? 0 : 5 },
         ]}
         onPress={() => {
           setActive({ name: name, icon: icon });
@@ -27,14 +28,14 @@ export default function RoundBtn({ name, icon, active, setActive }) {
           name={icon}
           style={[
             styles.buttonIcon,
-            { color: name !== active.name ? color.primary : color.white },
+            { color: name !== active?.name ? color.primary : color.white },
           ]}
         />
       </Pressable>
       <Text
         style={[
           styles.titles,
-          { color: name === active.name ? color.primary : color.black },
+          { color: name === active?.name ? color.primary : color.black },
         ]}
       >
         {translations[language][name]}

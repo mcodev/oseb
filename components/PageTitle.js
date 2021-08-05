@@ -12,6 +12,7 @@ export default function PageTitle({ pageName, pageSub }) {
         fontSize: 35,
         justifyContent: "center",
         marginLeft: 20,
+        flex: 1,
       }}
     >
       <Text style={{ fontWeight: "700" }}>

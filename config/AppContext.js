@@ -4,7 +4,7 @@ import { language } from "../constants/device";
 const AppContext = createContext();
 // PROVIDER that holds all data and wraps them in top screen
 function AppProvider(props) {
-  const [bike, setBike] = useState("R_X_F_500");
+  const [bike, setBike] = useState("cb_500_r_f");
   const [mKm, setMKm] = useState("Km");
 
   return (

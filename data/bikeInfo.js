@@ -1,4 +1,4 @@
-const R_X_F_500 = {
+const cb_500_r_f = {
   tyres: [
     "Front",
     "120/70ZR17M/C",
@@ -17,4 +17,4 @@ const R_X_F_500 = {
   sparkPlug: ["CPR8EA-9"],
 };
 
-export default { R_X_F_500 };
+export default { cb_500_r_f };

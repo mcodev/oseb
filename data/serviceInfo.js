@@ -1,4 +1,4 @@
-const R_X_F_500 = {
+const cb_500_r_f = {
   first: ["EngineOil", "EngineOilFilter", "ValveClearence"],
   annual: ["EngineOil", "EngineOilFilter", "AirCleanerC", "CrankcaseBreather"],
   oil: ["EngineOil", "EngineOilFilter"],
@@ -14,4 +14,4 @@ const R_X_F_500 = {
   ],
 };
 
-export default { R_X_F_500 };
+export default { cb_500_r_f };
