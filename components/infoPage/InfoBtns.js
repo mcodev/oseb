@@ -1,19 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import RoundBtn from "./RoundBtn";
+import { types } from "../../data/other";
 
 export default function InfoBtns({ active, setActive }) {
-  const types = [
-    { name: "tyres", icon: "road" },
-    { name: "oil", icon: "oil-can" },
-    { name: "battery", icon: "battery-half" },
-    { name: "chain", icon: "cogs" },
-    { name: "lights", icon: "lightbulb" },
-    { name: "coolant", icon: "snowflake" },
-    { name: "fuses", icon: "bolt" },
-    { name: "sparkPlug", icon: "fire" },
-  ];
-
   return (
     <View style={styles.typesContainer}>
       <View style={styles.typesContainerSub}>

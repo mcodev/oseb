@@ -6,6 +6,7 @@ import InfoBtns from "../components/infoPage/InfoBtns";
 import color from "../constants/colors";
 import { bottomTabsHeight } from "../constants/apps";
 import InfoDetails from "../components/infoPage/InfoDetails";
+import colors from "../constants/colors";
 
 export default function Info() {
   const [active, setActive] = useState({
@@ -38,7 +39,7 @@ export default function Info() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     paddingBottom: bottomTabsHeight,
     paddingTop: 20,
   },

@@ -1,12 +1,23 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import colors from "../constants/colors";
+import { bottomTabsHeight } from "../constants/apps";
+import ChooseBike from "../components/other/ChooseBike";
 import { useAppContext } from "../config/AppContext";
 
 export default function Home() {
   const { bike } = useAppContext();
   return (
-    <View>
-      <Text>Home screen</Text>
+    <View style={styles.homeContainer}>
+      <ChooseBike />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    backgroundColor: colors.white,
+    paddingBottom: bottomTabsHeight,
+  },
+});
