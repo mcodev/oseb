@@ -1,10 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, Modal, Pressable } from "react-native";
-import { useAppContext } from "../../config/AppContext";
-import colors from "../../constants/colors";
-import translations from "../../constants/translations";
+import { useAppContext } from "../config/AppContext";
+import colors from "../constants/colors";
+import translations from "../constants/translations";
 
-export default function DeleteBox({ cancel, confirm, modalVisible }) {
+export default function ConfirmBox({
+  cancel,
+  confirm,
+  modalVisible,
+  textToShow,
+}) {
   const { language } = useAppContext();
 
   return (
@@ -12,7 +17,7 @@ export default function DeleteBox({ cancel, confirm, modalVisible }) {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalMessage}>
-            <Text style={{ fontSize: 17 }}>{translations[language].sure}</Text>
+            <Text style={{ fontSize: 17 }}>{textToShow}</Text>
           </View>
           <View style={styles.modalActions}>
             <Pressable

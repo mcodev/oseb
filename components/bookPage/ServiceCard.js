@@ -6,10 +6,10 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
-import DeleteBox from "./DeleteBox";
 import McoActionSheet from "./McoActionSheet";
 import ServiceDetails from "./ServiceDetails";
 import serviceInfo from "../../data/serviceInfo";
+import ConfirmBox from "../ConfirmBox";
 
 const actionSheetRef = createRef();
 
@@ -152,10 +152,11 @@ export default function ServiceCard({
           </View>
         </View>
       </Pressable>
-      <DeleteBox
+      <ConfirmBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
         confirm={() => deleteCard(localData.key)}
+        textToShow={translations[language].sure}
       />
       <McoActionSheet
         refer={actionSheetRef}

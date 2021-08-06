@@ -17,7 +17,7 @@ const brandImgs = [
   {
     brand: "Kawasaki",
     path: require("../assets/brandIcons/kawasaki.jpg"),
-    id: "kavasaki",
+    id: "kawasaki",
   },
 ];
 

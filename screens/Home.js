@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../constants/colors";
 import { bottomTabsHeight } from "../constants/apps";
-import ChooseBike from "../components/other/ChooseBike";
+import ChooseBike from "../components/chooseBike/ChooseBike";
 import { useAppContext } from "../config/AppContext";
 
 export default function Home() {
