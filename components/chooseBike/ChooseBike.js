@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
+import { useAppContext } from "../../config/AppContext";
 import { brandImgs } from "../../data/other";
 import { bikeNames } from "../../data/bikeNames";
+import translations from "../../constants/translations";
 import Carousel from "react-native-snap-carousel";
 import CarouselCard from "./CarouselCard";
 import BikeListItem from "./BikeListItem";
+import ConfirmBox from "../ConfirmBox";
+import { saveData } from "../../functions/functions";
 
 export default function ChooseBike() {
+  const { language } = useAppContext();
   const [activeItem, setActiveItem] = useState(0);
-  // console.log(bikeNames[brandImgs[activeItem].id]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [bikeToSave, setBikeToSave] = useState(null);
 
   return (
     <View style={styles.container}>
@@ -30,12 +36,33 @@ export default function ChooseBike() {
       </View>
       <View style={styles.list}>
         <FlatList
-          keyExtractor={(item) => item.index}
+          keyExtractor={(item) => item?.index}
+          // keyExtractor={(item) => Object.values(item.index)}
+          // data={bikeNames[brandImgs[activeItem].id]}
           data={bikeNames[brandImgs[activeItem].id]}
-          renderItem={(item) => <BikeListItem item={item} />}
-          // renderItem={(item) => console.log(Object.keys(item.item))}
+          renderItem={(item) => (
+            <BikeListItem
+              item={item}
+              setBikeToSave={setBikeToSave}
+              setModalVisible={setModalVisible}
+            />
+          )}
+          // renderItem={(item, index) => console.log(item)}
         />
       </View>
+      <ConfirmBox
+        modalVisible={modalVisible}
+        cancel={() => setModalVisible(false)}
+        confirm={() =>
+          bikeToSave !== null
+            ? () => {
+                saveData("bike", bikeToSave);
+                setModalVisible(false);
+              }
+            : setModalVisible(false)
+        }
+        textToShow={translations[language].sure}
+      />
     </View>
   );
 }

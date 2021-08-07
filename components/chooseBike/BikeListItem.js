@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 
-export default function BikeListItem({ item }) {
-  //   console.log(Object.keys(item.item));
+export default function BikeListItem({ item, setBikeToSave, setModalVisible }) {
   return (
     <Pressable
       style={({ pressed }) => [
@@ -22,6 +21,10 @@ export default function BikeListItem({ item }) {
           {Object.values(item.item)}
         </Text>
       )}
+      onPress={() => {
+        setBikeToSave(Object.keys(item.item).toString());
+        setModalVisible(true);
+      }}
     />
   );
 }

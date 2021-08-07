@@ -54,12 +54,23 @@ const dotsInNumber = (num) => {
 
 ////////////////////// DATA ASYNC READ / SAVE  ///////////////////////
 
-const saveData = async (value) => {
+const saveData = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem("@data", jsonValue);
+    await AsyncStorage.setItem(`${key}`, jsonValue);
   } catch (e) {
     alert("Something went wrong..");
+  }
+};
+
+const loadData = async (key) => {
+  try {
+    let jsonValue = await AsyncStorage.getItem(key);
+    if (jsonValue !== null) {
+      return JSON.parse(jsonValue);
+    }
+  } catch (err) {
+    console.log("Error reading data..", err);
   }
 };
 
@@ -95,5 +106,7 @@ export {
   dotsInNumber,
   numInputCleaner,
   dateFormater,
+  saveData,
+  loadData,
   loadAndSetData,
 };
