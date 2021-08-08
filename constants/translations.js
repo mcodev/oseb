@@ -1,5 +1,3 @@
-export const DEFAULT_LANGUAGE = "en";
-
 const translations = {
   en: {
     home: "Home",

@@ -1,13 +1,44 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import colors from "../constants/colors";
-import { bottomTabsHeight } from "../constants/apps";
-import ChooseBike from "../components/chooseBike/ChooseBike";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useAppContext } from "../config/AppContext";
+import { closestNum } from "../functions/appFunctions";
+import { bottomTabsHeight } from "../constants/apps";
+import colors from "../constants/colors";
+import translations from "../constants/translations";
+import bikeDistances from "../data/mainBikeData";
+import ChooseBike from "../components/chooseBike/ChooseBike";
+import MainInput from "../components/homePage/MainInput";
 
 export default function Home() {
-  const { bike } = useAppContext();
-  return <View style={styles.homeContainer}>{/* <ChooseBike /> */}</View>;
+  const { bike, mKm, language } = useAppContext();
+  const [reading, setReading] = useState(null);
+
+  //////////////////////  MAIN PROGRAM///////////////////////////
+
+  const programAlgorithm = (e) => {
+    console.log("function1: ", closestNum(e, bikeDistances[bike][mKm]));
+  };
+
+  // console.log(bikeDistances[bike][mKm]);
+
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.homeContainer}>
+        <MainInput
+          reading={reading}
+          setReading={setReading}
+          programAlgorithm={programAlgorithm}
+        />
+        {/* <ChooseBike /> */}
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
 
 const styles = StyleSheet.create({
