@@ -1,7 +1,7 @@
 const closestNum = (query, list) => {
-  var pointer_upper = list.length - 1;
-  var pointer_lower = 0;
-  var pointer_tmp;
+  let pointer_upper = list.length - 1;
+  let pointer_lower = 0;
+  let pointer_tmp;
   while (pointer_upper - pointer_lower > 1) {
     pointer_tmp = Math.ceil((pointer_upper + pointer_lower) / 2);
     if (list[pointer_tmp] <= query) {
@@ -10,7 +10,12 @@ const closestNum = (query, list) => {
       pointer_upper = pointer_tmp;
     }
   }
-  return pointer_lower;
+
+  // return list[pointer_tmp] === query
+  //   ? { value: pointer_tmp, note: "now" }
+  //   : { value: pointer_upper, note: "next" };
+
+  return pointer_upper;
 };
 
 const typosservice = (num) => {

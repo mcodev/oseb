@@ -22,7 +22,7 @@ export default function Home() {
   //////////////////////  MAIN PROGRAM///////////////////////////
 
   const programAlgorithm = (e) => {
-    console.log("function1: ", closestNum(e, bikeDistances[bike][mKm]));
+    console.log("function1: ", closestNum(e, bikeDistances[bike][mKm].value));
   };
 
   // console.log(bikeDistances[bike][mKm]);

@@ -5,7 +5,7 @@ import translations from "../../constants/translations";
 import { distanceMax } from "../../constants/apps";
 
 export default function MainInput({ reading, setReading, programAlgorithm }) {
-  const { language } = useAppContext();
+  const { language, mKm } = useAppContext();
 
   //////////////////////  INPUT VALIDATION ///////////////////////////
   const numInputCleaner = (e) => {
