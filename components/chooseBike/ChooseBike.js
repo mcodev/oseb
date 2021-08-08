@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import { brandImgs } from "../../data/other";
 import { bikeNames } from "../../data/bikeNames";
@@ -9,6 +9,7 @@ import CarouselCard from "./CarouselCard";
 import BikeListItem from "./BikeListItem";
 import ConfirmBox from "../ConfirmBox";
 import { saveData } from "../../functions/functions";
+import { width } from "../../constants/device";
 
 export default function ChooseBike() {
   const { language } = useAppContext();
@@ -20,6 +21,7 @@ export default function ChooseBike() {
     <View style={styles.container}>
       <View styles={styles.carouselContainer}>
         <Carousel
+          // layout={"stack"}
           data={brandImgs}
           renderItem={(item, i) => (
             <CarouselCard
@@ -29,17 +31,15 @@ export default function ChooseBike() {
               path={item?.item?.path}
             />
           )}
-          sliderWidth={400}
-          itemWidth={300}
+          sliderWidth={width}
+          itemWidth={width / 1.5}
           onSnapToItem={(index) => setActiveItem(index)}
         />
       </View>
       <View style={styles.list}>
         <FlatList
-          keyExtractor={(item) => item?.index}
-          // keyExtractor={(item) => Object.values(item.index)}
-          // data={bikeNames[brandImgs[activeItem].id]}
           data={bikeNames[brandImgs[activeItem].id]}
+          keyExtractor={(item) => Object.keys(item).toString()}
           renderItem={(item) => (
             <BikeListItem
               item={item}
@@ -47,20 +47,15 @@ export default function ChooseBike() {
               setModalVisible={setModalVisible}
             />
           )}
-          // renderItem={(item, index) => console.log(item)}
         />
       </View>
       <ConfirmBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}
-        confirm={() =>
-          bikeToSave !== null
-            ? () => {
-                saveData("bike", bikeToSave);
-                setModalVisible(false);
-              }
-            : setModalVisible(false)
-        }
+        confirm={() => {
+          saveData("bike", bikeToSave);
+          setModalVisible(false);
+        }}
         textToShow={translations[language].sure}
       />
     </View>
@@ -81,3 +76,5 @@ const styles = StyleSheet.create({
     // backgroundColor: "aqua",
   },
 });
+
+// https://github.com/meliorence/react-native-snap-carousel

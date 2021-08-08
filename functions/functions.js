@@ -57,7 +57,7 @@ const dotsInNumber = (num) => {
 const saveData = async (key, value) => {
   try {
     const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(`${key}`, jsonValue);
+    await AsyncStorage.setItem(key, jsonValue);
   } catch (e) {
     alert("Something went wrong..");
   }

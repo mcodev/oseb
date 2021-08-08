@@ -1,5 +1,5 @@
 const cb_500_r_f = {
-  tyres: [
+  tires: [
     "Front",
     "120/70ZR17M/C",
     "36 psi",

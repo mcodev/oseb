@@ -8,18 +8,13 @@ function AppProvider(props) {
   const [bike, setBike] = useState("cb_500_r_f");
   const [mKm, setMKm] = useState("Km");
 
-  const [test, setTest] = useState(null);
-
   useEffect(() => {
-    // loadData("bike").then((res) => setTest(res));
-    loadData("bike").then((res) => res && console.log(res));
+    loadData("bike").then((res) => res && setBike(res));
 
     // return () => {
     //   cleanup;
     // };
   }, []);
-
-  console.log("test", test);
 
   return (
     <AppContext.Provider

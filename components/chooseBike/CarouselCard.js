@@ -39,10 +39,10 @@ export default function CarouselCard({ item, activeItem }) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    height: 200,
-    width: "90%",
-    marginHorizontal: 10,
-    marginVertical: 10,
+    height: 150,
+    // width: "70%",
+    // marginHorizontal: 10,
+    marginVertical: 20,
   },
   image: {
     flex: 1,

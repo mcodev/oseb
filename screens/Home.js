@@ -7,11 +7,7 @@ import { useAppContext } from "../config/AppContext";
 
 export default function Home() {
   const { bike } = useAppContext();
-  return (
-    <View style={styles.homeContainer}>
-      <ChooseBike />
-    </View>
-  );
+  return <View style={styles.homeContainer}>{/* <ChooseBike /> */}</View>;
 }
 
 const styles = StyleSheet.create({
@@ -21,3 +17,8 @@ const styles = StyleSheet.create({
     paddingBottom: bottomTabsHeight,
   },
 });
+
+// https://reactnative.dev/docs/animations
+// https://www.youtube.com/watch?v=6UXfS6FI674
+// ALT
+// https://docs.expo.dev/versions/v42.0.0/sdk/reanimated/

@@ -10,14 +10,14 @@ import colors from "../constants/colors";
 
 export default function Info() {
   const [active, setActive] = useState({
-    name: "tyres",
+    name: "tires",
     icon: "road",
   });
 
   useEffect(() => {
     return () => {
       setActive({
-        name: "tyres",
+        name: "tires",
         icon: "road",
       });
     };

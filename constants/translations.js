@@ -9,7 +9,7 @@ const translations = {
     info: "Info",
     book: "Book",
     page: "page",
-    tyres: "Tyres",
+    tires: "Tires",
     oil: "Oil",
     battery: "Battery",
     chain: "Chain",

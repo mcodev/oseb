@@ -22,7 +22,7 @@ const brandImgs = [
 ];
 
 const types = [
-  { name: "tyres", icon: "road" },
+  { name: "tires", icon: "road" },
   { name: "oil", icon: "oil-can" },
   { name: "battery", icon: "battery-half" },
   { name: "chain", icon: "cogs" },
