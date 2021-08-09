@@ -12,16 +12,18 @@ export default function InfoDetails({ active }) {
   return (
     <View style={styles.detailsContainer}>
       <View style={styles.detailsLeft}>
-        <Text style={styles.infoTitle}>
-          {translations[language][active.name]}
-        </Text>
-        {info[bike][active?.name].map((index, i) => (
-          <Text key={i}>
-            {index === "Front" || index === "Rear"
-              ? translations[language][index]
-              : index}
+        <View style={styles.card}>
+          <Text style={styles.infoTitle}>
+            {translations[language][active.name]}
           </Text>
-        ))}
+          {info[bike][active?.name].map((index, i) => (
+            <Text key={i}>
+              {index === "Front" || index === "Rear"
+                ? translations[language][index]
+                : index}
+            </Text>
+          ))}
+        </View>
       </View>
       <View style={styles.detailsRight}>
         <Icon name={active?.icon} style={styles.icon} />
@@ -55,5 +57,19 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 100,
     color: color.backIcon,
+  },
+
+  card: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "85%",
+    height: "85%",
+    borderRadius: 15,
+    elevation: 4,
+    backgroundColor: "#fff",
+    shadowOffset: { width: 1, height: 1 },
+    shadowColor: "#333",
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
 });
