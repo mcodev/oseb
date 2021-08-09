@@ -7,7 +7,7 @@ import colors from "../../constants/colors";
 import { saveData } from "../../functions/functions";
 
 export default function Mkm() {
-  const { mKm, language } = useAppContext();
+  const { mKm, setMKm, language } = useAppContext();
   const [swi, setSwi] = useState(false);
 
   useEffect(() => {
@@ -16,17 +16,17 @@ export default function Mkm() {
 
   const switcher = (val) => {
     val
-      ? (saveData("mKm", "m"), setSwi(true))
-      : (saveData("mKm", "Km"), setSwi(false));
+      ? (saveData("mKm", "m"), setSwi(true), setMKm("m"))
+      : (saveData("mKm", "Km"), setSwi(false), setMKm("Km"));
   };
 
   return (
     <Switch
       value={swi}
-      //   onValueChange={(val) => switcher(val)}
+      onValueChange={(val) => switcher(val)}
       disabled={false}
       activeText={translations[language].m}
-      inActiveText={translations[language].km}
+      inActiveText={translations[language].Km}
       circleSize={22}
       barHeight={21}
       circleBorderWidth={1}

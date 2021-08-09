@@ -43,7 +43,7 @@ export default function Home() {
           programAlgorithm={programAlgorithm}
         />
         {/* <ChooseBike /> */}
-        <Mkm />
+        {/* <Mkm /> */}
       </View>
     </TouchableWithoutFeedback>
   );

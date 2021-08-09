@@ -10,7 +10,8 @@ function AppProvider(props) {
 
   useEffect(() => {
     loadData("bike").then((res) => res && setBike(res));
-    //// load mKm
+    loadData("mKm").then((res) => res && setMKm(res));
+
     // return () => {
     //   cleanup;
     // };
@@ -22,6 +23,7 @@ function AppProvider(props) {
         language,
         bike,
         mKm,
+        setMKm,
       }}
     >
       {props.children}

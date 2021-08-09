@@ -115,7 +115,9 @@ export default function ServiceCard({
                 { color: onOff ? colors.primary : colors.blackSoft },
               ]}
             >
-              {`${dotsInNumber(localData?.distance)} ${mKm}`}
+              {`${dotsInNumber(localData?.distance)} ${
+                translations[language][mKm]
+              }`}
             </Text>
             <Text style={styles.date}>{localData?.date}</Text>
           </View>

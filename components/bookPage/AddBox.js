@@ -91,7 +91,7 @@ export default function AddBox({
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.formInput}
-                placeholder={`${translations[language].addDistance} ${mKm}`}
+                placeholder={`${translations[language].addDistance} ${translations[language][mKm]} `}
                 keyboardType="number-pad"
                 maxLength={7}
                 onChangeText={numInputCleaner}
