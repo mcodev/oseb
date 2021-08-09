@@ -50,6 +50,8 @@ const translations = {
     type: "Type",
     serviceS: "of service ..",
     date: "Date",
+    m: "Miles",
+    Km: "Km",
   },
 
   el: {},

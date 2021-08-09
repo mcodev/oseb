@@ -7,25 +7,32 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useAppContext } from "../config/AppContext";
-import { closestNum } from "../functions/appFunctions";
+import { closestNum, typeOfService } from "../functions/appFunctions";
 import { bottomTabsHeight } from "../constants/apps";
 import colors from "../constants/colors";
 import translations from "../constants/translations";
 import bikeDistances from "../data/mainBikeData";
 import ChooseBike from "../components/chooseBike/ChooseBike";
 import MainInput from "../components/homePage/MainInput";
+import Mkm from "../components/mKm/Mkm";
 
 export default function Home() {
   const { bike, mKm, language } = useAppContext();
   const [reading, setReading] = useState(null);
 
-  //////////////////////  MAIN PROGRAM///////////////////////////
+  //////////////////////  MAIN PROGRAM  ///////////////////////////
 
   const programAlgorithm = (e) => {
-    console.log("function1: ", closestNum(e, bikeDistances[bike][mKm].value));
+    // console.log("test", bikeDistances[bike].full);
+    // console.log("closest: ", closestNum(e, bikeDistances[bike][mKm]));
+    console.log(
+      "typeOfService",
+      typeOfService(
+        closestNum(e, bikeDistances[bike][mKm]),
+        bikeDistances[bike].full
+      )
+    );
   };
-
-  // console.log(bikeDistances[bike][mKm]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -36,6 +43,7 @@ export default function Home() {
           programAlgorithm={programAlgorithm}
         />
         {/* <ChooseBike /> */}
+        <Mkm />
       </View>
     </TouchableWithoutFeedback>
   );

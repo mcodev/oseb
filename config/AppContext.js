@@ -10,7 +10,7 @@ function AppProvider(props) {
 
   useEffect(() => {
     loadData("bike").then((res) => res && setBike(res));
-
+    //// load mKm
     // return () => {
     //   cleanup;
     // };
