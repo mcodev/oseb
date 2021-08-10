@@ -5,6 +5,7 @@ import { useAppContext } from "../../config/AppContext";
 import info from "../../data/bikeInfo";
 import translations from "../../constants/translations";
 import color from "../../constants/colors";
+import colors from "../../constants/colors";
 
 export default function InfoDetails({ active }) {
   const { language, bike } = useAppContext();
@@ -17,7 +18,7 @@ export default function InfoDetails({ active }) {
             {translations[language][active.name]}
           </Text>
           {info[bike][active?.name].map((index, i) => (
-            <Text key={i}>
+            <Text style={styles.infoTxt} key={i}>
               {index === "Front" || index === "Rear"
                 ? translations[language][index]
                 : index}
@@ -50,9 +51,16 @@ const styles = StyleSheet.create({
   infoTitle: {
     fontWeight: "700",
     letterSpacing: 0.8,
-    fontSize: 27,
-    color: color.blackSoft,
+    fontSize: 22,
+    color: color.primary,
     marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.blackSofter,
+    paddingBottom: 5,
+  },
+  infoTxt: {
+    marginVertical: 2,
+    letterSpacing: 1,
   },
   icon: {
     fontSize: 100,
@@ -62,13 +70,13 @@ const styles = StyleSheet.create({
   card: {
     alignItems: "center",
     justifyContent: "center",
-    width: "85%",
-    height: "85%",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 15,
+    backgroundColor: colors.white,
     elevation: 4,
-    backgroundColor: "#fff",
     shadowOffset: { width: 1, height: 1 },
-    shadowColor: "#333",
+    shadowColor: colors.shaddow,
     shadowOpacity: 0.3,
     shadowRadius: 2,
   },

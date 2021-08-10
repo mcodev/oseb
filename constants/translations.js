@@ -52,6 +52,7 @@ const translations = {
     date: "Date",
     m: "Miles",
     Km: "Km",
+    noEntries: "No entries found ...",
   },
 
   el: {},

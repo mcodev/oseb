@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: 43,
     position: "absolute",
-    bottom: bottomTabsHeight + 20,
+    bottom: 15,
     right: 20,
     elevation: 8,
   },

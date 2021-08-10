@@ -66,7 +66,7 @@ export default function ServiceCard({
           />
           <EditBtns
             icon={"info"}
-            color={"secondary"}
+            color={"third"}
             callback={() => {
               actionSheetRef.current?.setModalVisible();
             }}
@@ -87,7 +87,7 @@ export default function ServiceCard({
             styles.cardContainer,
             {
               borderLeftColor:
-                isActive() && onOff ? colors.secondary : colors.blackSofter,
+                isActive() && onOff ? colors.third : colors.secondary,
             },
           ]}
         >
@@ -101,7 +101,7 @@ export default function ServiceCard({
               style={[
                 styles.type,
                 {
-                  color: onOff ? colors.blackSoft : colors.blackSofter,
+                  color: onOff ? colors.white : colors.blackSofter,
                 },
               ]}
             >
@@ -112,30 +112,24 @@ export default function ServiceCard({
             <Text
               style={[
                 styles.title,
-                { color: onOff ? colors.primary : colors.blackSoft },
+                { color: onOff ? colors.third : colors.blackSoft },
               ]}
             >
               {`${dotsInNumber(localData?.distance)} ${
                 translations[language][mKm]
               }`}
             </Text>
-            <Text style={styles.date}>{localData?.date}</Text>
+            <Text
+              style={[
+                styles.date,
+                {
+                  color: onOff ? colors.black : colors.blackSofter,
+                },
+              ]}
+            >
+              {localData?.date}
+            </Text>
           </View>
-
-          {/* <View style={{ backgroundColor: "aqua", width: 200 }}>
-            <Text style={{ color: "black" }}>
-              isActive: {isActive() ? "true" : "false"}
-            </Text>
-            <Text style={{ color: "black" }}>
-              isActiveFunc : {isActiveFunc() ? "true" : "false"}
-            </Text>
-            <Text style={{ color: "black" }}>
-              onOff: {onOff ? "true" : "false"}
-            </Text>
-            <Text style={{ color: "black" }}>
-              sideBtn: {sideBtn ? "true" : "false"}
-            </Text>
-          </View> */}
 
           <View style={styles.cardRight}>
             {onOff && (
@@ -147,7 +141,7 @@ export default function ServiceCard({
                 <Icon
                   name={"ellipsis-v"}
                   size={20}
-                  style={{ marginRight: 15, color: colors.blackSoft }}
+                  style={{ marginRight: 15, color: colors.whiteST }}
                 />
               </Pressable>
             )}
@@ -176,13 +170,14 @@ export default function ServiceCard({
 const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
-    marginVertical: 10,
+    marginVertical: 6,
     backgroundColor: colors.cardBack,
     height: 80,
     width: "100%",
     flexDirection: "row",
     borderLeftWidth: 5,
     zIndex: 100000,
+    borderRadius: 6,
   },
   cardLeft: {
     flex: 0.5,
@@ -211,7 +206,6 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   date: {
-    color: colors.blackSofter,
     fontSize: 16,
   },
   type: {

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import color from "../../constants/colors";
+import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 
 export default function RoundBtn({ name, icon, active, setActive }) {
@@ -16,9 +16,19 @@ export default function RoundBtn({ name, icon, active, setActive }) {
           styles.addButton,
           {
             backgroundColor:
-              name === active?.name ? color.primary : color.white,
+              name === active?.name ? colors.primary : colors.white,
           },
-          { elevation: name === active?.name ? 0 : 5 },
+          { elevation: name === active?.name ? 0 : 4 },
+          { shadowOffset: name === active?.name ? 0 : { width: 1, height: 1 } },
+          {
+            shadowColor: name === active?.name ? colors.white : colors.shaddow,
+          },
+          {
+            shadowOpacity: name === active?.name ? 0 : 0.3,
+          },
+          {
+            shadowRadius: name === active?.name ? 0 : 2,
+          },
         ]}
         onPress={() => {
           setActive({ name: name, icon: icon });
@@ -28,14 +38,14 @@ export default function RoundBtn({ name, icon, active, setActive }) {
           name={icon}
           style={[
             styles.buttonIcon,
-            { color: name !== active?.name ? color.primary : color.white },
+            { color: name !== active?.name ? colors.primary : colors.white },
           ]}
         />
       </Pressable>
       <Text
         style={[
           styles.titles,
-          { color: name === active?.name ? color.primary : color.black },
+          { color: name === active?.name ? colors.primary : colors.black },
         ]}
       >
         {translations[language][name]}

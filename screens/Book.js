@@ -15,6 +15,7 @@ import colors from "../constants/colors";
 import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 import AddBox from "../components/bookPage/AddBox";
+import NoEntriesScreen from "../components/bookPage/NoEntriesScreen";
 
 export default function Book() {
   const [loading, setLoading] = useState(true);
@@ -72,13 +73,19 @@ export default function Book() {
       <View style={styles.bookContainer}>
         <PageTitle pageName={"service"} pageSub={"book"} />
         {loading ? (
-          <ActivityIndicator
-            size="large"
-            color={Colors.primary}
-            style={{ alignSelf: "center", justifyContent: "center" }}
-          />
-        ) : (
+          <View
+            style={{ alignSelf: "center", justifyContent: "center", flex: 5 }}
+          >
+            <ActivityIndicator
+              size="large"
+              color={Colors.primary}
+              style={{ alignSelf: "center", justifyContent: "center" }}
+            />
+          </View>
+        ) : data?.length !== 0 ? (
           <CardsDisplay data={data} setData={setData} />
+        ) : (
+          <NoEntriesScreen />
         )}
         <AddBtn
           modalVisible={modalVisible}
@@ -101,7 +108,6 @@ const styles = StyleSheet.create({
   bookContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingBottom: bottomTabsHeight,
     paddingTop: 20,
   },
 });

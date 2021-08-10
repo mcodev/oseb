@@ -1,4 +1,4 @@
-const bottomTabsHeight = 80;
+const bottomTabsHeight = 60;
 
 const distanceMax = (e) => (e === "Km" ? 426000 : 264000);
 

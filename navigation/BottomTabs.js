@@ -9,8 +9,10 @@ import translations from "../constants/translations";
 import Home from "../screens/Home";
 import Info from "../screens/Info";
 import Book from "../screens/Book";
+import colors from "../constants/colors";
 
 const Tab = createBottomTabNavigator();
+const iconSize = 20;
 
 const Mytabs = () => {
   const { language } = useAppContext();
@@ -20,15 +22,17 @@ const Mytabs = () => {
       initialRouteName="Home"
       lazy
       tabBarOptions={{
-        activeTintColor: "rgba(0,0,0, .8)",
-        inactiveTintColor: "rgba(0,0,0, .5)",
+        activeTintColor: colors.primary,
+        inactiveTintColor: colors.blackSofter,
+        elevation: 0,
         style: {
-          borderTopLeftRadius: 55,
-          borderTopRightRadius: 55,
           height: bottomTabsHeight,
-          paddingTop: 20,
-          paddingBottom: 15,
-          position: "absolute",
+          paddingTop: 10,
+          paddingBottom: 10,
+          elevation: 0,
+          shadowColor: "#fff",
+          shadowOpacity: 0,
+          shadowRadius: 0,
         },
       }}
     >
@@ -37,8 +41,8 @@ const Mytabs = () => {
         component={Book}
         options={{
           tabBarLabel: `${translations[language].service_book}`,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="book-open" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <Icon name="book-open" color={color} size={iconSize} />
           ),
         }}
       />
@@ -47,8 +51,8 @@ const Mytabs = () => {
         component={Home}
         options={{
           tabBarLabel: `${translations[language].home}`,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <Icon name="chevron-circle-up" color={color} size={22} />
           ),
         }}
       />
@@ -57,8 +61,8 @@ const Mytabs = () => {
         component={Info}
         options={{
           tabBarLabel: `${translations[language].bike_info}`,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="info" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <Icon name="info" color={color} size={iconSize} />
           ),
         }}
       />

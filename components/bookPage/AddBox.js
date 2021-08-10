@@ -174,11 +174,11 @@ export default function AddBox({
                   height: 30,
                 }}
               >
-                <Icon
+                {/* <Icon
                   name={"calendar"}
                   size={15}
                   style={{ marginRight: 20, color: "grey" }}
-                />
+                /> */}
                 <Text style={{ color: "grey" }}>
                   {state.date === null
                     ? translations[language].addDate
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
   guideTxtSpan: {
     fontWeight: "700",
     fontSize: 20,
-    color: colors.blackSoft,
+    color: colors.primary,
   },
   guideTxtSecondSpan: {
     fontWeight: "700",

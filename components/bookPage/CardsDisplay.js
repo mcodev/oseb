@@ -45,7 +45,7 @@ export default function CardsDisplay({ data, setData }) {
 
 const styles = StyleSheet.create({
   cardsContainer: {
-    flex: 5,
+    flex: 8,
     paddingTop: 20,
     paddingHorizontal: 20,
   },

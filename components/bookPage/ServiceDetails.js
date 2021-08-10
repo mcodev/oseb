@@ -17,7 +17,15 @@ export default function ServiceDetails({ title, data }) {
       <View style={{ alignItems: "center", marginVertical: 20 }}>
         {data &&
           data.map((item, i) => (
-            <Text key={i} style={{ color: colors.blackSoft, fontSize: 16 }}>
+            <Text
+              key={i}
+              style={{
+                color: colors.blackSoft,
+                fontSize: 16,
+                marginVertical: 2,
+                letterSpacing: 0.7,
+              }}
+            >
               {translations[language][item]}
             </Text>
           ))}
