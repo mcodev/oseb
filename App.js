@@ -10,7 +10,7 @@ export default function App() {
   return (
     <AppProvider>
       {/* <StatusBar hidden style="auto" /> */}
-      <StatusBar hidden style="auto" />
+      <StatusBar style="inverted" />
 
       <BottomTabs />
     </AppProvider>

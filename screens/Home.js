@@ -15,6 +15,7 @@ import bikeDistances from "../data/mainBikeData";
 import ChooseBike from "../components/chooseBike/ChooseBike";
 import MainInput from "../components/homePage/MainInput";
 import Mkm from "../components/mKm/Mkm";
+import MainOutput from "../components/homePage/MainOutput";
 
 export default function Home() {
   const { bike, mKm, language } = useAppContext();
@@ -37,6 +38,7 @@ export default function Home() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
+        <MainOutput />
         <MainInput
           reading={reading}
           setReading={setReading}

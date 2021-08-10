@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
 import { distanceMax } from "../../constants/apps";
+import colors from "../../constants/colors";
 
 export default function MainInput({ reading, setReading, programAlgorithm }) {
   const { language, mKm } = useAppContext();
@@ -37,27 +38,24 @@ export default function MainInput({ reading, setReading, programAlgorithm }) {
 
 const styles = StyleSheet.create({
   inp: {
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     height: "15%",
     alignItems: "center",
     justifyContent: "center",
-
-    shadowColor: "#000",
-
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
     elevation: 5,
   },
   input: {
     width: "50%",
     borderRadius: 25,
     borderWidth: 1,
-    borderColor: "#777",
+    borderColor: colors.blackSofter,
     padding: 8,
     margin: 10,
     textAlign: "center",
