@@ -1,47 +1,37 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import colors from "../../constants/colors";
-import { width } from "../../constants/device";
 
 export default function MainOutput() {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <View style={styles.prevContainer}>
-          <Text>test1</Text>
-        </View>
-        <View style={styles.nextContainer}>
-          <Text>test1</Text>
-        </View>
+        <Pressable style={styles.prevContainer}>
+          <Text style={styles.title}>Prev</Text>
+          <Text style={styles.type}>First Service</Text>
+          <Text style={styles.at}>at 40000 km</Text>
+        </Pressable>
+        <Pressable style={styles.nextContainer}>
+          <Text style={styles.title}>Next</Text>
+          <Text style={styles.type}>First Service</Text>
+          <Text style={styles.at}>at 40000 km</Text>
+        </Pressable>
       </View>
     </View>
-    // <View style={styles.container}>
-    //   <View style={styles.cirleOne}>
-    //     <Text>test1</Text>
-    //   </View>
-    //   <View style={styles.circleTwo}>
-    //     <Text style={{ color: colors.white }}>test1</Text>
-    //   </View>
-    // </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
-    // backgroundColor: "aqua",
-    flex: 8,
+    flex: 4,
     paddingHorizontal: 5,
-    alignItems: "center",
     justifyContent: "center",
   },
   textContainer: {
     flexDirection: "row",
-    height: "40%",
   },
   prevContainer: {
     flex: 1,
-    // backgroundColor: "aqua",
     height: "100%",
     borderRightWidth: 1,
     borderRightColor: colors.black,
@@ -50,31 +40,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   nextContainer: {
-    // backgroundColor: "yellow",
     flex: 1,
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
 
-  cirleOne: {
-    backgroundColor: colors.white,
-    height: width * 0.5,
-    width: width * 0.5,
-    borderRadius: 250,
-    marginRight: -20,
-
-    elevation: 3,
-    alignItems: "center",
-    justifyContent: "center",
+  title: {
+    fontSize: 35,
+    letterSpacing: 1.5,
   },
-  circleTwo: {
-    backgroundColor: colors.primary,
-    height: width * 0.5,
-    width: width * 0.5,
-    borderRadius: 250,
-    elevation: 5,
-    alignItems: "center",
-    justifyContent: "center",
+  type: {
+    fontWeight: "700",
+    fontSize: 18,
+    letterSpacing: 1.9,
+    marginTop: 7,
+    marginBottom: 5,
+    color: colors.primary,
   },
+  at: { letterSpacing: 1.5, color: colors.blackSoft },
 });

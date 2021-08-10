@@ -4,6 +4,7 @@ import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
 import { distanceMax } from "../../constants/apps";
 import colors from "../../constants/colors";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function MainInput({ reading, setReading, programAlgorithm }) {
   const { language, mKm } = useAppContext();
@@ -22,24 +23,33 @@ export default function MainInput({ reading, setReading, programAlgorithm }) {
   };
 
   return (
-    <View style={styles.inp}>
-      <TextInput
-        style={styles.input}
-        placeholder={translations[language].odometer}
-        keyboardType="number-pad"
-        defaultValue={reading && reading.toString()}
-        maxLength={7}
-        onChangeText={(e) => numInputCleaner(e)}
-        onEndEditing={() => reading && programAlgorithm(reading)}
-      />
+    <View style={styles.container}>
+      <View style={styles.inp}>
+        {/* <Icon name="search" style={{ position: "absolute", left: "32%" }} /> */}
+        <TextInput
+          style={styles.input}
+          placeholder={translations[language].odometer}
+          placeholderTextColor={colors.whiteST}
+          keyboardType="number-pad"
+          defaultValue={reading && reading.toString()}
+          maxLength={7}
+          onChangeText={(e) => numInputCleaner(e)}
+          onEndEditing={() => reading && programAlgorithm(reading)}
+          inlineImageLeft={"search"}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1.5,
+    justifyContent: "center",
+  },
   inp: {
+    flexDirection: "row",
     backgroundColor: colors.white,
-    height: "15%",
     alignItems: "center",
     justifyContent: "center",
     shadowColor: colors.black,
@@ -50,8 +60,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    paddingVertical: 10,
   },
   input: {
+    backgroundColor: colors.primary,
+    color: colors.third,
     width: "50%",
     borderRadius: 25,
     borderWidth: 1,

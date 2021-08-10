@@ -1,27 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { AppProvider } from "./config/AppContext";
 import BottomTabs from "./navigation/BottomTabs";
-import Book from "./screens/Book";
-import Home from "./screens/Home";
+import { height } from "./constants/device";
 
 export default function App() {
   return (
     <AppProvider>
-      {/* <StatusBar hidden style="auto" /> */}
-      <StatusBar style="inverted" />
-
-      <BottomTabs />
+      <View style={{ minHeight: height }}>
+        <StatusBar hidden style="inverted" />
+        <BottomTabs />
+      </View>
     </AppProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

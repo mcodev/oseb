@@ -16,6 +16,8 @@ import ChooseBike from "../components/chooseBike/ChooseBike";
 import MainInput from "../components/homePage/MainInput";
 import Mkm from "../components/mKm/Mkm";
 import MainOutput from "../components/homePage/MainOutput";
+import Remaining from "../components/homePage/Remaining";
+import HomeHeader from "../components/homePage/HomeHeader";
 
 export default function Home() {
   const { bike, mKm, language } = useAppContext();
@@ -38,12 +40,14 @@ export default function Home() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
-        <MainOutput />
+        <HomeHeader />
         <MainInput
           reading={reading}
           setReading={setReading}
           programAlgorithm={programAlgorithm}
         />
+        <MainOutput />
+        <Remaining />
         {/* <ChooseBike /> */}
         {/* <Mkm /> */}
       </View>
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingBottom: bottomTabsHeight,
+    paddingBottom: 20,
   },
 });
 
