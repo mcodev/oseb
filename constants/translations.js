@@ -53,6 +53,10 @@ const translations = {
     m: "Miles",
     Km: "Km",
     noEntries: "No entries found ...",
+    at: "At",
+    next: "Next",
+    prev: "Prev",
+    remaining: "Remaining",
   },
 
   el: {},

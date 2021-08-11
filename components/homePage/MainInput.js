@@ -6,7 +6,7 @@ import { distanceMax } from "../../constants/apps";
 import colors from "../../constants/colors";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function MainInput({ reading, setReading, programAlgorithm }) {
+export default function MainInput({ reading, setReading }) {
   const { language, mKm } = useAppContext();
 
   //////////////////////  INPUT VALIDATION ///////////////////////////
@@ -25,7 +25,15 @@ export default function MainInput({ reading, setReading, programAlgorithm }) {
   return (
     <View style={styles.container}>
       <View style={styles.inp}>
-        {/* <Icon name="search" style={{ position: "absolute", left: "32%" }} /> */}
+        <Icon
+          name="search"
+          style={{
+            position: "absolute",
+            left: "32%",
+            color: colors.third,
+            zIndex: 100000,
+          }}
+        />
         <TextInput
           style={styles.input}
           placeholder={translations[language].odometer}
@@ -34,8 +42,7 @@ export default function MainInput({ reading, setReading, programAlgorithm }) {
           defaultValue={reading && reading.toString()}
           maxLength={7}
           onChangeText={(e) => numInputCleaner(e)}
-          onEndEditing={() => reading && programAlgorithm(reading)}
-          inlineImageLeft={"search"}
+          // onEndEditing={() => reading && programAlgorithm(reading)}
         />
       </View>
     </View>
@@ -49,6 +56,7 @@ const styles = StyleSheet.create({
   },
   inp: {
     flexDirection: "row",
+    minHeight: 100,
     backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
@@ -72,5 +80,7 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 10,
     textAlign: "center",
+    letterSpacing: 1,
+    fontWeight: "700",
   },
 });

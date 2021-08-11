@@ -1,13 +1,25 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
+import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
+import translations from "../../constants/translations";
 
-export default function Remaining() {
+export default function Remaining({ remaining }) {
+  const { mKm, language } = useAppContext();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.textTitle}>remaining </Text>
-      <Text style={styles.text}>30000 Km </Text>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>{translations[language].remaining}</Text>
+        <Text style={styles.text}>{`${remaining} ${mKm}`}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -16,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.primaryPressed,
+    backgroundColor: colors.primary,
     paddingVertical: 25,
     marginTop: 20,
   },

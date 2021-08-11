@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
 import { useAppContext } from "../config/AppContext";
-import { closestNum, typeOfService } from "../functions/appFunctions";
-import { bottomTabsHeight } from "../constants/apps";
+import {
+  closestNum,
+  typeOfService,
+  remaining,
+} from "../functions/appFunctions";
 import colors from "../constants/colors";
-import translations from "../constants/translations";
 import bikeDistances from "../data/mainBikeData";
 import ChooseBike from "../components/chooseBike/ChooseBike";
 import MainInput from "../components/homePage/MainInput";
@@ -20,34 +21,44 @@ import Remaining from "../components/homePage/Remaining";
 import HomeHeader from "../components/homePage/HomeHeader";
 
 export default function Home() {
-  const { bike, mKm, language } = useAppContext();
+  const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
 
   //////////////////////  MAIN PROGRAM  ///////////////////////////
-
-  const programAlgorithm = (e) => {
-    // console.log("test", bikeDistances[bike].full);
-    // console.log("closest: ", closestNum(e, bikeDistances[bike][mKm]));
-    console.log(
-      "typeOfService",
-      typeOfService(
-        closestNum(e, bikeDistances[bike][mKm]),
-        bikeDistances[bike].full
-      )
-    );
-  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
         <HomeHeader />
-        <MainInput
-          reading={reading}
-          setReading={setReading}
-          programAlgorithm={programAlgorithm}
+        <MainInput reading={reading} setReading={setReading} />
+        <MainOutput
+          next={typeOfService(
+            closestNum(reading, bikeDistances[bike][mKm]),
+            bikeDistances[bike].full
+          )}
+          prev={typeOfService(
+            closestNum(reading, bikeDistances[bike][mKm]) - 1,
+            bikeDistances[bike].full
+          )}
+          nextAt={
+            bikeDistances[bike][mKm][
+              closestNum(reading, bikeDistances[bike][mKm])
+            ]
+          }
+          prevAt={
+            bikeDistances[bike][mKm][
+              closestNum(reading, bikeDistances[bike][mKm]) - 1
+            ]
+          }
         />
-        <MainOutput />
-        <Remaining />
+        <Remaining
+          remaining={remaining(
+            reading,
+            bikeDistances[bike][mKm][
+              closestNum(reading, bikeDistances[bike][mKm])
+            ]
+          )}
+        />
         {/* <ChooseBike /> */}
         {/* <Mkm /> */}
       </View>

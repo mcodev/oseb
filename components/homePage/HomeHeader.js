@@ -1,11 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 
 export default function HomeHeader() {
   return (
-    <View style={styles.container}>
-      <Text>OSEB</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <Text>OSEB</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

@@ -7,8 +7,6 @@ import translations from "../../constants/translations";
 import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import McoActionSheet from "./McoActionSheet";
-import ServiceDetails from "./ServiceDetails";
-import serviceInfo from "../../data/serviceInfo";
 import ConfirmBox from "../ConfirmBox";
 
 const actionSheetRef = createRef();
@@ -19,7 +17,7 @@ export default function ServiceCard({
   active,
   setActive,
 }) {
-  const { language, bike, mKm } = useAppContext();
+  const { language, mKm } = useAppContext();
   const [onOff, setOnOff] = useState(false);
   const [sideBtn, setSideBtn] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -154,15 +152,7 @@ export default function ServiceCard({
         confirm={() => deleteCard(localData.key)}
         textToShow={translations[language].sure}
       />
-      <McoActionSheet
-        refer={actionSheetRef}
-        body={
-          <ServiceDetails
-            title={active?.type}
-            data={serviceInfo[bike][active?.type]}
-          />
-        }
-      />
+      <McoActionSheet refer={actionSheetRef} active={active?.type} />
     </View>
   );
 }

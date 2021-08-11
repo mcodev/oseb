@@ -1,23 +1,62 @@
-import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import React, { useState, createRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
+import translations from "../../constants/translations";
+import McoActionSheet from "../bookPage/McoActionSheet";
+import { serviceNamesInterpreter } from "../../functions/appFunctions";
 
-export default function MainOutput() {
+const actionSheetRef = createRef();
+
+export default function MainOutput({ next, prev, nextAt, prevAt }) {
+  const { mKm, language } = useAppContext();
+  const [active, setActive] = useState(null);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Pressable style={styles.prevContainer}>
-          <Text style={styles.title}>Prev</Text>
-          <Text style={styles.type}>First Service</Text>
-          <Text style={styles.at}>at 40000 km</Text>
-        </Pressable>
-        <Pressable style={styles.nextContainer}>
-          <Text style={styles.title}>Next</Text>
-          <Text style={styles.type}>First Service</Text>
-          <Text style={styles.at}>at 40000 km</Text>
-        </Pressable>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <View style={styles.textContainer}>
+          <Pressable
+            style={styles.prevContainer}
+            onPress={() => {
+              setActive(prev);
+              actionSheetRef.current?.setModalVisible();
+            }}
+          >
+            <Text style={styles.title}>{translations[language].prev}</Text>
+            <Text style={styles.type}>
+              {translations[language][serviceNamesInterpreter(prev)]}
+            </Text>
+            <Text style={styles.at}>
+              {`${translations[language].at} ${prevAt} ${mKm}`}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={styles.nextContainer}
+            onPress={() => {
+              setActive(next);
+              actionSheetRef.current?.setModalVisible();
+            }}
+          >
+            <Text style={styles.title}>{translations[language].next}</Text>
+            <Text style={styles.type}>
+              {translations[language][serviceNamesInterpreter(next)]}
+            </Text>
+            <Text style={styles.at}>
+              {`${translations[language].at} ${nextAt} ${mKm}`}
+            </Text>
+          </Pressable>
+        </View>
+        <McoActionSheet refer={actionSheetRef} active={active} />
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 

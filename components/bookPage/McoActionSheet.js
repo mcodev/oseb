@@ -1,12 +1,19 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
+import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
+import ServiceDetails from "../bookPage/ServiceDetails";
+import serviceInfo from "../../data/serviceInfo";
 
-export default function McoActionSheet({ refer, body }) {
+export default function McoActionSheet({ refer, active }) {
+  const { bike } = useAppContext();
+
   return (
     <ActionSheet containerStyle={styles.topContainer} ref={refer}>
-      <View style={styles.actionContainer}>{body}</View>
+      <View style={styles.actionContainer}>
+        <ServiceDetails title={active} data={serviceInfo[bike][active]} />
+      </View>
     </ActionSheet>
   );
 }

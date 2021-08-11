@@ -22,4 +22,24 @@ const typeOfService = (index, full) => {
   } else return "oil";
 };
 
-export { closestNum, typeOfService };
+const remaining = (reading, nextIndex) => {
+  return (reading - nextIndex) * -1;
+};
+
+const serviceNamesInterpreter = (name) => {
+  switch (name) {
+    case "oil":
+      return "oilChange";
+    case "first":
+      return "firstService";
+    case "annual":
+      return "annualService";
+    case "full":
+      return "fullService";
+
+    default:
+      break;
+  }
+};
+
+export { closestNum, typeOfService, remaining, serviceNamesInterpreter };

@@ -7,7 +7,6 @@ import {
   Keyboard,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { bottomTabsHeight } from "../constants/apps";
 import { loadAndSetData } from "../functions/functions";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import PageTitle from "../components/PageTitle";
