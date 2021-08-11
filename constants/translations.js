@@ -60,6 +60,8 @@ const translations = {
     remaining: "Remaining",
     chooseUnit: "Choose unit: ",
     close: "Close",
+    chooseBike: "Bike",
+    chooseUnit: "Unit",
   },
 
   el: {},

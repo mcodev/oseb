@@ -45,6 +45,9 @@ export default function ChooseBike() {
               item={item}
               setBikeToSave={setBikeToSave}
               setModalVisible={setModalVisible}
+              length={
+                bikeNames[brandImgs[activeItem].brand.toLowerCase()].length
+              }
             />
           )}
         />
@@ -72,8 +75,8 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    // height: 600,
-    // backgroundColor: "aqua",
+    paddingHorizontal: 40,
+    marginTop: 20,
   },
 });
 

@@ -2,24 +2,40 @@ import React, { useState } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 
-export default function BikeListItem({ item, setBikeToSave, setModalVisible }) {
+export default function BikeListItem({
+  item,
+  setBikeToSave,
+  setModalVisible,
+  length,
+}) {
   return (
     <Pressable
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? colors.secondaryPressed : colors.white,
+          backgroundColor: pressed ? colors.primaryPressed : colors.white,
         },
         styles.itemBike,
       ]}
       children={({ pressed }) => (
-        <Text
+        <View
           style={{
             textAlign: "center",
-            color: pressed ? colors.white : colors.black,
+            borderBottomWidth: 1,
+            borderBottomColor:
+              item?.index !== length - 1 ? colors.blackSofter : colors.white,
+            height: 50,
+            justifyContent: "center",
           }}
         >
-          {Object.values(item.item)}
-        </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              color: pressed ? colors.white : colors.black,
+            }}
+          >
+            {Object.values(item.item)}
+          </Text>
+        </View>
       )}
       onPress={() => {
         setBikeToSave(Object.keys(item.item).toString());
@@ -31,9 +47,6 @@ export default function BikeListItem({ item, setBikeToSave, setModalVisible }) {
 
 const styles = StyleSheet.create({
   itemBike: {
-    // backgroundColor: "yellow",
     textAlign: "center",
-    // marginVertical: 7,
-    paddingVertical: 13,
   },
 });

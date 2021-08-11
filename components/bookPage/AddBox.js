@@ -174,11 +174,6 @@ export default function AddBox({
                   height: 30,
                 }}
               >
-                {/* <Icon
-                  name={"calendar"}
-                  size={15}
-                  style={{ marginRight: 20, color: "grey" }}
-                /> */}
                 <Text style={{ color: "grey" }}>
                   {state.date === null
                     ? translations[language].addDate

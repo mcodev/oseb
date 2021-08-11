@@ -5,11 +5,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useAppContext } from "../config/AppContext";
 import { bottomTabsHeight } from "../constants/apps";
 import translations from "../constants/translations";
-
+import colors from "../constants/colors";
 import Home from "../screens/Home";
 import Info from "../screens/Info";
 import Book from "../screens/Book";
-import colors from "../constants/colors";
 
 const Tab = createBottomTabNavigator();
 const iconSize = 20;
@@ -30,7 +29,7 @@ const Mytabs = () => {
           paddingTop: 10,
           paddingBottom: 10,
           elevation: 0,
-          shadowColor: "#fff",
+          shadowColor: colors.white,
           shadowOpacity: 0,
           shadowRadius: 0,
         },

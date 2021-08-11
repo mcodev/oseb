@@ -11,8 +11,6 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import { bikeDictionary } from "../../data/bikeNames";
-import ConfirmBox from "../global/ConfirmBox";
-import Mkm from "../mKm/Mkm";
 
 export default function HomeHeader() {
   const { bike, language } = useAppContext();

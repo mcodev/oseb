@@ -13,56 +13,54 @@ import {
 } from "../functions/appFunctions";
 import colors from "../constants/colors";
 import bikeDistances from "../data/mainBikeData";
-import ChooseBike from "../components/chooseBike/ChooseBike";
 import MainInput from "../components/homePage/MainInput";
-import Mkm from "../components/mKm/Mkm";
 import MainOutput from "../components/homePage/MainOutput";
 import Remaining from "../components/homePage/Remaining";
 import HomeHeader from "../components/homePage/HomeHeader";
+import Settings from "./Settings";
 
 export default function Home() {
   const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.homeContainer}>
-        <HomeHeader />
-        <MainInput reading={reading} setReading={setReading} />
-        <MainOutput
-          next={typeOfService(
-            closestNum(reading, bikeDistances[bike][mKm]),
-            bikeDistances[bike].full
-          )}
-          prev={typeOfService(
-            closestNum(reading, bikeDistances[bike][mKm]) - 1,
-            bikeDistances[bike].full
-          )}
-          nextAt={
-            bikeDistances[bike][mKm][
-              closestNum(reading, bikeDistances[bike][mKm])
-            ]
-          }
-          prevAt={
-            bikeDistances[bike][mKm][
-              closestNum(reading, bikeDistances[bike][mKm]) - 1
-            ]
-          }
-          reading={reading}
-        />
-        <Remaining
-          remaining={remaining(
-            reading,
-            bikeDistances[bike][mKm][
-              closestNum(reading, bikeDistances[bike][mKm])
-            ]
-          )}
-          reading={reading}
-        />
-        {/* <ChooseBike /> */}
-        {/* <Mkm /> */}
-      </View>
-    </TouchableWithoutFeedback>
+    <Settings />
+    // <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    //   <View style={styles.homeContainer}>
+    //     <HomeHeader />
+    //     <MainInput reading={reading} setReading={setReading} />
+    //     <MainOutput
+    //       next={typeOfService(
+    //         closestNum(reading, bikeDistances[bike][mKm]),
+    //         bikeDistances[bike].full
+    //       )}
+    //       prev={typeOfService(
+    //         closestNum(reading, bikeDistances[bike][mKm]) - 1,
+    //         bikeDistances[bike].full
+    //       )}
+    //       nextAt={
+    //         bikeDistances[bike][mKm][
+    //           closestNum(reading, bikeDistances[bike][mKm])
+    //         ]
+    //       }
+    //       prevAt={
+    //         bikeDistances[bike][mKm][
+    //           closestNum(reading, bikeDistances[bike][mKm]) - 1
+    //         ]
+    //       }
+    //       reading={reading}
+    //     />
+    //     <Remaining
+    //       remaining={remaining(
+    //         reading,
+    //         bikeDistances[bike][mKm][
+    //           closestNum(reading, bikeDistances[bike][mKm])
+    //         ]
+    //       )}
+    //       reading={reading}
+    //     />
+    //   </View>
+    // </TouchableWithoutFeedback>
   );
 }
 
