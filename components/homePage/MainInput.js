@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
 import { distanceMax } from "../../constants/apps";
 import colors from "../../constants/colors";
-import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function MainInput({ reading, setReading }) {
   const { language, mKm } = useAppContext();
+  const [state, setState] = useState(null);
 
   //////////////////////  INPUT VALIDATION ///////////////////////////
   const numInputCleaner = (e) => {
     e = e.replace(/\s/g, "");
     e = e.replace(/,/g, "");
     parseInt(e) > 0 && parseInt(e) < distanceMax(mKm)
-      ? setReading(parseInt(e))
+      ? setState(parseInt(e))
       : parseInt(e) < 0
-      ? setReading(parseInt(e) * -1)
+      ? setState(parseInt(e) * -1)
       : parseInt(e) > distanceMax(mKm)
-      ? setReading(distanceMax(mKm))
-      : setReading(null);
+      ? setState(distanceMax(mKm))
+      : (setState(null), setReading(null));
   };
 
   return (
@@ -42,7 +43,7 @@ export default function MainInput({ reading, setReading }) {
           defaultValue={reading && reading.toString()}
           maxLength={7}
           onChangeText={(e) => numInputCleaner(e)}
-          // onEndEditing={() => reading && programAlgorithm(reading)}
+          onEndEditing={() => state && setReading(state)}
         />
       </View>
     </View>

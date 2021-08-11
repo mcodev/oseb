@@ -22,6 +22,7 @@ export default function Mkm() {
 
   return (
     <Switch
+      containerStyle={{ backgroundColor: "yellow" }}
       value={swi}
       onValueChange={(val) => switcher(val)}
       disabled={false}

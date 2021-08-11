@@ -1,10 +1,9 @@
 //// TODO useEffect cleanup & css transition effects
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/global/PageTitle";
 import InfoBtns from "../components/infoPage/InfoBtns";
 import color from "../constants/colors";
-import { bottomTabsHeight } from "../constants/apps";
 import InfoDetails from "../components/infoPage/InfoDetails";
 import colors from "../constants/colors";
 

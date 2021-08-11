@@ -56,7 +56,10 @@ const translations = {
     at: "At",
     next: "Next",
     prev: "Prev",
+    untilNext: "Until next service",
     remaining: "Remaining",
+    chooseUnit: "Choose unit: ",
+    close: "Close",
   },
 
   el: {},

@@ -10,12 +10,12 @@ import {
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
-import McoActionSheet from "../bookPage/McoActionSheet";
+import McoActionSheet from "../global/McoActionSheet";
 import { serviceNamesInterpreter } from "../../functions/appFunctions";
 
 const actionSheetRef = createRef();
 
-export default function MainOutput({ next, prev, nextAt, prevAt }) {
+export default function MainOutput({ next, prev, nextAt, prevAt, reading }) {
   const { mKm, language } = useAppContext();
   const [active, setActive] = useState(null);
 
@@ -27,31 +27,49 @@ export default function MainOutput({ next, prev, nextAt, prevAt }) {
             style={styles.prevContainer}
             onPress={() => {
               setActive(prev);
-              actionSheetRef.current?.setModalVisible();
+              prevAt !== 0 && actionSheetRef.current?.setModalVisible();
             }}
           >
             <Text style={styles.title}>{translations[language].prev}</Text>
-            <Text style={styles.type}>
-              {translations[language][serviceNamesInterpreter(prev)]}
-            </Text>
-            <Text style={styles.at}>
-              {`${translations[language].at} ${prevAt} ${mKm}`}
-            </Text>
+
+            {reading && prevAt !== 0 ? (
+              <>
+                <Text style={styles.type}>
+                  {translations[language][serviceNamesInterpreter(prev)]}
+                </Text>
+                <Text style={styles.at}>
+                  {`${translations[language].at} ${prevAt} ${mKm}`}
+                </Text>
+              </>
+            ) : (
+              <Text style={styles.altTxt}>
+                {translations[language].service}
+              </Text>
+            )}
           </Pressable>
           <Pressable
             style={styles.nextContainer}
             onPress={() => {
               setActive(next);
-              actionSheetRef.current?.setModalVisible();
+              reading && actionSheetRef.current?.setModalVisible();
             }}
           >
             <Text style={styles.title}>{translations[language].next}</Text>
-            <Text style={styles.type}>
-              {translations[language][serviceNamesInterpreter(next)]}
-            </Text>
-            <Text style={styles.at}>
-              {`${translations[language].at} ${nextAt} ${mKm}`}
-            </Text>
+
+            {reading ? (
+              <>
+                <Text style={styles.type}>
+                  {translations[language][serviceNamesInterpreter(next)]}
+                </Text>
+                <Text style={styles.at}>
+                  {`${translations[language].at} ${nextAt} ${mKm}`}
+                </Text>
+              </>
+            ) : (
+              <Text style={styles.altTxt}>
+                {translations[language].service}
+              </Text>
+            )}
           </Pressable>
         </View>
         <McoActionSheet refer={actionSheetRef} active={active} />
@@ -98,4 +116,7 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   at: { letterSpacing: 1.5, color: colors.blackSoft },
+  altTxt: {
+    fontSize: 19,
+  },
 });

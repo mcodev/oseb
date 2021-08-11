@@ -24,8 +24,6 @@ export default function Home() {
   const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
 
-  //////////////////////  MAIN PROGRAM  ///////////////////////////
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
@@ -50,6 +48,7 @@ export default function Home() {
               closestNum(reading, bikeDistances[bike][mKm]) - 1
             ]
           }
+          reading={reading}
         />
         <Remaining
           remaining={remaining(
@@ -58,6 +57,7 @@ export default function Home() {
               closestNum(reading, bikeDistances[bike][mKm])
             ]
           )}
+          reading={reading}
         />
         {/* <ChooseBike /> */}
         {/* <Mkm /> */}

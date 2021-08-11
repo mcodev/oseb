@@ -7,7 +7,7 @@ import translations from "../../constants/translations";
 import Carousel from "react-native-snap-carousel";
 import CarouselCard from "./CarouselCard";
 import BikeListItem from "./BikeListItem";
-import ConfirmBox from "../ConfirmBox";
+import ConfirmBox from "../global/ConfirmBox";
 import { saveData } from "../../functions/functions";
 import { width } from "../../constants/device";
 

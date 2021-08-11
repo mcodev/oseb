@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { useAppContext } from "../config/AppContext";
-import translations from "../constants/translations";
+import { useAppContext } from "../../config/AppContext";
+import translations from "../../constants/translations";
 
 export default function PageTitle({ pageName, pageSub }) {
   const { language } = useAppContext();
@@ -16,7 +16,7 @@ export default function PageTitle({ pageName, pageSub }) {
       >
         <Text style={{ fontWeight: "700" }}>
           {translations[language][pageName]}
-        </Text>{" "}
+        </Text>
         {translations[language][pageSub]}
       </Text>
     </View>

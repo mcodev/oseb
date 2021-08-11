@@ -6,8 +6,8 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
-import McoActionSheet from "./McoActionSheet";
-import ConfirmBox from "../ConfirmBox";
+import McoActionSheet from "../global/McoActionSheet";
+import ConfirmBox from "../global/ConfirmBox";
 
 const actionSheetRef = createRef();
 
@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderLeftWidth: 5,
     zIndex: 100000,
-    borderRadius: 6,
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6,
   },
   cardLeft: {
     flex: 0.5,
