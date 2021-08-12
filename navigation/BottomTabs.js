@@ -13,18 +13,18 @@ import Book from "../screens/Book";
 const Tab = createBottomTabNavigator();
 const iconSize = 20;
 
-const Mytabs = () => {
+export const BottomTabs = ({ navigation }) => {
   const { language } = useAppContext();
 
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      lazy
-      tabBarOptions={{
-        activeTintColor: colors.primary,
-        inactiveTintColor: colors.blackSofter,
-        elevation: 0,
-        style: {
+    <React.Fragment>
+      <Tab.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          lazy: true,
+          activeTintColor: colors.primary,
+          inactiveTintColor: colors.blackSofter,
+
           height: bottomTabsHeight,
           paddingTop: 10,
           paddingBottom: 10,
@@ -32,47 +32,42 @@ const Mytabs = () => {
           shadowColor: colors.white,
           shadowOpacity: 0,
           shadowRadius: 0,
-        },
-      }}
-    >
-      <Tab.Screen
-        name="Book"
-        component={Book}
-        options={{
-          tabBarLabel: `${translations[language].service_book}`,
-          tabBarIcon: ({ color }) => (
-            <Icon name="book-open" color={color} size={iconSize} />
-          ),
         }}
-      />
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarLabel: `${translations[language].home}`,
-          tabBarIcon: ({ color }) => (
-            <Icon name="search" color={color} size={22} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Info"
-        component={Info}
-        options={{
-          tabBarLabel: `${translations[language].bike_info}`,
-          tabBarIcon: ({ color }) => (
-            <Icon name="info" color={color} size={iconSize} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      >
+        <Tab.Screen
+          name="Book"
+          component={Book}
+          options={{
+            headerShown: false,
+            tabBarLabel: `${translations[language].service_book}`,
+            tabBarIcon: ({ color }) => (
+              <Icon name="book-open" color={color} size={iconSize} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarLabel: `${translations[language].home}`,
+            headerShown: false,
+            tabBarIcon: ({ color }) => (
+              <Icon name="search" color={color} size={22} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Info"
+          component={Info}
+          options={{
+            headerShown: false,
+            tabBarLabel: `${translations[language].bike_info}`,
+            tabBarIcon: ({ color }) => (
+              <Icon name="info" color={color} size={iconSize} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </React.Fragment>
   );
 };
-
-export default function BottomTabs() {
-  return (
-    <NavigationContainer>
-      <Mytabs />
-    </NavigationContainer>
-  );
-}

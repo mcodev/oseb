@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
   },
   typesContainerSub: {
     flexDirection: "row",

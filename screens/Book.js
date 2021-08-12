@@ -9,7 +9,6 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { loadAndSetData } from "../functions/functions";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import PageTitle from "../components/global/PageTitle";
 import colors from "../constants/colors";
 import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
@@ -70,7 +69,6 @@ export default function Book() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.bookContainer}>
-        <PageTitle pageName={"service"} pageSub={"book"} />
         {loading ? (
           <View
             style={{ alignSelf: "center", justifyContent: "center", flex: 5 }}

@@ -23,7 +23,7 @@ export default function Header({ navigation }) {
         </View>
         <Pressable
           style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
-          onPress={() => navigation.navigate("Settings")}
+          // onPress={() => navigation.}
           hitSlop={20}
         >
           <Icon name="cog" size={22} color={colors.blackSofter} />

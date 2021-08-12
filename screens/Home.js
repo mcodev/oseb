@@ -16,14 +16,12 @@ import bikeDistances from "../data/mainBikeData";
 import MainInput from "../components/homePage/MainInput";
 import MainOutput from "../components/homePage/MainOutput";
 import Remaining from "../components/homePage/Remaining";
-import Settings from "../screens/Settings";
 
-export default function Home() {
+export default function Home({ navigation }) {
   const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
 
   return (
-    // <Settings />
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
         <MainInput reading={reading} setReading={setReading} />
