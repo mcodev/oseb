@@ -7,7 +7,7 @@ export default function PageTitle({ pageName, pageSub }) {
   const { language } = useAppContext();
 
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
+    <View style={{ flex: 0.05, justifyContent: "center" }}>
       <Text
         style={{
           fontSize: 35,

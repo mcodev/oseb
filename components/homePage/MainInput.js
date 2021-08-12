@@ -30,10 +30,11 @@ export default function MainInput({ reading, setReading }) {
           name="search"
           style={{
             position: "absolute",
-            left: "32%",
-            color: colors.third,
+            left: "18%",
+            color: colors.whiteST,
             zIndex: 100000,
           }}
+          size={20}
         />
         <TextInput
           style={styles.input}
@@ -44,6 +45,7 @@ export default function MainInput({ reading, setReading }) {
           maxLength={7}
           onChangeText={(e) => numInputCleaner(e)}
           onEndEditing={() => state && setReading(state)}
+          clearTextOnFocus={true}
         />
       </View>
     </View>
@@ -68,20 +70,21 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 8,
     paddingVertical: 10,
   },
   input: {
     backgroundColor: colors.primary,
     color: colors.third,
-    width: "50%",
-    borderRadius: 25,
+    width: "80%",
+    height: "80%",
+    borderRadius: 55,
     borderWidth: 1,
     borderColor: colors.blackSofter,
     padding: 8,
     margin: 10,
     textAlign: "center",
-    letterSpacing: 1,
-    fontWeight: "700",
+    letterSpacing: 1.5,
+    fontSize: 22,
   },
 });

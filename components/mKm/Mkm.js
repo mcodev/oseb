@@ -22,19 +22,30 @@ export default function Mkm() {
 
   return (
     <Switch
-      containerStyle={{ backgroundColor: "yellow" }}
       value={swi}
       onValueChange={(val) => switcher(val)}
       disabled={false}
       activeText={translations[language].m}
       inActiveText={translations[language].Km}
-      circleSize={22}
-      barHeight={21}
+      inactiveTextStyle={{
+        marginLeft: 10,
+        color: colors.white,
+        fontWeight: "700",
+        fontSize: 20,
+      }}
+      activeTextStyle={{
+        marginRight: 7,
+        color: colors.primaryPressed,
+        fontWeight: "700",
+        fontSize: 18,
+      }}
+      circleSize={42}
+      barHeight={43}
       circleBorderWidth={1}
-      backgroundActive={"rgba(48, 165, 102, .5)"}
-      backgroundInactive={"rgba(102, 51, 153, .5)"}
-      circleActiveColor={"rgba(48, 165, 102, .9)"}
-      circleInActiveColor={"rgba(102, 51, 153, 1)"}
+      backgroundActive={colors.thirdPressed}
+      backgroundInactive={colors.primaryPressed}
+      circleActiveColor={colors.third}
+      circleInActiveColor={colors.primary}
       changeValueImmediately={true}
       // renderInsideCircle={() => <CustomComponent />} // custom component to render inside the Switch circle (Text, Image, etc.)
       changeValueImmediately={true} // if rendering inside circle, change state immediately or wait for animation to complete
@@ -43,7 +54,7 @@ export default function Mkm() {
       renderActiveText={true}
       renderInActiveText={true}
       switchLeftPx={2} // denominator for logic when sliding to TRUE position. Higher number = more space from RIGHT of the circle to END of the slider
-      switchRightPx={2} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
+      switchRightPx={1.8} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
       switchWidthMultiplier={3} // multipled by the `circleSize` prop to calculate total width of the Switch
       switchBorderRadius={0} // Sets the border Radius of the switch slider. If unset, it remains the circleSize.
     />

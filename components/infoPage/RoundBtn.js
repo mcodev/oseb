@@ -38,7 +38,7 @@ export default function RoundBtn({ name, icon, active, setActive }) {
           name={icon}
           style={[
             styles.buttonIcon,
-            { color: name !== active?.name ? colors.primary : colors.white },
+            { color: name !== active?.name ? colors.primary : colors.third },
           ]}
         />
       </Pressable>

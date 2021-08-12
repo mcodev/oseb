@@ -12,9 +12,7 @@ const blackSoft = "rgba(0,0,0,.7)";
 const blackSofter = "rgba(0,0,0,.4)";
 const blackBack = "rgba(0,0,0,.1)";
 const backIcon = "rgba(188,195,199,.3)";
-// const cardBack = "rgba(188,195,199,.15)";
 const cardBack = "rgba(51,51,153,.5)";
-
 const red = "rgba(237,67,55,1)";
 const redPressed = "rgba(237,67,55,.5)";
 const shaddow = "#333";

@@ -12,22 +12,21 @@ import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import { bikeDictionary } from "../../data/bikeNames";
 
-export default function HomeHeader() {
-  const { bike, language } = useAppContext();
-  const [modalVisible, setModalVisible] = useState(false);
+export default function Header({ navigation }) {
+  const { bike } = useAppContext();
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-        <View style={{ flex: 1.5 }}></View>
-        <Pressable style={{ flex: 5 }}>
+        <View style={styles.titleTxt}>
           <Text style={styles.bikeName}>{bikeDictionary[bike]}</Text>
-        </Pressable>
+        </View>
         <Pressable
           style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
-          onPress={() => setModalVisible(true)}
+          onPress={() => navigation.navigate("Settings")}
+          hitSlop={20}
         >
-          <Icon name="cog" size={22} color={colors.blackSoft} />
+          <Icon name="cog" size={22} color={colors.blackSofter} />
         </Pressable>
       </View>
     </TouchableWithoutFeedback>
@@ -36,15 +35,26 @@ export default function HomeHeader() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 60,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
+    marginVertical: 10,
   },
   bikeName: {
-    fontSize: 22,
-    letterSpacing: 0.7,
-    color: colors.primary,
+    fontSize: 20,
+    letterSpacing: 0.5,
+    color: colors.blackSofter,
     fontWeight: "700",
+    textAlign: "center",
+  },
+  titleTxt: {
+    flex: 5,
+    height: "80%",
+    justifyContent: "center",
+    backgroundColor: colors.third,
+    paddingHorizontal: 10,
+    borderTopRightRadius: 25,
+    borderBottomRightRadius: 25,
   },
 });

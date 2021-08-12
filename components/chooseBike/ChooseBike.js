@@ -21,7 +21,6 @@ export default function ChooseBike() {
     <View style={styles.container}>
       <View styles={styles.carouselContainer}>
         <Carousel
-          // layout={"stack"}
           data={brandImgs}
           renderItem={(item, i) => (
             <CarouselCard

@@ -46,7 +46,7 @@ export default function TopBtns({ active, setActive }) {
               { color: active === "unit" ? colors.third : colors.primary },
             ]}
           >
-            {translations[language].chooseUnit}
+            {translations[language].unit}
           </Text>
         )}
       />
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   btn: {
     flex: 1,
     width: "50%",
-    borderBottomWidth: 3,
+    borderBottomWidth: 4,
     justifyContent: "center",
     alignItems: "center",
   },

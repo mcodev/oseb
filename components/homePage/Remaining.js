@@ -32,17 +32,17 @@ export default function Remaining({ remaining, reading }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.primary,
     paddingVertical: 25,
     marginTop: 20,
+    backgroundColor: colors.primary,
   },
   textTitle: {
-    fontSize: 23,
-    color: colors.white,
+    fontSize: 20,
     letterSpacing: 1,
+    color: colors.white,
   },
   text: {
     fontSize: 21,
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     color: colors.whiteST,
-    fontSize: 17,
+    fontSize: 14,
   },
 });

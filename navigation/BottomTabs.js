@@ -51,7 +51,7 @@ const Mytabs = () => {
         options={{
           tabBarLabel: `${translations[language].home}`,
           tabBarIcon: ({ color }) => (
-            <Icon name="chevron-circle-up" color={color} size={22} />
+            <Icon name="search" color={color} size={22} />
           ),
         }}
       />

@@ -80,7 +80,7 @@ export default function MainOutput({ next, prev, nextAt, prevAt, reading }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 4,
+    flex: 3,
     paddingHorizontal: 5,
     justifyContent: "center",
   },
