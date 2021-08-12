@@ -23,10 +23,10 @@ export default function Header({ navigation }) {
         </View>
         <Pressable
           style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
-          // onPress={() => navigation.}
+          onPress={() => navigation.navigate("Settings")}
           hitSlop={20}
         >
-          <Icon name="cog" size={22} color={colors.blackSofter} />
+          <Icon name="cog" size={28} color={colors.blackSofter} />
         </Pressable>
       </View>
     </TouchableWithoutFeedback>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    marginVertical: 10,
+    // marginTop: 50,
   },
   bikeName: {
     fontSize: 20,

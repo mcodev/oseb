@@ -13,7 +13,7 @@ import Book from "../screens/Book";
 const Tab = createBottomTabNavigator();
 const iconSize = 20;
 
-export const BottomTabs = ({ navigation }) => {
+export const BottomTabs = () => {
   const { language } = useAppContext();
 
   return (
@@ -34,39 +34,41 @@ export const BottomTabs = ({ navigation }) => {
           shadowRadius: 0,
         }}
       >
-        <Tab.Screen
-          name="Book"
-          component={Book}
-          options={{
-            headerShown: false,
-            tabBarLabel: `${translations[language].service_book}`,
-            tabBarIcon: ({ color }) => (
-              <Icon name="book-open" color={color} size={iconSize} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: `${translations[language].home}`,
-            headerShown: false,
-            tabBarIcon: ({ color }) => (
-              <Icon name="search" color={color} size={22} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Info"
-          component={Info}
-          options={{
-            headerShown: false,
-            tabBarLabel: `${translations[language].bike_info}`,
-            tabBarIcon: ({ color }) => (
-              <Icon name="info" color={color} size={iconSize} />
-            ),
-          }}
-        />
+        <>
+          <Tab.Screen
+            name="Book"
+            component={Book}
+            options={{
+              headerShown: false,
+              tabBarLabel: `${translations[language].service_book}`,
+              tabBarIcon: ({ color }) => (
+                <Icon name="book-open" color={color} size={iconSize} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarLabel: `${translations[language].home}`,
+              headerShown: false,
+              tabBarIcon: ({ color }) => (
+                <Icon name="search" color={color} size={22} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Info"
+            component={Info}
+            options={{
+              headerShown: false,
+              tabBarLabel: `${translations[language].bike_info}`,
+              tabBarIcon: ({ color }) => (
+                <Icon name="info" color={color} size={iconSize} />
+              ),
+            }}
+          />
+        </>
       </Tab.Navigator>
     </React.Fragment>
   );

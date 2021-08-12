@@ -12,9 +12,7 @@ export const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-      // initialRouteName="Home" //Home
-      // headerMode="screen"
-      // component={Home}
+        initialRouteName="initial" //Home
       >
         <Stack.Screen
           name="Initial"
