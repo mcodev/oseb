@@ -14,6 +14,7 @@ import { bikeDictionary } from "../../data/bikeNames";
 
 export default function Header({ navigation }) {
   const { bike } = useAppContext();
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -25,7 +26,7 @@ export default function Header({ navigation }) {
           onPress={() => navigation.navigate("Settings")}
           hitSlop={20}
         >
-          <Icon name="cog" size={28} color={colors.blackSofter} />
+          <Icon name="cog" size={28} color={colors.blackSoft} />
         </Pressable>
       </View>
     </TouchableWithoutFeedback>

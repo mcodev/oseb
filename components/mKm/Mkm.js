@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
 import { Switch } from "react-native-switch";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
@@ -28,19 +27,17 @@ export default function Mkm() {
       activeText={translations[language].m}
       inActiveText={translations[language].Km}
       inactiveTextStyle={{
-        marginLeft: 10,
         color: colors.white,
         fontWeight: "700",
         fontSize: 20,
       }}
       activeTextStyle={{
-        marginRight: 7,
         color: colors.primaryPressed,
         fontWeight: "700",
         fontSize: 18,
       }}
-      circleSize={42}
-      barHeight={43}
+      circleSize={32}
+      barHeight={33}
       circleBorderWidth={1}
       backgroundActive={colors.thirdPressed}
       backgroundInactive={colors.primaryPressed}
@@ -53,8 +50,8 @@ export default function Mkm() {
       outerCircleStyle={{}} // style for outer animated circle
       renderActiveText={true}
       renderInActiveText={true}
-      switchLeftPx={2} // denominator for logic when sliding to TRUE position. Higher number = more space from RIGHT of the circle to END of the slider
-      switchRightPx={1.8} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
+      switchLeftPx={6} // denominator for logic when sliding to TRUE position. Higher number = more space from RIGHT of the circle to END of the slider
+      switchRightPx={2.5} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
       switchWidthMultiplier={3} // multipled by the `circleSize` prop to calculate total width of the Switch
       switchBorderRadius={0} // Sets the border Radius of the switch slider. If unset, it remains the circleSize.
     />
@@ -63,3 +60,30 @@ export default function Mkm() {
 
 /// ISSUE ///
 // https://github.com/shahen94/react-native-switch/issues/93
+// node modules ->  react-native-switch  -> lib -> index.js ->
+
+// animateSwitch = (value, cb = () => {}) => {
+//   Animated.parallel([
+//     Animated.spring(this.state.transformSwitch, {
+//       toValue: value
+//         ? this.props.circleSize / this.props.switchLeftPx
+//         : -this.props.circleSize / this.props.switchRightPx,
+//       useNativeDriver: false,
+//     }),
+//     Animated.timing(this.state.backgroundColor, {
+//       toValue: value ? 75 : -75,
+//       duration: 200,
+//       useNativeDriver: false,
+//     }),
+//     Animated.timing(this.state.circleColor, {
+//       toValue: value ? 75 : -75,
+//       duration: 200,
+//       useNativeDriver: false,
+//     }),
+//     Animated.timing(this.state.circleBorderColor, {
+//       toValue: value ? 75 : -75,
+//       duration: 200,
+//       useNativeDriver: false,
+//     }),
+//   ]).start(cb);
+// };

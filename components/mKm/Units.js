@@ -7,7 +7,7 @@ import translations from "../../constants/translations";
 import MKm from "./Mkm";
 
 export default function Units() {
-  const { bike, mKm, language } = useAppContext();
+  const { language } = useAppContext();
 
   return (
     <View style={styles.container}>

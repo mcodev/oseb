@@ -12,6 +12,7 @@ export default function RoundBtn({ name, icon, active, setActive }) {
     <View style={styles.btnContainer}>
       <Pressable
         activeOpacity={0.5}
+        hitSlop={20}
         style={[
           styles.addButton,
           {

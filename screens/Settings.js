@@ -10,7 +10,7 @@ import BackBtn from "../components/global/BackBtn";
 
 export default function Settings({ navigation }) {
   const [active, setActive] = useState("bike");
-  const { language, bike } = useAppContext();
+  const { language } = useAppContext();
 
   return (
     <View style={styles.container}>
