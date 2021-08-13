@@ -30,7 +30,7 @@ export default function MainInput({ reading, setReading }) {
           name="search"
           style={{
             position: "absolute",
-            left: "18%",
+            left: "17%",
             color: colors.whiteST,
             zIndex: 100000,
           }}
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     color: colors.third,
     width: "80%",
-    height: "80%",
+    height: "70%",
     borderRadius: 55,
     padding: 8,
     margin: 10,
     textAlign: "center",
     letterSpacing: 1.5,
-    fontSize: 22,
+    fontSize: 16,
   },
 });
