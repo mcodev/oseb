@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    // marginTop: 50,
     backgroundColor: colors.white,
   },
   bikeName: {

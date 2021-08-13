@@ -7,7 +7,6 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
@@ -39,7 +38,7 @@ export default function AddBox({
       ? setState({ ...state, distance: parseInt(e) })
       : parseInt(e) < 0
       ? setState({ ...state, distance: parseInt(e) * -1 })
-      : setState({ ...state, distance: distanceMax(mKm) });
+      : setState({ ...state, distance: null });
   };
 
   const onChange = (event, selectedDate) => {
@@ -114,11 +113,11 @@ export default function AddBox({
                 placeholder={{
                   label: `${translations[language].serviceType}`,
                   value: null,
-                  color: "grey",
+                  color: colors.blackSofter,
                 }}
                 style={{
                   inputAndroid: {
-                    color: "black",
+                    color: colors.primary,
                     height: 40,
                     width: "100%",
                     backfaceVisibility: "hidden",
@@ -174,7 +173,14 @@ export default function AddBox({
                   height: 30,
                 }}
               >
-                <Text style={{ color: "grey" }}>
+                <Text
+                  style={{
+                    color:
+                      state?.date === null
+                        ? colors.blackSofter
+                        : colors.primary,
+                  }}
+                >
                   {state.date === null
                     ? translations[language].addDate
                     : `${state.date}`}
@@ -313,6 +319,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 0,
     padding: 0,
+    color: colors.primary,
   },
   guideTxt: {
     textAlign: "center",

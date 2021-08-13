@@ -2,7 +2,6 @@ import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
-import { bottomTabsHeight } from "../../constants/apps";
 
 export default function AddBtn({ handle }) {
   return (
@@ -35,8 +34,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: 43,
     position: "absolute",
-    bottom: 15,
-    right: 20,
+    bottom: 20,
+    right: 25,
     elevation: 8,
   },
 });

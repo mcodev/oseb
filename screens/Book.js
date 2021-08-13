@@ -82,7 +82,7 @@ export default function Book() {
         ) : data?.length !== 0 ? (
           <CardsDisplay data={data} setData={setData} />
         ) : (
-          <NoEntriesScreen />
+          <NoEntriesScreen callback={addBtnHandler} />
         )}
         <AddBtn
           modalVisible={modalVisible}

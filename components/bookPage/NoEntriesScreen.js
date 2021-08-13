@@ -1,18 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 
-export default function NoEntriesScreen() {
+export default function NoEntriesScreen({ callback }) {
   const { language } = useAppContext();
 
   return (
-    <View style={styles.container}>
+    <Pressable onPress={callback} style={styles.container}>
       <Icon name="database" size={100} style={styles.icon} />
       <Text style={styles.txt}>{translations[language].noEntries}</Text>
-    </View>
+    </Pressable>
   );
 }
 

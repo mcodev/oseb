@@ -25,9 +25,8 @@ export const BottomTabs = () => {
       sceneAnimationEnabled={true}
       screenOptions={{
         lazy: true,
-        activeTintColor: colors.primary,
-        inactiveTintColor: colors.blackSofter,
-
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.blackSofter,
         tabBarStyle: {
           height: bottomTabsHeight,
           paddingTop: 10,

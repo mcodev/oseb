@@ -38,7 +38,7 @@ export default function MainInput({ reading, setReading }) {
         />
         <TextInput
           style={styles.input}
-          placeholder={translations[language].odometer}
+          placeholder={`${translations[language].addDistance} ${translations[language][mKm]} `}
           placeholderTextColor={colors.whiteST}
           keyboardType="number-pad"
           defaultValue={reading && reading.toString()}
@@ -79,8 +79,6 @@ const styles = StyleSheet.create({
     width: "80%",
     height: "80%",
     borderRadius: 55,
-    borderWidth: 1,
-    borderColor: colors.blackSofter,
     padding: 8,
     margin: 10,
     textAlign: "center",
