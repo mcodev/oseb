@@ -14,6 +14,7 @@ import RNPickerSelect from "react-native-picker-select";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { distanceMax } from "../../constants/apps";
 import { dateFormater } from "../../functions/functions";
+import { width, height } from "../../constants/device";
 
 export default function AddBox({
   cancelBtn,
@@ -267,7 +268,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalView: {
-    flex: 0.55,
     backgroundColor: colors.white,
     borderRadius: 5,
     padding: 20,
@@ -283,9 +283,9 @@ const styles = StyleSheet.create({
     width: "60%",
   },
   modalInputs: {
-    flex: 5,
     width: "100%",
     marginTop: 10,
+    marginBottom: height * 0.05,
   },
   modalActions: {
     flex: 1,
