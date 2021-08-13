@@ -6,8 +6,9 @@ import Home from "../screens/Home";
 import Settings from "../screens/Settings";
 import Book from "../screens/Book";
 import Info from "../screens/Info";
+import Header from "../components/global/Header";
 
-export const StackNavigator = () => {
+export const StackNavigator = ({ navigation }) => {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
@@ -22,16 +23,6 @@ export const StackNavigator = () => {
         <Stack.Screen
           name="Settings"
           component={Settings}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Book"
-          component={Book}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Info"
-          component={Info}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

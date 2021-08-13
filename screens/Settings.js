@@ -8,7 +8,7 @@ import ChooseBike from "../components/chooseBike/ChooseBike";
 import Units from "../components/mKm/Units";
 import BackBtn from "../components/global/BackBtn";
 
-export default function Settings() {
+export default function Settings({ navigation }) {
   const [active, setActive] = useState("bike");
   const { language, bike } = useAppContext();
 
@@ -16,7 +16,7 @@ export default function Settings() {
     <View style={styles.container}>
       <View style={styles.topHead}>
         <View style={{ flex: 1 }}>
-          <BackBtn />
+          <BackBtn callback={() => navigation.goBack()} />
         </View>
         <Text style={{ fontSize: 28, letterSpacing: 1 }}>
           {translations[language].settings}

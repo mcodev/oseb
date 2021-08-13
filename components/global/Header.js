@@ -14,7 +14,6 @@ import { bikeDictionary } from "../../data/bikeNames";
 
 export default function Header({ navigation }) {
   const { bike } = useAppContext();
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     // marginTop: 50,
+    backgroundColor: colors.white,
   },
   bikeName: {
     fontSize: 20,

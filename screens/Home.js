@@ -17,10 +17,9 @@ import MainInput from "../components/homePage/MainInput";
 import MainOutput from "../components/homePage/MainOutput";
 import Remaining from "../components/homePage/Remaining";
 
-export default function Home({ navigation }) {
+export default function Home() {
   const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>
