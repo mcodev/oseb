@@ -16,7 +16,7 @@ export default function Units() {
         <MKm />
       </View>
       <View style={styles.contBottom}>
-        <Icon name={"ruler-horizontal"} color={colors.hr} size={230} />
+        <Icon name={"ruler-horizontal"} color={colors.hr} size={200} />
       </View>
     </View>
   );
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontWeight: "700",
-    fontSize: 28,
+    fontSize: 25,
     color: colors.blackSofter,
     marginVertical: 40,
   },

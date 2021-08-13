@@ -78,6 +78,11 @@ export default function ServiceCard({
         style={{
           transform:
             isActive() && sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
+          elevation: 5,
+          shadowOffset: { width: 1, height: 1 },
+          shadowColor: colors.shaddow,
+          shadowOpacity: 0.3,
+          shadowRadius: 2,
         }}
       >
         <View

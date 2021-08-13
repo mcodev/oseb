@@ -65,4 +65,45 @@ const bikeDictionary = {
   vstrom_650: "V-STROM 650",
 };
 
-export { bikeNames, bikeDictionary };
+const bikeBrandSlector = (bike) => {
+  if (
+    bike === "cb_500_X" ||
+    bike === "cb_500_r_f" ||
+    bike === "nc_750_x" ||
+    bike === "cb_125_f" ||
+    bike === "cb_650_F_R" ||
+    bike === "africa" ||
+    bike === "cbr_1000_rr" ||
+    bike === "sh_300_i" ||
+    bike === "cb_125_r"
+  )
+    return "Honda";
+  else if (
+    bike === "r1" ||
+    bike === "r7" ||
+    bike === "mt_9" ||
+    bike === "mt_7" ||
+    bike === "mt_3" ||
+    bike === "tenere_700" ||
+    bike === "ys_125"
+  )
+    return "Yamaha";
+  else if (
+    bike === "gsxr_1000" ||
+    bike === "sv_650" ||
+    bike === "vstrom_1050" ||
+    bike === "vstrom_650"
+  )
+    return "Suzuki";
+  else if (
+    bike === "ninja_z_400" ||
+    bike === "ninja_z_650" ||
+    bike === "ninja_10_r" ||
+    bike === "versys_300" ||
+    bike === "versys_650" ||
+    bike === "versys_1000"
+  )
+    return "Kawasaki";
+};
+
+export { bikeNames, bikeDictionary, bikeBrandSlector };

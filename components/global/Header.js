@@ -10,7 +10,7 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
-import { bikeDictionary } from "../../data/bikeNames";
+import { bikeDictionary, bikeBrandSlector } from "../../data/bikeNames";
 
 export default function Header({ navigation }) {
   const { bike } = useAppContext();
@@ -19,6 +19,7 @@ export default function Header({ navigation }) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
         <View style={styles.titleTxt}>
+          <Text style={styles.bikeBrand}>{bikeBrandSlector(bike)}</Text>
           <Text style={styles.bikeName}>{bikeDictionary[bike]}</Text>
         </View>
         <Pressable
@@ -41,20 +42,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: colors.white,
   },
-  bikeName: {
-    fontSize: 20,
-    letterSpacing: 0.5,
-    color: colors.blackSofter,
-    fontWeight: "700",
-    textAlign: "center",
-  },
   titleTxt: {
     flex: 5,
     height: "80%",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    alignItems: "center",
     backgroundColor: colors.third,
     paddingHorizontal: 10,
     borderTopRightRadius: 25,
     borderBottomRightRadius: 25,
+    flexDirection: "row",
+  },
+  bikeName: {
+    fontSize: 15,
+    letterSpacing: 0.5,
+    color: colors.blackSofter,
+  },
+  bikeBrand: {
+    fontSize: 18,
+    letterSpacing: 1,
+    color: colors.white,
+    fontWeight: "700",
   },
 });
