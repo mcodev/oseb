@@ -7,13 +7,13 @@ import {
   ImageBackground,
 } from "react-native";
 import colors from "../../constants/colors";
+import { height, width } from "../../constants/device";
 
 export default function CarouselCard({ item, activeItem }) {
   return (
     <Pressable style={{ borderRadius: 25 }}>
       <View style={styles.cardContainer}>
         <ImageBackground
-          //   source={require("../../assets/brandIcons/kawasaki.jpg")}
           source={item?.item?.path}
           style={styles.image}
           imageStyle={{ borderRadius: 15 }}
@@ -39,10 +39,9 @@ export default function CarouselCard({ item, activeItem }) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    height: 150,
-    // width: "70%",
-    // marginHorizontal: 10,
-    marginVertical: 20,
+    height: height * 0.2,
+    marginVertical: height * 0.05,
+    justifyContent: "center",
   },
   image: {
     flex: 1,
@@ -51,9 +50,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.white,
-    fontSize: 22,
+    fontSize: width * 0.05,
     letterSpacing: 1,
-    lineHeight: 44,
+    lineHeight: height * 0.05,
     fontWeight: "bold",
     textAlign: "center",
     borderBottomLeftRadius: 15,

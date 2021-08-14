@@ -6,6 +6,7 @@ import info from "../../data/bikeInfo";
 import translations from "../../constants/translations";
 import color from "../../constants/colors";
 import colors from "../../constants/colors";
+import { width, height } from "../../constants/device";
 
 export default function InfoDetails({ active }) {
   const { language, bike } = useAppContext();
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
   infoTitle: {
     fontWeight: "700",
     letterSpacing: 0.8,
-    fontSize: 22,
+    fontSize: width * 0.065,
     color: color.primary,
     marginBottom: 20,
     borderBottomWidth: 1,
@@ -59,19 +60,21 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   infoTxt: {
+    fontSize: width * 0.035,
     marginVertical: 2,
     letterSpacing: 1,
+    color: colors.blackSofter,
   },
   icon: {
-    fontSize: 100,
+    fontSize: width * 0.3,
     color: color.backIcon,
   },
 
   card: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
+    paddingVertical: width * 0.05,
+    paddingHorizontal: width * 0.055,
     borderRadius: 15,
     backgroundColor: colors.white,
     elevation: 4,

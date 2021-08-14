@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
+import { width } from "../../constants/device";
 
 export default function TopBtns({ active, setActive }) {
   const { language } = useAppContext();
@@ -69,5 +70,6 @@ const styles = StyleSheet.create({
   txt: {
     fontWeight: "700",
     letterSpacing: 1.5,
+    fontSize: width * 0.04,
   },
 });

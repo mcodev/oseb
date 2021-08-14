@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import { bikeDictionary, bikeBrandSlector } from "../../data/bikeNames";
+import { width, height, iPhoneX } from "../../constants/device";
 
 export default function Header({ navigation }) {
   const { bike } = useAppContext();
@@ -27,7 +28,7 @@ export default function Header({ navigation }) {
           onPress={() => navigation.navigate("Settings")}
           hitSlop={40}
         >
-          <Icon name="cog" size={28} color={colors.blackSoft} />
+          <Icon name="cog" size={width * 0.075} color={colors.blackSoft} />
         </Pressable>
       </View>
     </TouchableWithoutFeedback>
@@ -36,11 +37,12 @@ export default function Header({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: iPhoneX ? height * 0.1 : height * 0.08,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     backgroundColor: colors.white,
+    paddingTop: iPhoneX ? height * 0.035 : 0,
   },
   titleTxt: {
     flex: 5,
@@ -49,19 +51,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.third,
     paddingHorizontal: 10,
-    borderTopRightRadius: 25,
-    borderBottomRightRadius: 25,
+    borderTopRightRadius: 55,
+    borderBottomRightRadius: 55,
     flexDirection: "row",
   },
   bikeName: {
-    fontSize: 15,
+    fontSize: width * 0.04,
     letterSpacing: 0.5,
     color: colors.blackSofter,
   },
   bikeBrand: {
-    fontSize: 18,
+    fontSize: width * 0.05,
     letterSpacing: 1,
     color: colors.white,
     fontWeight: "700",
+    paddingBottom: width * 0.012,
   },
 });

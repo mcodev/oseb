@@ -4,6 +4,7 @@ import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
 import colors from "../../constants/colors";
 import { saveData } from "../../functions/functions";
+import { width } from "../../constants/device";
 
 export default function Mkm() {
   const { mKm, setMKm, language } = useAppContext();
@@ -29,15 +30,15 @@ export default function Mkm() {
       inactiveTextStyle={{
         color: colors.white,
         fontWeight: "700",
-        fontSize: 18,
+        fontSize: width * 0.05,
       }}
       activeTextStyle={{
         color: colors.primaryPressed,
         fontWeight: "700",
-        fontSize: 16,
+        fontSize: width * 0.05,
       }}
-      circleSize={32}
-      barHeight={33}
+      circleSize={width * 0.09}
+      barHeight={width * 0.09}
       circleBorderWidth={1}
       backgroundActive={colors.thirdPressed}
       backgroundInactive={colors.primaryPressed}
@@ -49,8 +50,8 @@ export default function Mkm() {
       outerCircleStyle={{}} // style for outer animated circle
       renderActiveText={true}
       renderInActiveText={true}
-      switchLeftPx={3} // denominator for logic when sliding to TRUE position. Higher number = more space from RIGHT of the circle to END of the slider
-      switchRightPx={2} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
+      switchLeftPx={width * 0.01} // denominator for logic when sliding to TRUE position. Higher number = more space from RIGHT of the circle to END of the slider
+      switchRightPx={width * 0.0055} // denominator for logic when sliding to FALSE position. Higher number = more space from LEFT of the circle to BEGINNING of the slider
       switchWidthMultiplier={3} // multipled by the `circleSize` prop to calculate total width of the Switch
       switchBorderRadius={0} // Sets the border Radius of the switch slider. If unset, it remains the circleSize.
     />

@@ -9,6 +9,7 @@ import {
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
+import { width } from "../../constants/device";
 
 export default function Remaining({ remaining, reading }) {
   const { mKm, language } = useAppContext();
@@ -32,7 +33,7 @@ export default function Remaining({ remaining, reading }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
+    flex: 0.7,
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 25,
@@ -40,17 +41,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   textTitle: {
-    fontSize: 20,
+    fontSize: width * 0.06,
     letterSpacing: 1,
     color: colors.white,
   },
   text: {
-    fontSize: 21,
+    fontSize: width * 0.055,
     color: colors.third,
     letterSpacing: 1,
   },
   bottomText: {
     color: colors.whiteST,
-    fontSize: 14,
+    fontSize: width * 0.04,
   },
 });

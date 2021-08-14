@@ -4,13 +4,14 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
+import { width, height } from "../../constants/device";
 
 export default function NoEntriesScreen({ callback }) {
   const { language } = useAppContext();
 
   return (
     <Pressable onPress={callback} style={styles.container}>
-      <Icon name="database" size={100} style={styles.icon} />
+      <Icon name="database" size={width * 0.35} style={styles.icon} />
       <Text style={styles.txt}>{translations[language].noEntries}</Text>
     </Pressable>
   );
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: colors.backIcon,
-    fontSize: 30,
-    marginTop: 15,
+    fontSize: width * 0.085,
+    marginTop: height * 0.05,
   },
 });

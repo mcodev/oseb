@@ -5,6 +5,7 @@ import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
 import { distanceMax } from "../../constants/apps";
 import colors from "../../constants/colors";
+import { width, height } from "../../constants/device";
 
 export default function MainInput({ reading, setReading }) {
   const { language, mKm } = useAppContext();
@@ -34,7 +35,7 @@ export default function MainInput({ reading, setReading }) {
             color: colors.whiteST,
             zIndex: 100000,
           }}
-          size={20}
+          size={width * 0.05}
         />
         <TextInput
           style={styles.input}
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   },
   inp: {
     flexDirection: "row",
-    minHeight: 100,
+    minHeight: height * 0.1,
     backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
@@ -83,6 +84,6 @@ const styles = StyleSheet.create({
     margin: 10,
     textAlign: "center",
     letterSpacing: 1.5,
-    fontSize: 16,
+    fontSize: width * 0.043,
   },
 });

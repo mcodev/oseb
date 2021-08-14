@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
+import { width, height } from "../../constants/device";
 
 export default function AddBtn({ handle }) {
   return (
@@ -10,7 +11,7 @@ export default function AddBtn({ handle }) {
       onPress={handle}
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? colors.primaryPressed : colors.primary,
+          backgroundColor: pressed ? colors.third : colors.primary,
         },
         styles.addButton,
       ]}
@@ -21,21 +22,20 @@ export default function AddBtn({ handle }) {
 }
 
 const styles = StyleSheet.create({
-  buttonIcon: {
-    fontSize: 20,
-    color: colors.white,
-    fontWeight: "100",
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 12.5,
-    paddingRight: 10,
-  },
   addButton: {
     borderRadius: 50,
-    width: 43,
+    width: width * 0.115,
+    height: width * 0.115,
     position: "absolute",
-    bottom: 20,
-    right: 25,
-    elevation: 8,
+    bottom: height * 0.03,
+    right: width * 0.05,
+    elevation: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonIcon: {
+    fontSize: height * 0.03,
+    color: colors.white,
+    fontWeight: "100",
   },
 });

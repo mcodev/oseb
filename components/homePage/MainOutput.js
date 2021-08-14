@@ -12,6 +12,7 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import McoActionSheet from "../global/McoActionSheet";
 import { serviceNamesInterpreter } from "../../functions/appFunctions";
+import { width, height } from "../../constants/device";
 
 const actionSheetRef = createRef();
 
@@ -104,19 +105,23 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 35,
+    fontSize: width * 0.1,
     letterSpacing: 1.5,
   },
   type: {
     fontWeight: "700",
-    fontSize: 18,
+    fontSize: width * 0.05,
     letterSpacing: 1.9,
     marginTop: 7,
     marginBottom: 5,
     color: colors.primary,
   },
-  at: { letterSpacing: 1.5, color: colors.blackSoft },
+  at: {
+    letterSpacing: 1.5,
+    color: colors.blackSoft,
+    fontSize: width * 0.04,
+  },
   altTxt: {
-    fontSize: 19,
+    fontSize: width * 0.05,
   },
 });

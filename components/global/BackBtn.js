@@ -2,17 +2,18 @@ import React from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
+import { width, height } from "../../constants/device";
 
 export default function BackBtn({ callback }) {
   return (
     <Pressable
       style={styles.backBtn}
       onPress={callback}
-      hitSlop={20}
+      hitSlop={width * 0.05}
       children={(pressed) => (
         <Icon
           name="chevron-left"
-          size={20}
+          size={width * 0.05}
           color={pressed ? colors.primary : colors.primaryPressed}
         />
       )}
@@ -23,12 +24,12 @@ export default function BackBtn({ callback }) {
 const styles = StyleSheet.create({
   backBtn: {
     backgroundColor: colors.white,
-    padding: 10,
     borderRadius: 80,
-    width: 40,
+    width: width * 0.11,
+    height: width * 0.11,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 20,
+    marginHorizontal: width * 0.05,
     elevation: 4,
     shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.shaddow,

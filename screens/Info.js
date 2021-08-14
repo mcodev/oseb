@@ -1,4 +1,3 @@
-//// TODO useEffect cleanup & css transition effects
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import InfoBtns from "../components/infoPage/InfoBtns";
