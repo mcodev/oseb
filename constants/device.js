@@ -43,4 +43,4 @@ const dynamicLayout = (type, number) => {
   }
 };
 
-export { language, height, width, aspectRatio, isPad, iPhoneX };
+export { language, height, width, aspectRatio, isPad, iPhoneX, Platform };

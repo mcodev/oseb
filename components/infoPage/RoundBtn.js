@@ -21,7 +21,12 @@ export default function RoundBtn({ name, icon, active, setActive }) {
               name === active?.name ? colors.primary : colors.white,
           },
           { elevation: name === active?.name ? 0 : 4 },
-          { shadowOffset: name === active?.name ? 0 : { width: 1, height: 1 } },
+          {
+            shadowOffset:
+              name === active?.name
+                ? { width: 0, height: 0 }
+                : { width: 1, height: 1 },
+          },
           {
             shadowColor: name === active?.name ? colors.white : colors.shaddow,
           },

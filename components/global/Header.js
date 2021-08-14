@@ -11,7 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import { bikeDictionary, bikeBrandSlector } from "../../data/bikeNames";
-import { width, height } from "../../constants/device";
+import { width, height, iPhoneX } from "../../constants/device";
 
 export default function Header({ navigation }) {
   const { bike } = useAppContext();
@@ -37,11 +37,12 @@ export default function Header({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.08,
+    height: iPhoneX ? height * 0.1 : height * 0.08,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     backgroundColor: colors.white,
+    paddingTop: iPhoneX ? height * 0.035 : 0,
   },
   titleTxt: {
     flex: 5,

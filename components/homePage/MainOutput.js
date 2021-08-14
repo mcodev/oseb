@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   type: {
     fontWeight: "700",
-    fontSize: width * 0.055,
+    fontSize: width * 0.05,
     letterSpacing: 1.9,
     marginTop: 7,
     marginBottom: 5,

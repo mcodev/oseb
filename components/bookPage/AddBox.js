@@ -6,6 +6,7 @@ import {
   Modal,
   Pressable,
   TextInput,
+  Platform,
 } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -116,7 +117,12 @@ export default function AddBox({
               </View>
             )}
 
-            <View style={styles.inputContainer}>
+            <View
+              style={[
+                styles.inputContainer,
+                { paddingLeft: Platform.OS === "ios" ? width * 0.13 : 0 },
+              ]}
+            >
               <RNPickerSelect
                 useNativeAndroidPickerStyle={false}
                 placeholder={{
@@ -265,10 +271,13 @@ export default function AddBox({
           testID="dateTimePicker"
           value={new Date()}
           mode={"date"}
-          display="spinner"
+          display={Platform.OS === "ios" ? "calendar" : "spinner"}
           onChange={onChange}
           maximumDate={new Date()}
           minimumDate={new Date(2004, 0, 1)}
+          style={{
+            marginBottom: Platform.OS === "ios" ? height * 0.02 : 0,
+          }}
         />
       )}
     </Modal>
@@ -304,7 +313,6 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.05,
   },
   modalActions: {
-    flex: 1,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
