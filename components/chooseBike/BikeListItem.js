@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
+import { height, width } from "../../constants/device";
 
 export default function BikeListItem({
   item,
@@ -26,7 +27,7 @@ export default function BikeListItem({
             borderBottomWidth: 1,
             borderBottomColor:
               item?.index !== length - 1 ? colors.hr : colors.white,
-            height: 50,
+            height: height * 0.07,
             justifyContent: "center",
           }}
         >
@@ -34,6 +35,7 @@ export default function BikeListItem({
             style={{
               textAlign: "center",
               fontWeight: "700",
+              fontSize: width * 0.035,
               letterSpacing: 0.7,
               color: pressed
                 ? colors.white

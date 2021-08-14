@@ -14,6 +14,7 @@ import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 import AddBox from "../components/bookPage/AddBox";
 import NoEntriesScreen from "../components/bookPage/NoEntriesScreen";
+import { width } from "../constants/device";
 
 export default function Book() {
   const [loading, setLoading] = useState(true);
@@ -106,5 +107,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     paddingTop: 20,
+    paddingHorizontal: width * 0.009,
   },
 });

@@ -64,5 +64,6 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: colors.white,
     fontWeight: "700",
+    paddingBottom: width * 0.012,
   },
 });

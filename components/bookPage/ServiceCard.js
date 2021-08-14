@@ -8,7 +8,7 @@ import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import McoActionSheet from "../global/McoActionSheet";
 import ConfirmBox from "../global/ConfirmBox";
-
+import { width, height } from "../../constants/device";
 const actionSheetRef = createRef();
 
 export default function ServiceCard({
@@ -143,7 +143,7 @@ export default function ServiceCard({
               >
                 <Icon
                   name={"ellipsis-v"}
-                  size={20}
+                  size={width * 0.06}
                   style={{ marginRight: 15, color: colors.whiteST }}
                 />
               </Pressable>

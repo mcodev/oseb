@@ -11,7 +11,7 @@ export default function AddBtn({ handle }) {
       onPress={handle}
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? colors.primaryPressed : colors.primary,
+          backgroundColor: pressed ? colors.third : colors.primary,
         },
         styles.addButton,
       ]}
@@ -22,11 +22,6 @@ export default function AddBtn({ handle }) {
 }
 
 const styles = StyleSheet.create({
-  buttonIcon: {
-    fontSize: height * 0.03,
-    color: colors.white,
-    fontWeight: "100",
-  },
   addButton: {
     borderRadius: 50,
     width: width * 0.115,
@@ -37,5 +32,10 @@ const styles = StyleSheet.create({
     elevation: 5,
     justifyContent: "center",
     alignItems: "center",
+  },
+  buttonIcon: {
+    fontSize: height * 0.03,
+    color: colors.white,
+    fontWeight: "100",
   },
 });

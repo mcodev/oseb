@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Modal, Pressable } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
+import { width, height } from "../../constants/device";
 
 export default function ConfirmBox({
   cancel,
@@ -17,7 +18,7 @@ export default function ConfirmBox({
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <View style={styles.modalMessage}>
-            <Text style={{ fontSize: 17 }}>{textToShow}</Text>
+            <Text style={{ fontSize: width * 0.05 }}>{textToShow}</Text>
           </View>
           <View
             style={[
@@ -92,11 +93,11 @@ const styles = StyleSheet.create({
     marginTop: -30,
   },
   modalView: {
-    height: 150,
-    margin: 20,
     backgroundColor: colors.white,
     borderRadius: 5,
-    padding: 25,
+    paddingHorizontal: width * 0.06,
+    paddingTop: width * 0.02,
+    paddingBottom: width * 0.07,
     alignItems: "center",
     shadowColor: colors.black,
     shadowOffset: {
@@ -108,9 +109,11 @@ const styles = StyleSheet.create({
     elevation: 5,
     width: "60%",
   },
-  modalMessage: { flex: 3 },
+  modalMessage: {
+    marginVertical: height * 0.05,
+  },
+
   modalActions: {
-    flex: 1,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -118,10 +121,11 @@ const styles = StyleSheet.create({
   actionBtn: {
     padding: 5,
     borderRadius: 5,
-    width: 80,
+    width: "50%",
   },
   btnsTxt: {
     fontWeight: "700",
     textAlign: "center",
+    fontSize: width * 0.037,
   },
 });

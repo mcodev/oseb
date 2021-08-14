@@ -5,6 +5,7 @@ import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import MKm from "./Mkm";
+import { width } from "../../constants/device";
 
 export default function Units() {
   const { language } = useAppContext();
@@ -16,7 +17,7 @@ export default function Units() {
         <MKm />
       </View>
       <View style={styles.contBottom}>
-        <Icon name={"ruler-horizontal"} color={colors.hr} size={200} />
+        <Icon name={"ruler-horizontal"} color={colors.hr} size={width * 0.6} />
       </View>
     </View>
   );
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontWeight: "700",
-    fontSize: 25,
+    fontSize: width * 0.07,
     color: colors.blackSofter,
     marginVertical: 40,
   },

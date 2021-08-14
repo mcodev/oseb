@@ -79,13 +79,17 @@ export default function AddBox({
         <View style={styles.modalView}>
           <View style={styles.modalInputs}>
             {inputsOk("distance") || (
-              <Text style={styles.guideTxt}>
-                <Text style={styles.guideTxtSpan}>1</Text>{" "}
+              <View style={styles.guideTxt}>
+                <View style={styles.guideTxtSpanView}>
+                  <Text style={styles.guideTxtSpan}>1</Text>
+                </View>
                 <Text style={styles.guideTxtSecondSpan}>
                   {translations[language].odometer}
-                </Text>{" "}
-                {translations[language].readingS}
-              </Text>
+                </Text>
+                <Text style={styles.guideTxtLastSpan}>
+                  {translations[language].readingS}
+                </Text>
+              </View>
             )}
 
             <View style={styles.inputContainer}>
@@ -99,13 +103,17 @@ export default function AddBox({
             </View>
 
             {!inputsOk("distance") || inputsOk("type") || (
-              <Text style={styles.guideTxt}>
-                <Text style={styles.guideTxtSpan}>2</Text>{" "}
+              <View style={styles.guideTxt}>
+                <View style={styles.guideTxtSpanView}>
+                  <Text style={styles.guideTxtSpan}>2</Text>
+                </View>
                 <Text style={styles.guideTxtSecondSpan}>
                   {translations[language].type}
-                </Text>{" "}
-                {translations[language].serviceS}
-              </Text>
+                </Text>
+                <Text style={styles.guideTxtLastSpan}>
+                  {translations[language].serviceS}
+                </Text>
+              </View>
             )}
 
             <View style={styles.inputContainer}>
@@ -114,7 +122,7 @@ export default function AddBox({
                 placeholder={{
                   label: `${translations[language].serviceType}`,
                   value: null,
-                  color: colors.blackSofter,
+                  color: colors.blackSoft,
                 }}
                 style={{
                   inputAndroid: {
@@ -123,6 +131,7 @@ export default function AddBox({
                     width: "100%",
                     backfaceVisibility: "hidden",
                     paddingHorizontal: 40,
+                    fontSize: width * 0.035,
                   },
                   inputAndroidContainer: {
                     width: "100%",
@@ -154,13 +163,17 @@ export default function AddBox({
             </View>
 
             {inputsOk("all") || !inputsOk("type") || !inputsOk("distance") || (
-              <Text style={styles.guideTxt}>
-                <Text style={styles.guideTxtSpan}>3</Text>{" "}
+              <View style={styles.guideTxt}>
+                <View style={styles.guideTxtSpanView}>
+                  <Text style={styles.guideTxtSpan}>3</Text>
+                </View>
                 <Text style={styles.guideTxtSecondSpan}>
-                  {translations[language].date}{" "}
+                  {translations[language].date}
                 </Text>
-                {translations[language].serviceS}
-              </Text>
+                <Text style={styles.guideTxtLastSpan}>
+                  {translations[language].serviceS}
+                </Text>
+              </View>
             )}
 
             <View style={styles.inputContainer}>
@@ -180,6 +193,7 @@ export default function AddBox({
                       state?.date === null
                         ? colors.blackSofter
                         : colors.primary,
+                    fontSize: width * 0.035,
                   }}
                 >
                   {state.date === null
@@ -270,7 +284,9 @@ const styles = StyleSheet.create({
   modalView: {
     backgroundColor: colors.white,
     borderRadius: 5,
-    padding: 20,
+    paddingHorizontal: width * 0.06,
+    paddingTop: width * 0.02,
+    paddingBottom: width * 0.07,
     alignItems: "center",
     shadowColor: colors.black,
     shadowOffset: {
@@ -297,44 +313,63 @@ const styles = StyleSheet.create({
   actionBtn: {
     padding: 5,
     borderRadius: 5,
-    width: 70,
+    width: "50%",
   },
   btnsTxt: {
     fontWeight: "700",
     textAlign: "center",
+    fontSize: width * 0.037,
   },
   inputContainer: {
     width: "100%",
-    height: 45,
+    height: height * 0.06,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 10,
     paddingHorizontal: 5,
     borderWidth: 1,
     borderColor: colors.blackSofter,
-    borderRadius: 25,
-    marginVertical: 10,
+    borderRadius: 50,
+    marginVertical: height * 0.02,
   },
   formInput: {
     textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: width * 0.035,
     margin: 0,
     padding: 0,
     color: colors.primary,
   },
   guideTxt: {
     textAlign: "center",
-    fontSize: 17,
     marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "flex-end",
+  },
+  guideTxtSpanView: {
+    backgroundColor: colors.thirdPressed,
+    borderRadius: 50,
+    padding: width * 0.01,
+    width: width * 0.07,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: width * 0.015,
   },
   guideTxtSpan: {
     fontWeight: "700",
-    fontSize: 20,
-    color: colors.primary,
+    fontSize: width * 0.04,
+    color: colors.white,
   },
   guideTxtSecondSpan: {
     fontWeight: "700",
-    fontSize: 19,
+    fontSize: width * 0.05,
     color: colors.primary,
+    marginRight: width * 0.015,
+  },
+  guideTxtLastSpan: {
+    fontSize: width * 0.045,
   },
 });
 

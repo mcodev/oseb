@@ -7,6 +7,7 @@ import TopBtns from "../components/settings/TopBtns";
 import ChooseBike from "../components/chooseBike/ChooseBike";
 import Units from "../components/mKm/Units";
 import BackBtn from "../components/global/BackBtn";
+import { width, height } from "../constants/device";
 
 export default function Settings({ navigation }) {
   const [active, setActive] = useState("bike");
@@ -18,9 +19,7 @@ export default function Settings({ navigation }) {
         <View style={{ flex: 1 }}>
           <BackBtn callback={() => navigation.goBack()} />
         </View>
-        <Text style={{ fontSize: 28, letterSpacing: 1 }}>
-          {translations[language].settings}
-        </Text>
+        <Text style={styles.title}>{translations[language].settings}</Text>
 
         <View style={{ flex: 1 }} />
       </View>
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   topHead: {
-    height: 70,
+    height: height * 0.09,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -47,12 +46,10 @@ const styles = StyleSheet.create({
   },
   head: {
     flex: 1,
-    backgroundColor: "aqua",
     alignItems: "center",
   },
   title: {
-    fontSize: 30,
-    fontWeight: "700",
+    fontSize: width * 0.06,
     letterSpacing: 1,
   },
   body: {

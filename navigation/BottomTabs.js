@@ -46,13 +46,9 @@ export const BottomTabs = () => {
           name="Book"
           component={Book}
           options={{
-            tabBarLabel: ({ color }) => (
-              <Text style={{ color: color, fontSize: width * 0.026 }}>
-                {`${translations[language].service_book}`}
-              </Text>
-            ),
-            tabBarIcon: ({ color }) => (
-              <Icon name="book-open" color={color} size={width * 0.051} />
+            tabBarLabel: translations[language].service_book,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="book-open" color={color} size={size - 5} />
             ),
           }}
         />
@@ -60,13 +56,9 @@ export const BottomTabs = () => {
           name="Home"
           component={Home}
           options={{
-            tabBarLabel: ({ color }) => (
-              <Text style={{ color: color, fontSize: width * 0.027 }}>
-                {`${translations[language].home}`}
-              </Text>
-            ),
-            tabBarIcon: ({ color }) => (
-              <Icon name="search" color={color} size={width * 0.055} />
+            tabBarLabel: translations[language].home,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="search" color={color} size={size - 5} />
             ),
           }}
         />
@@ -74,13 +66,9 @@ export const BottomTabs = () => {
           name="Info"
           component={Info}
           options={{
-            tabBarLabel: ({ color }) => (
-              <Text style={{ color: color, fontSize: width * 0.027 }}>
-                {`${translations[language].bike_info}`}
-              </Text>
-            ),
-            tabBarIcon: ({ color }) => (
-              <Icon name="info" color={color} size={width * 0.053} />
+            tabBarLabel: translations[language].bike_info,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="info" color={color} size={size - 5} />
             ),
           }}
         />
