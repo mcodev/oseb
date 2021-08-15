@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
@@ -20,7 +20,11 @@ export default function MainInput({ reading, setReading }) {
       : parseInt(e) < 0
       ? setState(parseInt(e) * -1)
       : parseInt(e) > distanceMax(mKm)
-      ? setState(distanceMax(mKm))
+      ? (Alert.alert(
+          `${translations[language].savesLimitTitle}`,
+          `${translations[language].savesLimit}`
+        ),
+        setState(distanceMax(mKm)))
       : (setState(null), setReading(null));
   };
 

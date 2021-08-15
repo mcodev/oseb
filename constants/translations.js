@@ -62,10 +62,11 @@ const translations = {
     chooseBike: "Bike",
     unit: "Unit",
     settings: "Settings",
+    savesLimit: "Please upgrade to OSEB pro",
+    savesLimitTitle: "Limit reached",
   },
 
   el: {},
-  nl: {},
 };
 
 export default translations;

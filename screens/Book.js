@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
   Keyboard,
+  Alert,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { loadAndSetData } from "../functions/functions";
@@ -14,7 +15,8 @@ import AddBtn from "../components/bookPage/AddBtn";
 import CardsDisplay from "../components/bookPage/CardsDisplay";
 import AddBox from "../components/bookPage/AddBox";
 import NoEntriesScreen from "../components/bookPage/NoEntriesScreen";
-import { width } from "../constants/device";
+import { language, width } from "../constants/device";
+import translations from "../constants/translations";
 
 export default function Book() {
   const [loading, setLoading] = useState(true);
@@ -42,6 +44,8 @@ export default function Book() {
     };
   }, []);
 
+  console.log("data :", data.length);
+
   ////////////////////// ADD BOX  ///////////////////////
   const handleAddBoxCancel = () => {
     setState({ type: null, distance: null, date: null });
@@ -49,16 +53,23 @@ export default function Book() {
   };
 
   const saveData = async () => {
-    state.key = state.date + Math.random().toString(36).substr(2, 9);
-    let payload = [state, ...data]; /// payload used cause there are 2 states and async doesnt catchup with the data state
-    try {
-      const jsonValue = JSON.stringify(payload);
-      await AsyncStorage.setItem("@data", jsonValue);
-    } catch (e) {
-      console.log("Something went wrong..");
+    if (data?.length < 5) {
+      state.key = state.date + Math.random().toString(36).substr(2, 9);
+      let payload = [state, ...data]; /// payload used cause there are 2 states and async doesnt catchup with the data state
+      try {
+        const jsonValue = JSON.stringify(payload);
+        await AsyncStorage.setItem("@data", jsonValue);
+      } catch (e) {
+        console.log("Something went wrong..");
+      }
+      setData(payload);
+      setModalVisible(!modalVisible);
+    } else {
+      Alert.alert(
+        `${translations[language].savesLimitTitle}`,
+        `${translations[language].savesLimit}`
+      );
     }
-    setData(payload);
-    setModalVisible(!modalVisible);
   };
 
   ////////////////////// ADD BUTTON  ///////////////////////
