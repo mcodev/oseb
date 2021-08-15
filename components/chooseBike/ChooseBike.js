@@ -12,7 +12,7 @@ import { saveData } from "../../functions/functions";
 import { width } from "../../constants/device";
 
 export default function ChooseBike() {
-  const { language } = useAppContext();
+  const { language, setBike } = useAppContext();
   const [activeItem, setActiveItem] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [bikeToSave, setBikeToSave] = useState(null);
@@ -57,6 +57,7 @@ export default function ChooseBike() {
         confirm={() => {
           saveData("bike", bikeToSave);
           setModalVisible(false);
+          setBike(bikeToSave);
         }}
         textToShow={translations[language].sure}
       />

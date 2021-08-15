@@ -10,7 +10,7 @@ export default function BikeListItem({
   setModalVisible,
   length,
 }) {
-  const { bike, setBike } = useAppContext();
+  const { bike } = useAppContext();
 
   return (
     <Pressable
@@ -51,7 +51,6 @@ export default function BikeListItem({
       onPress={() => {
         Object.keys(item.item).toString() !== bike &&
           (setBikeToSave(Object.keys(item.item).toString()),
-          setBike(Object.keys(item.item).toString()),
           setModalVisible(true));
       }}
     />
