@@ -16,7 +16,7 @@ export default function ServiceDetails({ title, data }) {
       </Text>
       <View style={{ alignItems: "center", marginVertical: 20 }}>
         {data &&
-          data.map((item, i) => (
+          data?.map((item, i) => (
             <Text
               key={i}
               style={{

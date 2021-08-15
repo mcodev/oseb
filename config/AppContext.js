@@ -20,6 +20,7 @@ function AppProvider(props) {
         bike,
         mKm,
         setMKm,
+        setBike,
       }}
     >
       {props.children}
