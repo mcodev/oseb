@@ -11,10 +11,6 @@ function AppProvider(props) {
   useEffect(() => {
     loadData("bike").then((res) => res && setBike(res));
     loadData("mKm").then((res) => res && setMKm(res));
-
-    // return () => {
-    //   cleanup;
-    // };
   }, []);
 
   return (

@@ -8,7 +8,7 @@ import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import McoActionSheet from "../global/McoActionSheet";
 import ConfirmBox from "../global/ConfirmBox";
-import { width, height } from "../../constants/device";
+import { width } from "../../constants/device";
 const actionSheetRef = createRef();
 
 export default function ServiceCard({

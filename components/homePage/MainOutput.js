@@ -12,7 +12,7 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import McoActionSheet from "../global/McoActionSheet";
 import { serviceNamesInterpreter } from "../../functions/appFunctions";
-import { width, height } from "../../constants/device";
+import { width } from "../../constants/device";
 
 const actionSheetRef = createRef();
 

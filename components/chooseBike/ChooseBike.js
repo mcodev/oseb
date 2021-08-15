@@ -9,7 +9,7 @@ import CarouselCard from "./CarouselCard";
 import BikeListItem from "./BikeListItem";
 import ConfirmBox from "../global/ConfirmBox";
 import { saveData } from "../../functions/functions";
-import { width, height } from "../../constants/device";
+import { width } from "../../constants/device";
 
 export default function ChooseBike() {
   const { language } = useAppContext();
