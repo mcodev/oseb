@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.blackSofter,
     paddingBottom: 5,
+    textAlign: "center",
   },
   infoTxt: {
     fontSize: width * 0.035,

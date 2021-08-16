@@ -124,6 +124,5 @@ export default {
   mt_7,
   ys_125,
   vstrom_650,
-  ninja_z_650,
   versys_300,
 };

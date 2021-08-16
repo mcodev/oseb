@@ -44,8 +44,6 @@ export default function Book() {
     };
   }, []);
 
-  console.log("data :", data.length);
-
   ////////////////////// ADD BOX  ///////////////////////
   const handleAddBoxCancel = () => {
     setState({ type: null, distance: null, date: null });
