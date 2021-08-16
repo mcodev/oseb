@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
+import { View, StyleSheet, TextInput, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
@@ -47,7 +47,7 @@ export default function MainInput({ reading, setReading }) {
           placeholderTextColor={colors.whiteST}
           keyboardType="number-pad"
           defaultValue={reading && reading.toString()}
-          maxLength={7}
+          maxLength={6}
           onChangeText={(e) => numInputCleaner(e)}
           onEndEditing={() => state && setReading(state)}
           clearTextOnFocus={true}

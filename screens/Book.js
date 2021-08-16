@@ -51,7 +51,7 @@ export default function Book() {
   };
 
   const saveData = async () => {
-    if (data?.length < 5) {
+    if (data?.length <= 5) {
       state.key = state.date + Math.random().toString(36).substr(2, 9);
       let payload = [state, ...data]; /// payload used cause there are 2 states and async doesnt catchup with the data state
       try {

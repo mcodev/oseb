@@ -7,6 +7,7 @@ import {
   Pressable,
   TextInput,
   Platform,
+  Alert,
 } from "react-native";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -33,14 +34,21 @@ export default function AddBox({
     };
   }, []);
 
+  console.log(state);
+
   const numInputCleaner = (e) => {
+    console.log(e);
     e = e.replace(/\s/g, "");
     e = e.replace(/,/g, "");
     parseInt(e) > 0 && parseInt(e) < distanceMax(mKm)
       ? setState({ ...state, distance: parseInt(e) })
       : parseInt(e) < 0
       ? setState({ ...state, distance: parseInt(e) * -1 })
-      : setState({ ...state, distance: null });
+      : (setState({ ...state, distance: distanceMax(mKm) }),
+        Alert.alert(
+          `${translations[language].savesLimitTitle}`,
+          `${translations[language].savesLimit}`
+        ));
   };
 
   const onChange = (event, selectedDate) => {
@@ -98,7 +106,8 @@ export default function AddBox({
                 style={styles.formInput}
                 placeholder={`${translations[language].addDistance} ${translations[language][mKm]} `}
                 keyboardType="number-pad"
-                maxLength={7}
+                maxLength={6}
+                defaultValue={state?.distance && state?.distance?.toString()}
                 onChangeText={numInputCleaner}
               />
             </View>
