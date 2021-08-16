@@ -105,7 +105,7 @@ const translations = {
     cExp: "Κ : Καθαρισμός",
     aExp: " Ρ : Ρύθμιση",
     save: "ΦΥΛΑΞΗ",
-    addDistance: "Επέλεξε",
+    addDistance: "Επιλέξτε",
     serviceType: "Τύπος Service",
     firstService: "Πρώτο Service",
     oilChange: "Αλλαγή λαδιού",

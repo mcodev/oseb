@@ -2,8 +2,8 @@ const bikeNames = {
   honda: [{ cb_500_r_f: "CBR 500R - CB 500F" }, { cb_125_f: "CB 125F" }],
 
   yamaha: [{ mt_7: "MT-07 / Tracer" }, { ys_125: "YS 125" }],
-  kawasaki: [{ ninja_z_650: "Ninja 650 - Z 650" }],
-  suzuki: [{ versys_300: "Versys 300" }],
+  kawasaki: [{ versys_300: "Versys 300" }],
+  suzuki: [{ vstrom_650: "Vstrom 650" }],
 };
 
 const bikeDictionary = {
@@ -12,6 +12,7 @@ const bikeDictionary = {
   mt_7: "MT-07 / Tracer",
   ys_125: "YS 125",
   versys_300: "Versys 300",
+  vstrom_650: "V-strom 650",
 };
 
 const bikeBrandSlector = (bike) => {
