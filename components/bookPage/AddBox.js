@@ -34,8 +34,6 @@ export default function AddBox({
     };
   }, []);
 
-  console.log(state);
-
   const numInputCleaner = (e) => {
     console.log(e);
     e = e.replace(/\s/g, "");
