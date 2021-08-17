@@ -6,7 +6,7 @@ import info from "../../data/bikeInfo";
 import translations from "../../constants/translations";
 import color from "../../constants/colors";
 import colors from "../../constants/colors";
-import { width, height } from "../../constants/device";
+import { width } from "../../constants/device";
 
 export default function InfoDetails({ active }) {
   const { language, bike } = useAppContext();

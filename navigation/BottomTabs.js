@@ -1,17 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { useAppContext } from "../config/AppContext";
-import { bottomTabsHeight } from "../constants/apps";
 import translations from "../constants/translations";
 import colors from "../constants/colors";
 import Home from "../screens/Home";
 import Info from "../screens/Info";
 import Book from "../screens/Book";
 import Header from "../components/global/Header";
-import { width, height } from "../constants/device";
+import { height } from "../constants/device";
 
 const Tab = createBottomTabNavigator();
 

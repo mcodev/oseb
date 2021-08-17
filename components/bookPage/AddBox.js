@@ -35,18 +35,19 @@ export default function AddBox({
   }, []);
 
   const numInputCleaner = (e) => {
-    console.log(e);
     e = e.replace(/\s/g, "");
     e = e.replace(/,/g, "");
     parseInt(e) > 0 && parseInt(e) < distanceMax(mKm)
       ? setState({ ...state, distance: parseInt(e) })
       : parseInt(e) < 0
       ? setState({ ...state, distance: parseInt(e) * -1 })
-      : (setState({ ...state, distance: distanceMax(mKm) }),
+      : parseInt(e) > distanceMax(mKm)
+      ? (setState({ ...state, distance: distanceMax(mKm) }),
         Alert.alert(
           `${translations[language].savesLimitTitle}`,
           `${translations[language].savesLimit}`
-        ));
+        ))
+      : setState({ ...state, distance: null });
   };
 
   const onChange = (event, selectedDate) => {
@@ -132,6 +133,7 @@ export default function AddBox({
             >
               <RNPickerSelect
                 useNativeAndroidPickerStyle={false}
+                disabled={!inputsOk("distance") || inputsOk("type")}
                 placeholder={{
                   label: `${translations[language].serviceType}`,
                   value: null,
@@ -191,7 +193,11 @@ export default function AddBox({
 
             <View style={styles.inputContainer}>
               <Pressable
-                onPress={() => setShow(!show)}
+                onPress={() =>
+                  inputsOk("all") ||
+                  !inputsOk("type") ||
+                  (!inputsOk("distance") && setShow(!show))
+                }
                 style={{
                   flexDirection: "row",
                   justifyContent: "center",
@@ -368,6 +374,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: width * 0.01,
     width: width * 0.07,
+    height: width * 0.07,
     alignItems: "center",
     justifyContent: "center",
     marginRight: width * 0.015,
@@ -375,7 +382,7 @@ const styles = StyleSheet.create({
   guideTxtSpan: {
     fontWeight: "700",
     fontSize: width * 0.04,
-    color: colors.white,
+    color: colors.primaryPressed,
   },
   guideTxtSecondSpan: {
     fontWeight: "700",

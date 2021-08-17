@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
