@@ -194,9 +194,7 @@ export default function AddBox({
             <View style={styles.inputContainer}>
               <Pressable
                 onPress={() =>
-                  inputsOk("all") ||
-                  !inputsOk("type") ||
-                  (!inputsOk("distance") && setShow(!show))
+                  inputsOk("type") && inputsOk("distance") && setShow(!show)
                 }
                 style={{
                   flexDirection: "row",
