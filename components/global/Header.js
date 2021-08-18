@@ -7,6 +7,7 @@ import {
   Keyboard,
   Pressable,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -18,7 +19,7 @@ export default function Header({ navigation }) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <Animatable.View animation="fadeIn" style={styles.container}>
         <View style={styles.titleTxt}>
           <Text style={styles.bikeBrand}>{bikeBrandSlector(bike)}</Text>
           <Text style={styles.bikeName}>{bikeDictionary[bike]}</Text>
@@ -30,7 +31,7 @@ export default function Header({ navigation }) {
         >
           <Icon name="cog" size={width * 0.075} color={colors.blackSoft} />
         </Pressable>
-      </View>
+      </Animatable.View>
     </TouchableWithoutFeedback>
   );
 }

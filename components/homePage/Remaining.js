@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
@@ -16,7 +17,7 @@ export default function Remaining({ remaining, reading }) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <Animatable.View animation="fadeInUp" style={styles.container}>
         <Text style={styles.textTitle}>{translations[language].untilNext}</Text>
         {reading && (
           <>
@@ -26,7 +27,7 @@ export default function Remaining({ remaining, reading }) {
             </Text>
           </>
         )}
-      </View>
+      </Animatable.View>
     </TouchableWithoutFeedback>
   );
 }

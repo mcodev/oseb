@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import * as Animatable from "react-native-animatable";
 import { useAppContext } from "../../config/AppContext";
 import info from "../../data/bikeInfo";
 import translations from "../../constants/translations";
@@ -8,12 +9,12 @@ import color from "../../constants/colors";
 import colors from "../../constants/colors";
 import { width } from "../../constants/device";
 
-export default function InfoDetails({ active }) {
+export default function InfoDetails({ active, anRef1, anRef2 }) {
   const { language, bike } = useAppContext();
 
   return (
-    <View style={styles.detailsContainer}>
-      <View style={styles.detailsLeft}>
+    <View animation="fadeInUp" style={styles.detailsContainer}>
+      <Animatable.View ref={anRef1} style={styles.detailsLeft}>
         <View style={styles.card}>
           <Text style={styles.infoTitle}>
             {translations[language][active.name]}
@@ -26,10 +27,10 @@ export default function InfoDetails({ active }) {
             </Text>
           ))}
         </View>
-      </View>
-      <View style={styles.detailsRight}>
+      </Animatable.View>
+      <Animatable.View ref={anRef2} style={styles.detailsRight}>
         <Icon name={active?.icon} style={styles.icon} />
-      </View>
+      </Animatable.View>
     </View>
   );
 }

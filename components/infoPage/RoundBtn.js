@@ -6,7 +6,7 @@ import colors from "../../constants/colors";
 import translations from "../../constants/translations";
 import { width, height } from "../../constants/device";
 
-export default function RoundBtn({ name, icon, active, setActive }) {
+export default function RoundBtn({ name, icon, active, setActive, action }) {
   const { language } = useAppContext();
 
   return (
@@ -39,6 +39,7 @@ export default function RoundBtn({ name, icon, active, setActive }) {
         ]}
         onPress={() => {
           setActive({ name: name, icon: icon });
+          action();
         }}
       >
         <Icon

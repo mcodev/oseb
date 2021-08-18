@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput, Alert } from "react-native";
+import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import translations from "../../constants/translations";
@@ -30,7 +31,7 @@ export default function MainInput({ reading, setReading }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inp}>
+      <Animatable.View animation="rubberBand" style={styles.inp}>
         <Icon
           name="search"
           style={{
@@ -52,7 +53,7 @@ export default function MainInput({ reading, setReading }) {
           onEndEditing={() => state && setReading(state)}
           clearTextOnFocus={true}
         />
-      </View>
+      </Animatable.View>
     </View>
   );
 }

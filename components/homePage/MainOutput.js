@@ -7,6 +7,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
@@ -23,7 +24,7 @@ export default function MainOutput({ next, prev, nextAt, prevAt, reading }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-        <View style={styles.textContainer}>
+        <Animatable.View animation="fadeIn" style={styles.textContainer}>
           <Pressable
             style={styles.prevContainer}
             onPress={() => {
@@ -72,7 +73,7 @@ export default function MainOutput({ next, prev, nextAt, prevAt, reading }) {
               </Text>
             )}
           </Pressable>
-        </View>
+        </Animatable.View>
         <McoActionSheet refer={actionSheetRef} active={active} />
       </View>
     </TouchableWithoutFeedback>

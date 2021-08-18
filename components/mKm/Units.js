@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -11,7 +12,7 @@ export default function Units() {
   const { language } = useAppContext();
 
   return (
-    <View style={styles.container}>
+    <Animatable.View animation="fadeIn" style={styles.container}>
       <View style={styles.contTop}>
         <Text style={styles.txt}>{translations[language].chooseUnit}</Text>
         <MKm />
@@ -19,7 +20,7 @@ export default function Units() {
       <View style={styles.contBottom}>
         <Icon name={"ruler-horizontal"} color={colors.hr} size={width * 0.6} />
       </View>
-    </View>
+    </Animatable.View>
   );
 }
 

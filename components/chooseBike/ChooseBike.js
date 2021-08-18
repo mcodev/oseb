@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useAppContext } from "../../config/AppContext";
 import { brandImgs } from "../../data/other";
 import { bikeNames } from "../../data/bikeNames";
@@ -19,7 +20,10 @@ export default function ChooseBike() {
 
   return (
     <View style={styles.container}>
-      <View styles={styles.carouselContainer}>
+      <Animatable.View
+        animation="fadeInRight"
+        styles={styles.carouselContainer}
+      >
         <Carousel
           data={brandImgs}
           renderItem={(item, i) => (
@@ -34,8 +38,8 @@ export default function ChooseBike() {
           itemWidth={width / 1.5}
           onSnapToItem={(index) => setActiveItem(index)}
         />
-      </View>
-      <View style={styles.list}>
+      </Animatable.View>
+      <Animatable.View animation="fadeInUp" style={styles.list}>
         <FlatList
           data={bikeNames[brandImgs[activeItem].id]}
           keyExtractor={(item) => Object.keys(item).toString()}
@@ -50,7 +54,7 @@ export default function ChooseBike() {
             />
           )}
         />
-      </View>
+      </Animatable.View>
       <ConfirmBox
         modalVisible={modalVisible}
         cancel={() => setModalVisible(false)}

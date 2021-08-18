@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createRef } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
+import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
@@ -54,7 +55,7 @@ export default function ServiceCard({
   };
 
   return (
-    <View>
+    <Animatable.View animation="fadeInRight">
       {isActive() && sideBtn && (
         <View style={styles.extras}>
           <EditBtns
@@ -158,7 +159,7 @@ export default function ServiceCard({
         textToShow={translations[language].sure}
       />
       <McoActionSheet refer={actionSheetRef} active={active?.type} />
-    </View>
+    </Animatable.View>
   );
 }
 

@@ -3,12 +3,13 @@ import { View, StyleSheet } from "react-native";
 import RoundBtn from "./RoundBtn";
 import { types } from "../../data/other";
 
-export default function InfoBtns({ active, setActive }) {
+export default function InfoBtns({ active, setActive, action }) {
   return (
     <View style={styles.typesContainer}>
       <View style={styles.typesContainerSub}>
         {types.map((item, index) => (
           <RoundBtn
+            action={action}
             key={index}
             name={item.name}
             icon={item.icon}

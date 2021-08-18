@@ -9,6 +9,7 @@ import {
   Platform,
   Alert,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useAppContext } from "../../config/AppContext";
 import colors from "../../constants/colors";
 import translations from "../../constants/translations";
@@ -87,7 +88,7 @@ export default function AddBox({
         <View style={styles.modalView}>
           <View style={styles.modalInputs}>
             {inputsOk("distance") || (
-              <View style={styles.guideTxt}>
+              <Animatable.View animation="fadeInRight" style={styles.guideTxt}>
                 <View style={styles.guideTxtSpanView}>
                   <Text style={styles.guideTxtSpan}>1</Text>
                 </View>
@@ -97,7 +98,7 @@ export default function AddBox({
                 <Text style={styles.guideTxtLastSpan}>
                   {translations[language].readingS}
                 </Text>
-              </View>
+              </Animatable.View>
             )}
 
             <View style={styles.inputContainer}>
@@ -112,7 +113,7 @@ export default function AddBox({
             </View>
 
             {!inputsOk("distance") || inputsOk("type") || (
-              <View style={styles.guideTxt}>
+              <Animatable.View animation="fadeInRight" style={styles.guideTxt}>
                 <View style={styles.guideTxtSpanView}>
                   <Text style={styles.guideTxtSpan}>2</Text>
                 </View>
@@ -122,7 +123,7 @@ export default function AddBox({
                 <Text style={styles.guideTxtLastSpan}>
                   {translations[language].serviceS}
                 </Text>
-              </View>
+              </Animatable.View>
             )}
 
             <View
@@ -178,7 +179,7 @@ export default function AddBox({
             </View>
 
             {inputsOk("all") || !inputsOk("type") || !inputsOk("distance") || (
-              <View style={styles.guideTxt}>
+              <Animatable.View animation="fadeInRight" style={styles.guideTxt}>
                 <View style={styles.guideTxtSpanView}>
                   <Text style={styles.guideTxtSpan}>3</Text>
                 </View>
@@ -188,7 +189,7 @@ export default function AddBox({
                 <Text style={styles.guideTxtLastSpan}>
                   {translations[language].serviceS}
                 </Text>
-              </View>
+              </Animatable.View>
             )}
 
             <View style={styles.inputContainer}>

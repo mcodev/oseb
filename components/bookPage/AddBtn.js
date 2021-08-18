@@ -1,5 +1,6 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+import * as Animatable from "react-native-animatable";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
 import { width, height } from "../../constants/device";
@@ -16,7 +17,9 @@ export default function AddBtn({ handle }) {
         styles.addButton,
       ]}
     >
-      <Icon name="plus" style={styles.buttonIcon} />
+      <Animatable.View animation="rubberBand">
+        <Icon name="plus" style={styles.buttonIcon} />
+      </Animatable.View>
     </Pressable>
   );
 }
