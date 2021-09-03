@@ -12,7 +12,7 @@ import ConfirmBox from "../global/ConfirmBox";
 import { saveData } from "../../functions/functions";
 import { width } from "../../constants/device";
 
-export default function ChooseBike() {
+export default function ChooseBike({ navigation }) {
   const { language, setBike } = useAppContext();
   const [activeItem, setActiveItem] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -62,6 +62,7 @@ export default function ChooseBike() {
           saveData("bike", bikeToSave);
           setModalVisible(false);
           setBike(bikeToSave);
+          navigation.navigate("Home");
         }}
         textToShow={translations[language].sure}
       />

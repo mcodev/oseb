@@ -25,7 +25,7 @@ export default function Settings({ navigation }) {
       </View>
       <TopBtns active={active} setActive={setActive} />
       <View style={styles.body}>
-        {active === "bike" ? <ChooseBike /> : <Units />}
+        {active === "bike" ? <ChooseBike navigation={navigation} /> : <Units />}
       </View>
     </View>
   );

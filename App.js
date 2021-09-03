@@ -2,10 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { View, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { AppProvider } from "./config/AppContext";
-import { bottomTabsHeight } from "./constants/apps";
 import { height } from "./constants/device";
 import { StackNavigator } from "./navigation/Stack";
 import colors from "./constants/colors";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 
 export default function App() {
   return (
@@ -13,11 +13,13 @@ export default function App() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View
           style={{
-            minHeight: height,
+            minHeight: height - getStatusBarHeight(),
+            marginTop: getStatusBarHeight(),
             backgroundColor: colors.white,
+            flex: 1,
           }}
         >
-          <StatusBar hidden style="inverted" backgroundColor={colors.white} />
+          <StatusBar style="inverted" backgroundColor={colors.white} />
           <StackNavigator />
         </View>
       </TouchableWithoutFeedback>
