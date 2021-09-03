@@ -14,7 +14,7 @@ export default function App() {
         <View
           style={{
             minHeight: height - getStatusBarHeight(),
-            marginTop: getStatusBarHeight(),
+            marginTop: getStatusBarHeight() + 7,
             backgroundColor: colors.white,
             flex: 1,
           }}
