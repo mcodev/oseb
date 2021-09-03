@@ -11,19 +11,22 @@ export default function EditBtns({ callback, icon, color }) {
       onPress={callback}
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? colors[`${color}Pressed`] : colors[color],
+          backgroundColor: pressed ? colors.primary : colors[color],
         },
         styles.addButton,
       ]}
     >
-      <Icon name={icon} style={styles.buttonIcon} />
+      <Icon
+        name={icon}
+        style={[styles.buttonIcon, { backgroundColor: "transparent" }]}
+      />
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   addButton: {
-    borderRadius: 500,
+    borderRadius: 50,
     width: width * 0.09,
     height: width * 0.09,
     justifyContent: "center",
@@ -39,5 +42,23 @@ const styles = StyleSheet.create({
     fontSize: width * 0.038,
     color: colors.white,
     fontWeight: "100",
+    // margin: "100%",
   },
+
+  // addButton: {
+  //   borderRadius: 50,
+  //   width: width * 0.115,
+  //   height: width * 0.115,
+  //   position: "absolute",
+  //   bottom: height * 0.03,
+  //   right: width * 0.05,
+  //   elevation: 5,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
+  // buttonIcon: {
+  //   fontSize: height * 0.03,
+  //   color: colors.white,
+  //   fontWeight: "100",
+  // },
 });

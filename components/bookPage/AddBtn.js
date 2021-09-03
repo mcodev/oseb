@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     bottom: height * 0.03,
     right: width * 0.05,
     elevation: 5,
+    shadowOffset: { width: 1, height: 1 },
+    shadowColor: colors.shaddow,
     justifyContent: "center",
     alignItems: "center",
   },
