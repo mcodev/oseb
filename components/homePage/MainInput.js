@@ -23,7 +23,7 @@ export default function MainInput({ reading, setReading }) {
       : parseInt(e) > distanceMax(mKm)
       ? (Alert.alert(
           `${translations[language].savesLimitTitle}`,
-          `${translations[language].savesLimit}`
+          `${translations[language].calcLimit}`
         ),
         setState(distanceMax(mKm)))
       : (setState(null), setReading(null));

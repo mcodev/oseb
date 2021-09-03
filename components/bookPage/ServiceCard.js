@@ -9,7 +9,7 @@ import { serviceIconPicker, dotsInNumber } from "../../functions/functions";
 import EditBtns from "./EditBtns";
 import McoActionSheet from "../global/McoActionSheet";
 import ConfirmBox from "../global/ConfirmBox";
-import { width } from "../../constants/device";
+import { width, height } from "../../constants/device";
 const actionSheetRef = createRef();
 
 export default function ServiceCard({
@@ -166,9 +166,9 @@ export default function ServiceCard({
 const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
-    marginVertical: 6,
+    marginVertical: height * 0.01,
     backgroundColor: colors.cardBack,
-    height: 80,
+    height: height * 0.13,
     width: "100%",
     flexDirection: "row",
     borderLeftWidth: 5,
@@ -182,12 +182,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 0,
-    marginLeft: 5,
+    marginLeft: width * 0.015,
   },
   cardMiddle: {
     flex: 3,
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: height * 0.025,
     alignItems: "center",
   },
   cardRight: {
@@ -198,26 +198,26 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "700",
-    fontSize: 22,
+    fontSize: width * 0.055,
     letterSpacing: 2,
-    marginBottom: 2,
+    marginBottom: height * 0.003,
   },
   date: {
-    fontSize: 16,
+    fontSize: width * 0.043,
   },
   type: {
-    fontSize: 18,
+    fontSize: width * 0.05,
     transform: [{ rotate: "-90deg" }],
-    width: 100,
+    width: height * 0.13,
     textAlign: "center",
     letterSpacing: 2,
     fontWeight: "700",
-    marginLeft: 5,
+    marginLeft: width * 0.015,
   },
   iconBack: {
     position: "absolute",
     alignSelf: "center",
-    right: 10,
+    right: width * 0.04,
     color: colors.backIcon,
   },
   extras: {

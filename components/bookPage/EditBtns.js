@@ -2,6 +2,7 @@ import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import colors from "../../constants/colors";
+import { width } from "../../constants/device";
 
 export default function EditBtns({ callback, icon, color }) {
   return (
@@ -22,11 +23,12 @@ export default function EditBtns({ callback, icon, color }) {
 
 const styles = StyleSheet.create({
   addButton: {
-    borderRadius: 50,
-    width: 30,
+    borderRadius: 500,
+    width: width * 0.09,
+    height: width * 0.09,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 10,
+    marginHorizontal: width * 0.03,
     elevation: 5,
     shadowOffset: { width: 1, height: 1 },
     shadowColor: colors.shaddow,
@@ -34,10 +36,8 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   buttonIcon: {
-    fontSize: 15,
+    fontSize: width * 0.038,
     color: colors.white,
     fontWeight: "100",
-    paddingVertical: 7,
-    paddingHorizontal: 5,
   },
 });

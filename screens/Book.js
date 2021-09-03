@@ -17,6 +17,7 @@ import AddBox from "../components/bookPage/AddBox";
 import NoEntriesScreen from "../components/bookPage/NoEntriesScreen";
 import { language, width } from "../constants/device";
 import translations from "../constants/translations";
+import { savesLimit } from "../constants/apps";
 
 export default function Book() {
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ export default function Book() {
   };
 
   const saveData = async () => {
-    if (data?.length <= 5) {
+    if (data?.length < savesLimit) {
       state.key = state.date + Math.random().toString(36).substr(2, 9);
       let payload = [state, ...data]; /// payload used cause there are 2 states and async doesnt catchup with the data state
       try {
@@ -73,7 +74,12 @@ export default function Book() {
   ////////////////////// ADD BUTTON  ///////////////////////
   const addBtnHandler = () => {
     setState({ type: null, distance: null, date: null });
-    setModalVisible(!modalVisible);
+    data?.length >= savesLimit
+      ? Alert.alert(
+          `${translations[language].savesLimitTitle}`,
+          `${translations[language].savesLimit}`
+        )
+      : setModalVisible(!modalVisible);
   };
 
   return (

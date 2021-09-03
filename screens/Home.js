@@ -20,6 +20,7 @@ import Remaining from "../components/homePage/Remaining";
 export default function Home() {
   const { bike, mKm } = useAppContext();
   const [reading, setReading] = useState(null);
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.homeContainer}>

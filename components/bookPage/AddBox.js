@@ -46,7 +46,7 @@ export default function AddBox({
       ? (setState({ ...state, distance: distanceMax(mKm) }),
         Alert.alert(
           `${translations[language].savesLimitTitle}`,
-          `${translations[language].savesLimit}`
+          `${translations[language].mKmsaveLimit}`
         ))
       : setState({ ...state, distance: null });
   };

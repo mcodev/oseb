@@ -62,8 +62,10 @@ const translations = {
     chooseBike: "Bike",
     unit: "Unit",
     settings: "Settings",
-    savesLimit: "Please upgrade to OSEB pro",
+    savesLimit: "Please delete previous entries..",
+    mKmsaveLimit: "Max odometer limit reached",
     savesLimitTitle: "Limit reached",
+    calcLimit: "Max calculation limit reached",
   },
 
   el: {
@@ -129,8 +131,10 @@ const translations = {
     chooseBike: "Μηχανή",
     unit: "Μονάδα μέτρησης",
     settings: "Ρυθμίσεις",
-    savesLimit: "Παρακαλώ αναβαθμίστε σε OSEB pro",
+    savesLimit: "Παρακαλώ διαγράψτε προηγούμενες καταχωρήσεις..",
+    mKmsaveLimit: "Ξεπεράστηκε το μέγιστο όριο χλμ",
     savesLimitTitle: "Μέγιστο όριο",
+    calcLimit: "Ξεπεράστηκε το μέγιστο όριο υπολογισμού",
   },
 };
 
