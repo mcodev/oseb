@@ -42,23 +42,5 @@ const styles = StyleSheet.create({
     fontSize: width * 0.038,
     color: colors.white,
     fontWeight: "100",
-    // margin: "100%",
   },
-
-  // addButton: {
-  //   borderRadius: 50,
-  //   width: width * 0.115,
-  //   height: width * 0.115,
-  //   position: "absolute",
-  //   bottom: height * 0.03,
-  //   right: width * 0.05,
-  //   elevation: 5,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // buttonIcon: {
-  //   fontSize: height * 0.03,
-  //   color: colors.white,
-  //   fontWeight: "100",
-  // },
 });

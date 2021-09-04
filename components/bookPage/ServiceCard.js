@@ -78,7 +78,9 @@ export default function ServiceCard({
         onLongPress={longPressed}
         style={{
           transform:
-            isActive() && sideBtn ? [{ translateX: 120 }] : [{ translateX: 0 }],
+            isActive() && sideBtn
+              ? [{ translateX: width * 0.35 }]
+              : [{ translateX: 0 }],
           elevation: 5,
           shadowOffset: { width: 1, height: 1 },
           shadowColor: colors.shaddow,
