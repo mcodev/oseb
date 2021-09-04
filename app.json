@@ -22,7 +22,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.mcodev.oseb",
-      "permisions": []
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
