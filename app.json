@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mcodev.oseb"
+      "package": "com.mcodev.oseb",
+      "permisions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
