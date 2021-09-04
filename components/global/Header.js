@@ -24,11 +24,16 @@ export default function Header({ navigation }) {
           <Text style={styles.bikeName}>{bikeDictionary[bike]}</Text>
         </View>
         <Pressable
-          style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
+          style={{
+            flex: 1.5,
+            justifyContent: "center",
+            alignItems: "flex-end",
+            paddingRight: width * 0.05,
+          }}
           onPress={() => navigation.navigate("Settings")}
           hitSlop={40}
         >
-          <Icon name="cog" size={width * 0.065} color={colors.blackSofter} />
+          <Icon name="cog" size={width * 0.07} color={colors.blackSofter} />
         </Pressable>
       </View>
     </TouchableWithoutFeedback>
@@ -45,7 +50,6 @@ const styles = StyleSheet.create({
     paddingTop: iPhoneX ? height * 0.035 : 0,
   },
   titleTxt: {
-    flex: 5,
     height: "80%",
     justifyContent: "space-around",
     alignItems: "center",
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
     letterSpacing: 0.5,
     color: colors.blackSofter,
+    marginHorizontal: width * 0.02,
   },
   bikeBrand: {
     fontSize: width * 0.05,
@@ -66,5 +71,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "700",
     paddingBottom: width * 0.012,
+    marginHorizontal: width * 0.02,
   },
 });

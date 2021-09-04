@@ -26,9 +26,9 @@ export const BottomTabs = () => {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.blackSofter,
         tabBarStyle: {
-          height: height * 0.09,
+          height: height * 0.1,
           paddingTop: height * 0.013,
-          paddingBottom: height * 0.013,
+          paddingBottom: height * 0.019,
           elevation: 0,
           shadowColor: colors.white,
           shadowOpacity: 0,
