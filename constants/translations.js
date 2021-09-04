@@ -113,7 +113,7 @@ const translations = {
     oilChange: "Αλλαγή λαδιού",
     annualService: "Ετήσιο Service",
     fullService: "Πλήρες Service",
-    addDate: "Επέλεξε ημερ/νια",
+    addDate: "Ημερ/νια service",
     odometer: "Οδόμετρο",
     readingS: "ένδειξη ..",
     type: "Τύπος",
